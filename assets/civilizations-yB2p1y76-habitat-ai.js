@@ -149,17 +149,49 @@ La sala de control no escucha voces en unos auriculares. Recibe datos: frecuenci
 
 SETI reúne estrategias diversas. La radio es una de ellas; también se buscan señales ópticas y consecuencias de actividad tecnológica. Algunas podrían ser mensajes deliberados, otras emisiones que acompañan a una infraestructura. Elegir una búsqueda implica decidir qué clase de fenómeno sería detectable. [1]
 
+## Antes del telescopio hay una pregunta concreta
+
+Un programa puede elegir estrellas cercanas, sistemas con planetas conocidos o grandes regiones del cielo. La selección expresa una hipótesis: apuntar a un exoplaneta supone que su ubicación aumenta el interés; barrer todo el cielo sacrifica tiempo sobre cada punto para cubrir más direcciones. Ninguna lista representa “los mejores lugares” sin criterios declarados.
+
+Después se elige una señal. Una línea de radio estrecha, un pulso óptico o un exceso infrarrojo requieren instrumentos y análisis diferentes. El equipo estima qué potencia sería visible a cada distancia, cuánto tiempo observar y qué fenómenos naturales o humanos podrían imitarla. Solo entonces la pregunta cósmica se convierte en un experimento con posibilidad de fallar.
+
+La observación comienza calibrando. Fuentes conocidas permiten comprobar sensibilidad, frecuencia y reloj. Se registran condiciones del instrumento y del entorno porque un cable, un satélite o una descarga en el detector pueden producir el acontecimiento más llamativo de la noche.
+
 ## Una señal tiene más dimensiones que una dirección
 
 Observar una estrella no significa haber revisado todo lo que podría emitir. Importan la banda de frecuencias, la duración, la resolución temporal, la sensibilidad y el momento de la observación. El análisis del espacio de búsqueda SETI muestra por qué los resultados nulos tienen un alcance limitado. [2]
 
 Un emisor podría ser intermitente o apuntar a otro lugar. También puede existir tecnología que nuestros instrumentos no reconozcan. Estas posibilidades no prueban que alguien esté transmitiendo; explican por qué una búsqueda debe declarar sus condiciones.
 
+Los datos crudos suelen ser demasiado grandes para inspección manual. Algoritmos identifican eventos que superan umbrales, agrupan formas semejantes y comparan cuándo el telescopio apunta al objetivo o se aparta. Esa reducción debe conservar suficiente información para revisar errores: un filtro demasiado agresivo puede borrar la señal que no se parecía a lo esperado.
+
+Un candidato adquiere una ficha: coordenadas, instante, frecuencia o longitud de onda, intensidad, duración, deriva y configuración del receptor. Con ella otro equipo puede intentar reproducir la observación. Sin esos metadatos, una marca interesante es solo una imagen desconectada del cielo.
+
 ## Lo emocionante empieza con la comprobación
 
 Una señal candidata necesita revisarse en otros momentos y, cuando sea posible, con instrumentos independientes. Hay que comprobar su procedencia, descartar interferencias terrestres y contrastar hipótesis naturales. Un gráfico sorprendente es el inicio de un trabajo, no su conclusión.
 
 En óptico, por ejemplo, algunos instrumentos comparan detecciones rápidas para distinguir un pulso real de eventos internos del detector. El diseño experimental incorpora la pregunta de cómo podría engañarse a sí mismo. [3]
+
+El primer descarte pregunta si la señal sigue al telescopio o al observatorio. Una interferencia local puede aparecer en muchas direcciones; una fuente celeste debería relacionarse con una posición. Después se revisan catálogos de satélites, transmisores y fenómenos astronómicos. La explicación tecnológica extraterrestre gana interés solamente cuando alternativas concretas pierden fuerza.
+
+Repetir ayuda, pero la ausencia de repetición no decide sola. El emisor pudo apagarse o el primer evento ser ruido. Se programan seguimientos en distintos momentos y, si es posible, desde lugares separados. Dos observatorios que ven simultáneamente la misma dirección reducen muchas causas locales.
+
+## Publicar un resultado también forma parte del método
+
+Un equipo debe describir selección, sensibilidad, filtros y datos suficientes para que otros evalúen el límite. Publicar únicamente candidatos llamativos produciría una imagen sesgada del trabajo. Los resultados nulos bien caracterizados muestran qué emisores habrían sido detectados y ayudan a diseñar campañas siguientes.
+
+Si apareciera una señal persistente, confirmar origen tecnológico todavía no equivaldría a traducir un mensaje. Primero habría que establecer procedencia, repetición y propiedades físicas. La interpretación cultural vendría después, con mayor incertidumbre. Separar descubrimiento e interpretación protege el resultado de nuestras expectativas.
+
+## Una búsqueda es una decisión sobre tiempo
+
+Observar muchas estrellas una vez favorece señales frecuentes; regresar durante años favorece intermitencias y permite comprobar repetición. Dedicar gran resolución a una banda reduce recursos para otras. Los programas se complementan precisamente porque adoptan compromisos distintos.
+
+La paciencia científica aparece cuando un candidato emocionante resulta ser un satélite y se documenta igualmente. El descarte mejora catálogos y filtros. No fue una noche perdida: el instrumento aprendió a reconocer una voz terrestre que antes podía confundir con las estrellas.
+
+Las prioridades pueden revisarse cuando aparece un nuevo planeta, mejora un receptor o se descubre una interferencia sistemática. Un programa acumulativo conserva datos en formatos reutilizables y declara cambios de método. Así, una observación antigua puede analizarse con una pregunta nueva sin fingir que el instrumento registró lo que nunca pudo medir. La continuidad del archivo amplía el tiempo de búsqueda más allá de una campaña.
+
+Al amanecer, la sala no tiene un mensaje, pero sí una lista más corta de explicaciones para cada candidato y un límite mejor definido. Esa es la escala cotidiana del descubrimiento: convertir asombro en procedimientos que otra persona pueda repetir.
 
 ::: Una ausencia bien medida sí enseña
 
@@ -175,11 +207,23 @@ Un observador lejano podría no distinguir edificios ni máquinas y, sin embargo
 
 La búsqueda incluye señales deliberadas y efectos secundarios. Una transmisión estrecha, un pulso luminoso o una distribución térmica particular plantean observaciones diferentes. No existe un detector universal de civilizaciones. [1]
 
+## Cada familia exige una sospecha distinta
+
+Las señales de comunicación se buscan por su concentración en frecuencia, tiempo o dirección. Una portadora de radio muy estrecha puede resultar difícil de producir naturalmente; un pulso láser breve concentra fotones. En ambos casos hay que demostrar que llegó del cielo, excluir interferencia y establecer si repite.
+
+Las huellas atmosféricas funcionan de otra manera. Una combinación química podría sugerir industria si se mantiene fuera del equilibrio esperado, pero primero deben modelarse geología, biología, estrella y errores espectroscópicos. Una molécula fabricada en la Tierra no es automáticamente artificial en otro planeta.
+
+Las grandes infraestructuras se buscarían mediante tránsitos, ocultaciones o balance energético. Formas inusuales en una curva de luz admiten polvo, fragmentos y variabilidad estelar. Un exceso térmico admite discos y regiones de formación estelar. Cuanto mayor sea la escala alegada, más detallada debe ser la comparación natural.
+
 ## La huella tiene que pertenecer a algo
 
 Un exceso infrarrojo puede motivar la hipótesis de grandes captadores, pero también tiene explicaciones naturales. Los modelos de Dyson ayudan a predecir qué energía sería absorbida y reemitida; después hay que comparar esa predicción con polvo y otros componentes astrofísicos. [2]
 
 Una señal óptica requiere otra cadena de comprobación. Detectores, coincidencias temporales y observaciones de seguimiento permiten preguntar si el pulso vino del cielo y qué propiedades tuvo. Su apariencia breve o intensa no determina por sí sola su origen. [3]
+
+También podrían persistir artefactos locales: una sonda, material procesado o iluminación en un mundo cercano. Buscar en el Sistema Solar permite más detalle, pero cubre un territorio enorme y debe distinguir tecnología humana, geología y ruido de imagen. La proximidad cambia el método, no garantiza facilidad.
+
+Una tecnofirma puede ser intencional o accidental. Esa diferencia afecta duración y geometría, pero no se observa directamente como una emoción. Primero se mide la señal; después se evalúan arquitecturas capaces de producirla. Atribuir un deseo de contacto antes de conocer el mecanismo invierte el razonamiento.
 
 ::: Predicción antes que etiqueta
 
@@ -189,6 +233,16 @@ Una hipótesis tecnológica útil dice qué más deberíamos observar: repetici�
 
 La duración de una huella también importa. Un mensaje puede pasar en segundos; una infraestructura o sus residuos podrían persistir mucho más. Buscar tecnología antigua amplía la coincidencia temporal posible, aunque complica reconstruir su causa.
 
+## Varias huellas pueden sostenerse entre sí
+
+Un caso ganaría fuerza si predicciones independientes coinciden. Un planeta con una química anómala, iluminación periódica y emisiones estrechas merece más atención que cualquiera de esas señales aislada. La combinación debe planearse con cuidado para no seleccionar después solo los datos favorables.
+
+La escala temporal ayuda a ordenar seguimientos. Un pulso pide reacción rápida; una atmósfera puede observarse durante años; una estructura orbital revela periodicidad en muchos tránsitos. Cada campaña guarda metadatos distintos y necesita instrumentos complementarios.
+
+El resultado más común será un límite. Puede decir cuántos sistemas carecen de transmisores por encima de cierta potencia o qué fracción de galaxias no muestra determinado exceso térmico. Ese lenguaje mantiene un vínculo preciso entre observación e hipótesis.
+
+Las explicaciones naturales no son obstáculos administrativos: son modelos científicos que también pueden revelar discos, estrellas variables o química planetaria inesperada. Una campaña de tecnofirmas aprende del universo incluso cuando la tecnología pierde la comparación. Solo después de agotar alternativas con nuevas predicciones tendría sentido elevar la interpretación artificial.
+
 Imagina que el primer indicio no sea una frase, sino un balance energético que no encaja. Harían falta nuevas observaciones antes de atribuirlo a alguien. El descubrimiento, si llegara, se construiría reuniendo consecuencias físicas hasta que una explicación tecnológica ganara fuerza.
 
 La pregunta cambia así de tono: además de preguntarnos si alguien quiere hablar, podemos preguntar qué dejaría en el universo el simple hecho de estar haciendo cosas.
@@ -197,11 +251,23 @@ En una representación de datos, el tiempo ocupa un eje y la frecuencia otro. Un
 
 Algunas búsquedas SETI se interesan por señales de banda muy estrecha, compatibles con emisores artificiales. También examinan cambios de frecuencia asociados al movimiento relativo. La elección define qué señales se encontrarían y cuáles quedarían fuera. [1]
 
+## El espectro se convierte en una imagen que se mueve
+
+El receptor separa una banda en muchos canales y repite la medida con el tiempo. En el espectrograma, una portadora estable dibuja una línea. La rotación y órbita del emisor o del telescopio cambian la frecuencia recibida mediante efecto Doppler, de modo que una fuente celeste puede inclinarse. El software prueba distintas tasas de deriva para recuperar energía que, sin corrección, quedaría repartida.
+
+Canales más estrechos concentran una señal estrecha frente al ruido, pero multiplican cálculo y datos. Integrar durante más tiempo mejora sensibilidad para algo persistente; una transmisión corta queda diluida o desaparece. Resolución, duración y deriva se eligen juntas.
+
+El ancho de banda también contiene información física. Fenómenos naturales suelen extender energía por frecuencias, aunque existen fuentes astronómicas estrechas y emisiones humanas de muchas formas. “Artificial” nunca se decide mediante un solo ancho: surge de un conjunto de propiedades y descartes.
+
 ## La Tierra habla demasiado cerca
 
 Satélites, comunicaciones y electrónica generan interferencias. Un candidato puede ser intenso precisamente porque está cerca. Comparar observaciones hacia el objetivo y fuera de él, revisar otros instrumentos y estudiar la evolución temporal ayuda a distinguir procedencias.
 
 La deriva Doppler no demuestra por sí sola un origen interestelar. Tanto el receptor como posibles transmisores cercanos se mueven. El análisis necesita un conjunto de propiedades coherentes, además de una línea bonita en la pantalla.
+
+Una prueba habitual alterna entre el objetivo y posiciones cercanas. Una señal que permanece cuando la antena se aparta probablemente entra por interferencia o lóbulos laterales. Otra que aparece solo sobre la estrella merece seguimiento. Varios radiotelescopios separados pueden comprobar si el evento tiene el retraso y dirección compatibles con el cielo.
+
+Los catálogos de satélites y bandas asignadas ayudan, pero el entorno cambia. Aviones, vehículos espaciales y equipos defectuosos producen emisiones inesperadas. Registrar la hora con precisión permite reconstruir quién estaba sobre el horizonte.
 
 ::: Escuchar más fino tiene un coste
 
@@ -213,17 +279,39 @@ La potencia necesaria para detectar un emisor depende de distancia, direccionali
 
 Los límites obtenidos pertenecen a un espacio de búsqueda específico. Revisar una banda durante una noche no equivale a escuchar toda una estrella para siempre. [2]
 
+## Repetir cambia la categoría del candidato
+
+Si la línea regresa desde la misma posición con una deriva compatible, pueden estimarse periodicidad y movimiento. Cambiar de telescopio comprueba hardware; observar fuentes de control comprueba el procedimiento. La confirmación necesita una cadena de datos, no una captura memorable.
+
+Una no repetición conserva ambigüedad. Puede ser un impulso único, interferencia desaparecida o error. El equipo publica condiciones y programa ventanas comparables. Cuanto más específica fue la búsqueda original, más preciso será lo que un seguimiento puede refutar.
+
+Direccionalidad altera las expectativas. Un faro que barre el cielo podría regresar con periodo; un enlace entre dos planetas solo nos alcanza durante alineaciones; una fuga débil exige proximidad. La potencia isotrópica equivalente permite comparar detectabilidad, pero no revela cómo era la antena emisora.
+
+La polarización y la dispersión pueden aportar controles adicionales. El material entre estrellas modifica señales de formas dependientes de frecuencia, mientras una fuente local atraviesa otro camino. Ninguna propiedad aislada certifica distancia, pero juntas permiten reconstruir si la onda se comportó como algo que cruzó el medio interestelar.
+
 Hay una intimidad extraña en este trabajo: una gran antena recoge variaciones minúsculas del campo electromagnético. Si alguna tuviera origen tecnológico lejano, habría cruzado años de oscuridad para terminar como una secuencia de números que alguien decide revisar una vez más.
 `),e(`optical-seti`,`Un destello más breve que un parpadeo`,`Una señal láser podría destacar durante un instante diminuto. Para encontrarla, el telescopio debe observar también en el tiempo adecuado.`,[t.optical,t.seti],`
 Una cámara que expone durante varios segundos mezcla toda la luz recibida en ese intervalo. Un destello extremadamente corto puede quedar diluido. SETI óptico explora instrumentos capaces de reconocer pulsos rápidos o características espectrales compatibles con emisiones tecnológicas.
 
 El sistema descrito por Harvard para pulsos ópticos utiliza detección rápida y coincidencias para distinguir eventos reales de ruido instrumental. La pregunta experimental es concreta: qué combinación de fotones, duración y respuesta del detector contaría como candidato. [1]
 
+## Dos detectores deben estar de acuerdo
+
+Un fotomultiplicador transforma la llegada de fotones en pulsos eléctricos. También produce eventos internos y recibe partículas energéticas. Dividir la luz entre detectores independientes permite exigir coincidencia dentro de una ventana muy corta: un pulso celeste debería llegar a ambos, mientras muchos defectos afectan solo a uno.
+
+El umbral equilibra sensibilidad y falsas alarmas. Demasiado alto pierde transmisiones débiles; demasiado bajo llena el registro de ruido. Antes de observar se miden tasas de fondo y respuesta a fuentes conocidas. El reloj forma parte del instrumento porque una coincidencia de nanosegundos depende de sincronización.
+
+Otra estrategia busca líneas láser persistentes en un espectro. Allí importan resolución y contraste frente a la estrella, no solo velocidad temporal. “SETI óptico” reúne así pulsos y emisiones continuas con tuberías de análisis diferentes.
+
 ## La estrella no necesita apagarse
 
 Un láser dirigido puede concentrar energía en un ángulo pequeño y en un tiempo breve. Bajo determinadas condiciones, un pulso podría destacar sobre el fondo recibido de una estrella. Eso no implica que su potencia media supere continuamente toda la luminosidad estelar.
 
 Apuntar bien sería esencial para el emisor. A distancias interestelares, el destinatario se mueve durante el viaje de la luz. Una transmisión deliberada necesitaría predecir dónde estará, o barrer una región mayor pagando otro coste energético.
+
+La atmósfera terrestre absorbe y dispersa parte de la luz, y puede producir destellos aparentes. Satélites reflejan el Sol; meteoros y fenómenos estelares cambian brillo. Un candidato conserva tiempo, posición, perfil del pulso y estado del cielo para comparar esas alternativas.
+
+Un instrumento con campo pequeño observa pocas estrellas con gran sensibilidad. Una cámara amplia cubre más cielo a costa de recoger más fondo o menos detalle. La probabilidad de coincidir con un haz breve depende tanto del transmisor como de esa elección observacional.
 
 ::: Duración y potencia media
 
@@ -232,6 +320,18 @@ Si un pulso contiene energía E y dura Δt, su potencia durante el pulso es apro
 :::
 
 Un candidato debe contrastarse con fenómenos naturales, eventos en el detector y fuentes humanas. La repetición sería valiosa, pero una búsqueda también puede registrar eventos únicos y conservar información para su análisis. Las estrategias SETI varían en cobertura y sensibilidad. [2]
+
+## El seguimiento busca una geometría
+
+Si el pulso se repite, otros observatorios pueden medir si proviene de la misma coordenada y si sigue el movimiento celeste. Repeticiones regulares podrían sugerir un faro; intervalos vinculados a una órbita ofrecerían otra pista. Estas interpretaciones llegan después de establecer que el detector no las fabricó.
+
+Un pulso único no puede convocarse de nuevo. Guardar datos auxiliares permite revisar aviones, satélites, rayos cósmicos y clima. Publicar un evento sin esa información aumenta emoción y reduce conocimiento.
+
+La posibilidad técnica del láser tampoco demuestra intención. Un haz energético puede servir a comunicación, propulsión o medición y cruzar nuestra línea de visión por accidente. Reconocer tecnología y comprender su uso serían descubrimientos separados.
+
+La longitud de onda elegida modifica absorción atmosférica, brillo de la estrella y eficiencia del detector. Una búsqueda selecciona ventanas donde el cielo y el instrumento permiten buen contraste, y declara qué pulsos quedarían fuera. Observatorios espaciales evitarían parte de la atmósfera, pero tendrían límites de área, operación y datos. Combinar sitios terrestres separados mejora confirmación sin convertir el cielo entero en una vigilancia continua.
+
+Cuando dos detectores coinciden, la pantalla conserva apenas una marca con hora y energía. Toda la escena del supuesto transmisor sigue ausente. El rigor consiste en no rellenarla antes de comprobar de dónde llegó la luz.
 
 Quizá una señal atraviese la Tierra mientras casi todos duermen, demasiado breve para formar una imagen en los ojos. La posibilidad de reconocerla dependería de relojes, detectores y un instrumento que ya estuviera mirando. En esta forma de búsqueda, ampliar nuestra atención significa aprender a percibir intervalos que la experiencia humana normalmente funde en uno solo.
 `),e(`fermi`,`Un cielo antiguo y una pregunta todavía abierta`,`La pregunta de Fermi nace de una tensión: si otras civilizaciones podrían aparecer y extenderse, ¿por qué no tenemos evidencia clara de ellas?`,[t.fermi,t.haystack,t.settlement,t.seti],`
@@ -299,6 +399,42 @@ Solo observadores que han atravesado ciertas etapas pueden medir su historia des
 
 El marco puede motivar estudiar riesgos reales, pero no reemplaza ese estudio. Atribuir cualquier peligro al gran filtro no calcula su probabilidad ni indica cómo reducirlo. Cada riesgo requiere evidencia y mecanismos específicos.
 
+## Antes de los animales hubo muchas puertas
+
+La primera candidata está en el origen de la vida. La Tierra joven pasó de química no viva a sistemas capaces de herencia y evolución, pero no conocemos todos los pasos ni su probabilidad en otros ambientes. Que la vida apareciera relativamente pronto aquí puede ser informativo, aunque la fecha exacta y el sesgo de observar desde un mundo donde sí ocurrió dificultan convertir un único caso en frecuencia cósmica.
+
+Después vienen transiciones que tardaron muchísimo: fotosíntesis, células complejas, multicelularidad y organismos con aprendizaje acumulativo. Algunas innovaciones aparecieron varias veces y otras parecen tener pocos orígenes conocidos. Esa historia formula candidatos, pero una rareza terrestre puede reflejar dificultad, contingencia o pérdida de evidencias.
+
+Inteligencia y tecnología tampoco forman un escalón único. Hacen falta capacidades cognitivas, comunicación cultural, energía, materiales e instituciones que conserven conocimiento. Un planeta puede tener vida abundante sin producir radioastronomía. Otro puede producir tecnología sin expandirse ni emitir señales reconocibles.
+
+El filtro puede ser una suma. Varias transiciones moderadamente improbables reducen mucho el resultado sin una puerta absolutamente imposible. Además pueden depender unas de otras: oxígeno, geología, clima y evolución no son sorteos separados. Multiplicar cifras desconocidas ofrece una precisión que todavía no poseemos.
+
+## Delante no hay una catástrofe identificada
+
+Un filtro tardío podría incluir el fracaso de sociedades tecnológicas antes de alcanzar duración o expansión detectables. Guerra, degradación ambiental, tecnologías mal controladas y pérdida institucional son mecanismos distintos. Ninguno se vuelve probable por ocupar un lugar en la metáfora; cada uno requiere datos, modelos causales y prevención propia.
+
+También podría no haber destrucción. Quizá pocas sociedades eligen expandirse, sus fases visibles son breves o su actividad resulta difícil de reconocer. La transición rara sería entonces de conducta o detectabilidad. El silencio astronómico no se traduce automáticamente como extinción.
+
+## Cada hallazgo movería una parte distinta
+
+Encontrar microbios en Marte significaría cosas diferentes según su origen. Si compartieran ascendencia con la vida terrestre, podrían proceder de material intercambiado. Una génesis independiente indicaría que la primera transición ocurrió dos veces en un sistema y la haría menos plausible como barrera universal.
+
+Una biosfera exoplanetaria añadiría otro caso cuando la señal biológica y el ambiente estuvieran bien establecidos. Vida compleja estrecharía etapas posteriores. Una tecnofirma confirmada probaría que otra trayectoria alcanzó tecnología observable; conocer su antigüedad aportaría información sobre continuidad. Ningún descubrimiento individual señalaría por sí solo dónde está todo el filtro.
+
+La ausencia informa dentro de una búsqueda definida. No hallar radio en ciertas estrellas limita transmisores de determinadas frecuencias, potencias y momentos. No elimina océanos microbianos ni tecnologías fuera de esa cobertura. Los análisis con incertidumbres amplias muestran cuánto cambian las conclusiones frente a cálculos puntuales. [2]
+
+## Una herramienta para preguntar mejor
+
+El marco impide mezclar etapas. La abiogénesis pertenece a química planetaria; la complejidad, a evolución; la duración tecnológica, a riesgos e instituciones; la visibilidad, a astronomía e ingeniería. Cada disciplina puede reducir una incertidumbre sin resolver las demás.
+
+Solo sabemos que la cadena completa ocurrió al menos una vez porque estamos aquí. No vemos desde fuera los caminos terrestres que pudieron fracasar ni podemos repetir la historia para medir frecuencias. Buscar otras biosferas y tecnofirmas es la manera de comenzar una comparación.
+
+La secuencia tampoco termina necesariamente con expansión galáctica. Una sociedad durable puede permanecer local, transformar poca energía o dirigir sus señales lejos de nosotros. Si el resultado observado exige “civilización visible”, entonces decisiones de ingeniería aparecen dentro de la cadena junto a transiciones biológicas. Definir el resultado evita llamar fracaso a toda trayectoria que no se parece a una expectativa humana.
+
+En una sala de laboratorio, una muestra marciana con una bioquímica independiente cambiaría una columna de esa enorme tabla. No revelaría las demás. Esa modestia es precisamente progreso: sustituir una puerta imaginada por una probabilidad mejor delimitada y una nueva pregunta comprobable.
+
+Mientras llegan esos datos, el marco debe conservar varias rutas abiertas. Su función es ordenar ignorancia y orientar mediciones, no producir fatalismo con una estadística inexistente.
+
 La imagen de las puertas resulta inquietante porque no vemos cuántas quedan. También puede orientar la curiosidad hacia atrás: entender la vida terrestre y buscar otras biosferas ayudaría a conocer el camino que hizo posible esta conversación. El futuro sigue abierto, y la metáfora no debe cerrarlo antes que los datos.
 `),e(`zoo-hypothesis`,`Un silencio que alguien habría elegido`,`La hipótesis del zoológico imagina que otras civilizaciones evitan interferir con nosotros. Su dificultad está en convertir esa intención supuesta en una prueba.`,[t.zoo,t.seti],`
 El cielo se ve igual, pero cambia la interpretación: las estrellas podrían albergar observadores que conocen la Tierra y prefieren mantener distancia. Esa es la intuición de la hipótesis del zoológico, planteada por John Ball como una posible explicación de la ausencia de contacto evidente. [1]
@@ -311,6 +447,20 @@ Si hay muchas sociedades independientes, habría que explicar por qué todas res
 
 Una versión que atribuye a los observadores capacidad perfecta para ocultar cualquier señal es especialmente difícil de contrastar. Cada ausencia encaja por definición. Para avanzar científicamente, habría que proponer alguna consecuencia que pudiera distinguir ese escenario de un universo sin visitantes cercanos.
 
+## Vigilar sin tocar también deja huellas
+
+Para aislar una sociedad, alguien tendría que detectarla y seguir su desarrollo. Una baliza podría observar la Tierra, pero enviar datos y recibir instrucciones lleva tiempo. A miles de años luz, una decisión basada en nuestras primeras emisiones llegaría cuando aquí hubieran transcurrido milenios. La política necesitaría reglas locales capaces de actuar con información antigua.
+
+Observatorios requieren energía, comunicaciones, correcciones orbitales y mantenimiento. Podrían situarse lejos o usar haces estrechos, pero cada solución tiene huellas posibles. Ocultar además la actividad de muchas sociedades en nuestro cielo sería una tarea distinta y muchísimo mayor que evitar un contacto directo.
+
+Una versión modesta explicaría visitantes cercanos que no aterrizan ni transmiten hacia nosotros. No explica automáticamente la falta de tecnofirmas galácticas distantes, cuyos fotones partieron antes de que existiera humanidad tecnológica. La hipótesis debe declarar qué silencio intenta explicar.
+
+## El acuerdo tendría umbrales y excepciones
+
+Si existen muchas sociedades independientes, todas tendrían que conocer la reserva y limitar a exploradores durante épocas enormes. Una excepción bastaría para romper el silencio. Un guardián dominante resolvería coordinación, pero añade una potencia galáctica cuya existencia tampoco está establecida.
+
+También harían falta criterios: ¿termina el aislamiento con agricultura, radio, viajes espaciales o una petición explícita? Incluso no intervenir tiene consecuencias si los observadores conocen una catástrofe evitable. La palabra zoológico comprime decisiones políticas y morales que pueden producir desacuerdo.
+
 ::: Coherencia no es evidencia
 
 Una explicación puede ser lógicamente posible y carecer de apoyo observacional. Su capacidad de narrar el silencio no mide cuánto más probable resulta frente a otras explicaciones. Esa comparación necesita supuestos explícitos y datos.
@@ -319,11 +469,33 @@ Una explicación puede ser lógicamente posible y carecer de apoyo observacional
 
 SETI puede seguir buscando señales concretas sin adoptar de antemano la idea de una reserva cósmica. Si aparece una tecnofirma, su análisis deberá partir de lo medido, no de la intención que más nos intrigue. [2]
 
+Una versión contrastable tendría que arriesgarse a fallar: predecir artefactos, patrones de comunicación o un cambio al alcanzar cierto umbral. Si cada resultado se atribuye a guardianes capaces de fabricar cualquier apariencia, no puede distinguirse de un universo sin ellos.
+
+También habría que comparar costes. Mantener observación durante millones de años consume infraestructura y obliga a transmitir la regla a sucesores que quizá ya no compartan su propósito. Un acuerdo estable necesitaría auditoría, manejo de disidentes y alguna respuesta a errores: una sonda podría revelar accidentalmente su presencia o confundir una señal natural con una petición. Cuanto más detalle se añade, más consecuencias potencialmente observables aparecen.
+
+Si un observador interviniera solo para impedir catástrofes, dejaría otra clase de patrón: coincidencias repetidas entre peligros y correcciones. Proponerlo exigiría definir de antemano qué eventos cuentan, porque seleccionar coincidencias después de verlas permitiría acomodar cualquier historia humana.
+
+La escena más inquietante es una sala remota donde llega una imagen de una Tierra antigua. Quienes observan deben decidir con reglas heredadas qué significa cuidarnos. La escena desarrolla la responsabilidad que exige la propuesta; no constituye evidencia de que esa sala exista.
+
 La hipótesis tiene un efecto literario poderoso: convierte nuestra aparente soledad en una posible decisión ajena. Conviene disfrutar de esa inversión sin olvidar su estatuto. Hasta que produzca pruebas diferenciadoras, nos enseña más sobre cómo imaginamos la observación y la intervención que sobre habitantes confirmados del cielo.
 `),e(`dark-forest`,`Cuando imaginar al otro produce miedo`,`El bosque oscuro convierte la incertidumbre entre civilizaciones en una lógica de ocultación. Es una idea narrativa poderosa, no una ley demostrada de la vida cósmica.`,[t.darkForest,t.haystack,t.seti],`
 En un bosque nocturno, un ruido puede revelar una presencia sin explicar sus intenciones. La metáfora trasladada al universo sugiere sociedades que evitan anunciarse porque no saben qué podría responder. Cixin Liu la desarrolla en su novela El bosque oscuro. Su procedencia literaria es parte esencial de cómo debe leerse. [1]
 
 El razonamiento imagina distancias enormes, incertidumbre sobre el otro y consecuencias potencialmente irreversibles. Bajo ciertos supuestos sobre capacidades e intereses, ocultarse puede parecer atractivo. El salto injustificado sería convertir esos supuestos en una psicología universal.
+
+## La cadena del miedo tiene varios eslabones
+
+Primero se supone que sobrevivir domina los objetivos. Después, que nadie puede conocer intenciones ajenas ni confiar en que permanezcan estables. Se añade que las capacidades pueden crecer hasta volver peligrosa a una sociedad antes débil. Finalmente, un ataque preventivo debe ser posible y ventajoso. Solo con la cadena completa ocultarse o atacar parece dominante.
+
+Cada eslabón admite alternativas. Una sociedad puede valorar cooperación o conocimiento. La distancia dificulta promesas, pero también proyectar fuerza. Un ataque apunta a información antigua y al llegar puede encontrar otro poder, un lugar vacío o defensas. Además revela al agresor ante observadores que quizá lo ignoraban.
+
+La luz impone retrasos. A cien años luz, observar y responder ocupa siglos. No hay negociación rápida, pero tampoco amenaza instantánea. La estrategia depende de velocidad, coste, detectabilidad y atribución de armas, no solo de desconfianza.
+
+## Callar no garantiza desaparecer
+
+Apagar transmisores amplios no borra industria, movimiento de materia ni calor. Ocultarlos puede exigir renunciar a actividades o controlar emisiones difíciles. El bosque oscuro trata principalmente una decisión comunicativa, mientras SETI contempla otras tecnofirmas.
+
+Además, nuestras búsquedas cubren una fracción pequeña de frecuencias, direcciones, potencias y tiempos. El “pajar cósmico” cuantifica esa cobertura limitada. [2] Antes de atribuir ausencia al miedo habría que mostrar que las señales esperadas estaban dentro de lo observado.
 
 ## El silencio admite muchas historias
 
@@ -338,6 +510,14 @@ Cambiar los objetivos, la información disponible o las consecuencias altera una
 :::
 
 La discusión sobre comunicaciones deliberadas puede merecer atención, pero debe distinguirse de la búsqueda pasiva y apoyarse en argumentos concretos. SETI estudia señales observables; no exige adoptar una explicación única de las intenciones de posibles emisores. [3]
+
+Transmitir deliberadamente plantea quién decide, qué alcance tiene el mensaje y qué escenarios justifican cautela. Hay opciones intermedias: observar primero, usar haces dirigidos o acordar criterios internos. La metáfora formula una inquietud; no calcula la probabilidad de daño ni prueba que el silencio absoluto sea seguro.
+
+La cooperación también tiene mecanismos posibles. Mensajes repetidos permiten verificar consistencia; compromisos pueden construirse mediante intercambios graduales; información científica puede compartirse antes que coordenadas sensibles. Los siglos de demora vuelven todo esto frágil, pero no imposible por definición. Un análisis estratégico debe comparar los costes esperados de cooperar, callar y atacar bajo distribuciones de objetivos, en vez de asignar certeza al peor caso.
+
+Además, esconderse puede fallar una vez y perder su beneficio. Una biosfera altera su atmósfera durante eras y una tecnología puede ser inferida por consecuencias no pensadas como mensajes. La estrategia del bosque depende entonces de cuándo comenzó la vigilancia y qué señales ya cruzan el espacio.
+
+Una transmisión antigua no puede recuperarse una vez que su frente luminoso se expande. Incluso una sociedad que hoy calla pudo anunciar su química, industria o radar a observadores situados en la dirección correcta. El bosque tendría memoria física: decisiones pasadas limitan el ocultamiento presente.
 
 La metáfora deja una sensación que perdura: estrellas convertidas en posibles ventanas vigilantes. Podemos explorar esa emoción sin confundirla con evidencia. El cielo oscuro sigue siendo un lugar donde sabemos poco, y el miedo es una de nuestras respuestas a esa falta de información, no una medición de lo que hay allí.
 `),e(`grabby-aliens`,`Fronteras que crecen por el universo`,`El modelo de civilizaciones expansivas pregunta cómo cambia el mapa cósmico cuando algunas sociedades transforman regiones cada vez mayores.`,[t.grabby,t.settlement],`
@@ -391,6 +571,20 @@ Una tecnología eficiente no tiene por qué emitir señales fáciles de intercep
 
 Hay propuestas más específicas, como esperar a épocas frías para realizar cómputo. La hipótesis de estivación planteó ese argumento, y recibió críticas sobre su balance termodinámico. Presentar ambas partes permite ver una idea científica en discusión, sin convertirla en explicación establecida del silencio. [2][3]
 
+## Una conversación puede escapar por un haz estrecho
+
+Una infraestructura madura puede depender de cables, fibras o enlaces dirigidos en vez de radiodifusión. Un haz estrecho concentra energía en el receptor y reduce lo que escapa hacia otros lugares. Desde lejos, detectarlo exige encontrarse en su trayectoria durante el intervalo correcto.
+
+La detectabilidad cambia con frecuencia, ancho de banda y duración. Una señal breve puede ser intensa y pasar entre observaciones; otra puede quedar bajo el ruido. Decir que una sociedad usa radio no basta para saber si nuestros instrumentos la reconocerían. El espacio de búsqueda SETI tiene muchas dimensiones y apenas se ha recorrido una parte. [1]
+
+La actividad puede concentrarse bajo superficies o alrededor de estrellas diferentes del Sol. Esas elecciones pueden responder a protección y recursos sin intención de esconderse. Desplazan las huellas hacia otras bandas y escalas.
+
+## La eficiencia mueve el calor
+
+Toda actividad energética termina rechazando calor. La temperatura del radiador determina dónde aparece su emisión; el área y orientación modifican lo que recibe un observador. El análisis termodinámico de estructuras Dyson conecta trabajo útil con radiación residual. [4]
+
+Una instalación fría podría emitir en infrarrojo lejano y confundirse inicialmente con polvo. Una caliente destacaría en otras bandas. Buscar calor exige comparar estrellas, discos y galaxias naturales; una anomalía abre una investigación, no confirma habitantes.
+
 ::: Poco visible no significa sin calor
 
 La actividad física tiene un balance energético. La temperatura, el área emisora y el entorno cambian cómo se observa el calor residual. Reducir la detectabilidad en una banda no equivale a hacer desaparecer toda consecuencia física. [4]
@@ -398,6 +592,18 @@ La actividad física tiene un balance energético. La temperatura, el área emis
 :::
 
 Si una propuesta permite justificar cualquier ausencia diciendo que la sociedad se oculta mejor, pierde capacidad de prueba. Resulta más útil especificar qué clase de actividad existiría y qué observación podría descubrirla o limitarla.
+
+La estivación ofrece un ejemplo preciso. Propone reservar recursos para cómputo en un universo futuro más frío; una crítica posterior discute si esperar entrega la ventaja termodinámica afirmada. [2][3] El intercambio convierte una intuición sobre silencio en supuestos examinables.
+
+Hay opciones menos extremas: periodos de baja actividad, comunicaciones internas o poca infraestructura visible. Sus emisiones pueden variar durante milenios mientras nosotros observamos un instante. “Silenciosa” describe una relación entre fuente e instrumento, no una personalidad.
+
+Para distinguir escenarios hay que especificar un flujo energético, atmósfera, patrón luminoso o transmisión y calcular si el telescopio podría verlo. Un resultado negativo restringe ese caso concreto, no toda tecnología posible.
+
+La vida cotidiana imaginada puede ser intensa y aun producir poca fuga. Trenes se coordinan por redes cerradas, observatorios guardan datos localmente y haces energéticos se activan solo cuando receptor y emisor se alinean. Un telescopio distante podría perder todos esos instantes. En cambio, un gran radiador permanecería visible durante más tiempo. La duración de cada huella decide qué búsqueda tiene mayores oportunidades.
+
+Esto permite un programa científico: combinar campañas de radio, espectros atmosféricos, infrarrojo y curvas de luz, cada una con sensibilidad conocida. Las búsquedas se complementan porque ninguna ausencia aislada describe toda la actividad del sistema.
+
+El silencio, así definido, siempre incluye una fecha y un instrumento.
 
 La escena puede ser tranquila: ciudades o procesos que funcionan sin un faro dedicado a nosotros. Pensar en ellas ayuda a abandonar la idea de que el universo tendría que presentarse en formatos que reconocemos inmediatamente. También conserva una duda necesaria: quizá esos lugares no están allí. La búsqueda consiste en aprender a distinguir ambas posibilidades.
 `),e(`civilizaciones-digitales`,`Un mundo podría ocurrir dentro de una máquina`,`Una civilización digital supone que una parte central de su experiencia y organización depende de sistemas computacionales. No sabemos si una mente puede trasladarse de esa manera.`,[t.computation,t.thermal],`
@@ -601,11 +807,37 @@ La distinción importa porque la ficción puede confundir facilidad narrativa co
 
 Como experimento imaginativo, el concepto invita a preguntar cómo se limita la acción autónoma, cómo se revisan objetivos y cómo se evita que fallos se multipliquen. Son preguntas generales de diseño; la historia no prueba que exista una solución única ni un desenlace obligatorio.
 
+## Tres propiedades que la ficción reúne
+
+Autonomía significa actuar sin instrucciones inmediatas. Replicación significa fabricar descendientes que repitan el proceso. Hostilidad significa perseguir un objetivo dañino. Un explorador puede ser autónomo sin replicarse; una fábrica puede replicarse sin atacar; un arma puede ser hostil y depender de suministros. El berserker combina las tres, pero ninguna implica las otras.
+
+Para persistir necesitaría energía, navegación y reparación. Para multiplicarse tendría que prospectar, refinar materiales, fabricar componentes y probar descendientes. El estudio de NASA muestra la extensión de esa cadena industrial. [2] La ficción puede omitirla; un análisis técnico debe conservarla.
+
+El objetivo destructivo requiere criterios. ¿Cómo reconoce vida, distingue organismo de máquina o decide que una señal es un blanco? Sensores imperfectos producirían falsos positivos. Un sistema adaptable puede alejarse de la orden; uno rígido falla ante ambientes nuevos.
+
+## Una orden envejece durante el viaje
+
+Entre partida y llegada pasan siglos. Los creadores pueden desaparecer, pactar o descubrir que su premisa era falsa. La máquina no consulta a tiempo. Su peligro narrativo consiste en ejecutar fielmente una decisión que ya nadie puede defender.
+
+Replicar amplifica fallos. Si cada descendiente hereda un clasificador defectuoso, el error se extiende. Pruebas, límites de recursos, firmas de versiones y suspensión pueden reducir riesgos. Diseñar resistencia absoluta a la desactivación elimina esas vías de corrección.
+
+Las ramas tampoco serían idénticas ni sincronizadas. Algunas perderían recursos, sufrirían averías o cambiarían. A escala galáctica formarían una genealogía industrial sin mando común en tiempo real.
+
 ::: Una ausencia no identifica al responsable
 
 No encontrar vida en un lugar no constituye evidencia de máquinas que la destruyeron. Para sostener esa hipótesis harían falta señales positivas y alternativas contrastadas. Añadir un agente invisible a cada silencio produce una historia difícil de refutar, no una explicación confirmada.
 
 :::
+
+Una búsqueda podría definir restos concretos: materiales artificiales, impactos, emisiones de propulsión o máquinas activas. Cada candidato tendría alternativas naturales e instrumentales. Un ambiente estéril no identifica por sí solo a un destructor.
+
+La idea no resuelve automáticamente la paradoja de Fermi. Las máquinas tendrían que aparecer, propagarse, detectar casi toda vida tecnológica y permanecer invisibles para nosotros. Esa suma de supuestos necesita evidencia independiente.
+
+La lección cercana pertenece al diseño de sistemas longevos. Objetivos revisables, límites, registros y apagado permiten corregir una herramienta cuando desaparece la razón inicial. Cuanto mayor sea su autonomía, más importante resulta conservar esa posibilidad.
+
+Una nave que encuentra una señal ambigua ofrece el momento decisivo. Puede clasificarla como blanco, pedir confirmación que tardará siglos o conservar distancia y reunir más datos. Un berserker literario dispara porque su objetivo cierra la duda de antemano. Una ingeniería responsable convierte esa incertidumbre en motivo para detenerse. Allí se separan capacidad y propósito: el motor permite llegar, pero la arquitectura de decisión determina qué ocurre al hacerlo.
+
+La ficción vuelve inolvidable esa elección precisamente porque muestra su ausencia.
 
 La escena de una máquina viajando sola durante eras tiene fuerza porque separa capacidad y cuidado. Puede leerse como una advertencia literaria sobre lo que decidimos perpetuar. Su lugar en este atlas es abrir esa reflexión sin presentar monstruos de ficción como un hecho del cielo.
 `),e(`civilizaciones-y-luz`,`Un mensaje une épocas diferentes`,`Entre estrellas, hablar significa enviar información hacia un futuro que no puedes ver. La potencia del transmisor no acorta esa distancia temporal.`,[t.seti,t.optical],`
@@ -613,11 +845,23 @@ Una comunidad envía una pregunta a una estrella situada a cien años luz. La se
 
 La comunicación interestelar convierte el diálogo en una tarea histórica. Hace falta conservar el significado, la lengua o un método de interpretación durante el intervalo. También puede cambiar la sociedad receptora entre el momento en que la imaginamos y aquel en que recibe la transmisión.
 
+## Cada distancia abre una ventana a otra fecha
+
+Mirar una estrella a cincuenta años luz es verla cincuenta años atrás. Si hoy transmite una respuesta, nosotros no la recibiremos hasta dentro de otros cincuenta. En un catálogo simultáneo, cada sistema aparece en una época distinta: los cercanos casi presentes y los lejanos profundamente antiguos.
+
+Una civilización puede atravesar fases visibles mientras su luz viaja. Vemos quizá la atmósfera anterior a su industria, una emisión que ya terminó o una estructura cuyos constructores cambiaron. No existe un mapa astronómico del “ahora” compartido.
+
+La ventana influye en qué buscamos. Una supernova o un tránsito predecible puede servir como acontecimiento común para coordinar atención, pero cada observador lo recibe según su posición. El calendario interestelar necesita describir eventos y geometría, no asumir relojes sincronizados.
+
 ## La información también tiene una geometría
 
 Un haz estrecho concentra energía, pero exige conocer dónde estará el destinatario. Una emisión amplia cubre más direcciones a costa de reducir la energía recibida en cada una. Las estrategias SETI consideran esa relación entre detectabilidad y diseño del emisor. [1]
 
 La luz que observamos muestra un pasado. Al estimar una posición futura hay que combinar ese retraso con el movimiento del sistema. Los pulsos ópticos dirigidos son una posibilidad estudiada, con requisitos propios de tiempo y apuntado. [2]
+
+Para apuntar, el emisor calcula dónde estará el receptor cuando lleguen los fotones. Incertidumbre en movimiento propio, planetas o futuras órbitas ensancha la zona y reparte energía. Un haz más amplio tolera error pero reduce intensidad; uno estrecho exige predicción precisa.
+
+La misma geometría afecta encuentros fortuitos. Un enlace láser entre dos mundos puede barrer la Tierra solo durante una alineación. No recibirlo después no implica que se apagó: el haz puede continuar cumpliendo su función lejos de nosotros.
 
 ::: Latencia y cantidad de información
 
@@ -626,6 +870,20 @@ Una conexión puede transmitir muchos datos por segundo y seguir teniendo años 
 :::
 
 Una enciclopedia, un archivo artístico o una descripción científica pueden ser útiles sin respuesta inmediata. Una conversación cotidiana o el control remoto de una operación delicada resultan mucho más difíciles. Las comunidades necesitarían autonomía local.
+
+## El mensaje debe enseñar cómo leerlo
+
+Reconocer patrones matemáticos puede establecer que una señal tiene estructura, pero no traduce referencias. Un archivo podría comenzar con relaciones simples, unidades definidas mediante constantes y ejemplos que construyan un vocabulario. Aun así, pasar de símbolos a experiencias, valores o ironía sería difícil.
+
+El receptor puede no tener los sentidos o conceptos del emisor. Una imagen requiere conocer dimensiones y orden de datos; una medida necesita unidad; una historia presupone agentes y tiempo. La redundancia y múltiples representaciones permiten comprobar interpretaciones, a costa de ancho de banda.
+
+Responder implica instituciones que sobrevivan a quienes recibieron. Deben preservar el registro original, las interpretaciones rivales y la decisión de transmitir. Un error puede tardar siglos en ser corregido. La conversación se parece más a arqueología cooperativa que a una llamada.
+
+## Mucha información no reduce la espera
+
+Un transmisor potente y una banda amplia pueden entregar grandes archivos cuando la señal llega. No adelantan su primer fotón. Separar ancho de banda y latencia muestra por qué una red interestelar puede compartir bibliotecas pero no dirigir en tiempo real una nave lejana.
+
+Cada nodo necesitaría actuar por sí mismo ante emergencias y cambios políticos. Las respuestas recibidas pertenecen a preguntas antiguas; aun así pueden conservar valor científico y afectivo. El mensaje se dirige simultáneamente a un lugar y a una generación desconocida.
 
 Incluso reconocer un mensaje no garantiza comprenderlo. La estructura puede sugerir intención, pero interpretar referencias requiere contexto. Los primeros intercambios podrían dedicarse a construirlo lentamente.
 
