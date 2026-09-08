@@ -1724,25 +1724,32 @@ const Archivo = memo(({ sources }: { sources: SourceRef[] }) => (
         sus referencias y distingue investigación, propuestas y ficción.
       </p>
     </header>
-    <ol className="mo-archivo-list">
-      {sources.map((source, index) => (
-        <motion.li
-          key={source.url}
-          initial={{ opacity: 0, x: -22 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-30px' }}
-          transition={{ delay: Math.min(index * 0.035, 0.5), duration: 0.6, ease: EASE_OUT }}
-        >
-          <b>{String(index + 1).padStart(2, '0')}</b>
-          <div>
-            <span>{source.publisher}</span>
-            <a href={source.url} target="_blank" rel="noreferrer" data-cursor-label="Leer">
-              {source.title} ↗
-            </a>
-          </div>
-        </motion.li>
-      ))}
-    </ol>
+    <details className="mo-archivo-drawer">
+      <summary data-cursor-label="Abrir fuentes">
+        <span>Explorar el archivo completo</span>
+        <small>{sources.length} referencias</small>
+        <i aria-hidden="true">+</i>
+      </summary>
+      <ol className="mo-archivo-list">
+        {sources.map((source, index) => (
+          <motion.li
+            key={source.url}
+            initial={{ opacity: 0, x: -22 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ delay: Math.min(index * 0.035, 0.5), duration: 0.6, ease: EASE_OUT }}
+          >
+            <b>{String(index + 1).padStart(2, '0')}</b>
+            <div>
+              <span>{source.publisher}</span>
+              <a href={source.url} target="_blank" rel="noreferrer" data-cursor-label="Leer">
+                {source.title} ↗
+              </a>
+            </div>
+          </motion.li>
+        ))}
+      </ol>
+    </details>
   </section>
 ));
 
