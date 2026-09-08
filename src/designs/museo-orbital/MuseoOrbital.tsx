@@ -2527,10 +2527,14 @@ export default function MuseoOrbital() {
     let vel = 0;
     let raf = 0;
     let lastSkew = '';
+    const requestLoop = () => {
+      if (!raf && !document.hidden) raf = requestAnimationFrame(loop);
+    };
     const onScroll = () => {
       const top = el.scrollTop;
       vel = vel * 0.8 + (top - last) * 0.2;
       last = top;
+      requestLoop();
     };
     const loop = () => {
       vel *= 0.9;
@@ -2539,39 +2543,88 @@ export default function MuseoOrbital() {
         lastSkew = skew;
         el.style.setProperty('--marquee-skew', `${skew}deg`);
       }
-      raf = requestAnimationFrame(loop);
+      if (Math.abs(vel) < 0.04 && skew === '0.00') {
+        vel = 0;
+        raf = 0;
+      } else {
+        raf = requestAnimationFrame(loop);
+      }
+    };
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+        vel = 0;
+        lastSkew = '0.00';
+        el.style.setProperty('--marquee-skew', '0.00deg');
+      } else {
+        last = el.scrollTop;
+      }
     };
     el.addEventListener('scroll', onScroll, { passive: true });
-    raf = requestAnimationFrame(loop);
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       el.removeEventListener('scroll', onScroll);
+      document.removeEventListener('visibilitychange', onVisibility);
       cancelAnimationFrame(raf);
     };
   }, [reduced]);
 
   useEffect(() => {
     if (reduced || !window.matchMedia('(pointer: fine)').matches) return;
-    const offsets = new WeakMap<Element, { x: number; y: number }>();
+    const root = rootRef.current;
+    if (!root) return;
+    const offsets = new WeakMap<HTMLElement, { x: number; y: number }>();
     const mouse = { x: -9999, y: -9999 };
     let raf = 0;
-    let nodes: HTMLElement[] = [];
-    let lastScan = 0;
+    const visible = new Set<HTMLElement>();
+    const observed = new Set<HTMLElement>();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const node = entry.target as HTMLElement;
+        if (entry.isIntersecting) visible.add(node);
+        else {
+          visible.delete(node);
+          offsets.delete(node);
+          if (node.style.transform) node.style.transform = '';
+        }
+      });
+      requestLoop();
+    }, { root, rootMargin: '200px 0px' });
+
+    const syncNodes = () => {
+      const next = new Set(root.querySelectorAll<HTMLElement>('.mo-obra.is-featured .mo-frame-mask'));
+      observed.forEach((node) => {
+        if (!next.has(node)) {
+          observer.unobserve(node);
+          observed.delete(node);
+          visible.delete(node);
+          offsets.delete(node);
+        }
+      });
+      next.forEach((node) => {
+        if (!observed.has(node)) {
+          observed.add(node);
+          observer.observe(node);
+        }
+      });
+    };
+    const requestLoop = () => {
+      if (!raf && visible.size && !document.hidden) raf = requestAnimationFrame(loop);
+    };
 
     const onMove = (event: MouseEvent) => {
       mouse.x = event.clientX;
       mouse.y = event.clientY;
+      requestLoop();
     };
 
-    const loop = (time: number) => {
-      if (time - lastScan > 2200) {
-        nodes = Array.from(
-          document.querySelectorAll<HTMLElement>('.mo-obra.is-featured .mo-frame-mask'),
-        );
-        lastScan = time;
-      }
-      for (const node of nodes) {
-        const rect = node.getBoundingClientRect();
-        if (rect.bottom < -90 || rect.top > window.innerHeight + 90) continue;
+    const loop = () => {
+      const nodes = Array.from(visible);
+      const rects = nodes.map((node) => node.getBoundingClientRect());
+      let unsettled = false;
+      nodes.forEach((node, index) => {
+        const rect = rects[index];
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
         const dx = mouse.x - cx;
@@ -2585,15 +2638,32 @@ export default function MuseoOrbital() {
         state.x += (tx - state.x) * 0.12;
         state.y += (ty - state.y) * 0.12;
         offsets.set(node, state);
-        node.style.transform = `translate(${state.x.toFixed(2)}px, ${state.y.toFixed(2)}px)`;
-      }
-      raf = requestAnimationFrame(loop);
+        const x = Math.abs(state.x) < 0.01 ? 0 : state.x;
+        const y = Math.abs(state.y) < 0.01 ? 0 : state.y;
+        const transform = x || y ? `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px)` : '';
+        if (node.style.transform !== transform) node.style.transform = transform;
+        if (Math.abs(tx - state.x) >= 0.01 || Math.abs(ty - state.y) >= 0.01) unsettled = true;
+      });
+      raf = unsettled ? requestAnimationFrame(loop) : 0;
     };
 
+    const mutationObserver = new MutationObserver(syncNodes);
+    mutationObserver.observe(root, { childList: true, subtree: true });
+    const refresh = () => { syncNodes(); requestLoop(); };
+    const onVisibility = () => document.hidden ? (cancelAnimationFrame(raf), raf = 0) : refresh();
+    syncNodes();
+
     window.addEventListener('mousemove', onMove, { passive: true });
-    raf = requestAnimationFrame(loop);
+    window.addEventListener('resize', refresh);
+    root.addEventListener('scroll', requestLoop, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('resize', refresh);
+      root.removeEventListener('scroll', requestLoop);
+      document.removeEventListener('visibilitychange', onVisibility);
+      mutationObserver.disconnect();
+      observer.disconnect();
       cancelAnimationFrame(raf);
     };
   }, [reduced]);
@@ -2601,28 +2671,57 @@ export default function MuseoOrbital() {
   // Títulos de sala con peso tipográfico magnético, eco sutil del hero
   useEffect(() => {
     if (reduced || !window.matchMedia('(pointer: fine)').matches) return;
-    const weights = new WeakMap<Element, number>();
+    const root = rootRef.current;
+    if (!root) return;
+    const weights = new WeakMap<HTMLElement, number>();
     const mouse = { x: -9999, y: -9999 };
     let raf = 0;
-    let nodes: HTMLElement[] = [];
-    let lastScan = 0;
+    const visible = new Set<HTMLElement>();
+    const observed = new Set<HTMLElement>();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const node = entry.target as HTMLElement;
+        if (entry.isIntersecting) visible.add(node);
+        else {
+          visible.delete(node);
+          weights.delete(node);
+          if (node.style.fontWeight) node.style.fontWeight = '';
+        }
+      });
+      requestLoop();
+    }, { root, rootMargin: '200px 0px' });
+    const syncNodes = () => {
+      const next = new Set(root.querySelectorAll<HTMLElement>('.mo-sala-copy h2 .mo-word'));
+      observed.forEach((node) => {
+        if (!next.has(node)) {
+          observer.unobserve(node);
+          observed.delete(node);
+          visible.delete(node);
+          weights.delete(node);
+        }
+      });
+      next.forEach((node) => {
+        if (!observed.has(node)) {
+          observed.add(node);
+          observer.observe(node);
+        }
+      });
+    };
+    const requestLoop = () => {
+      if (!raf && visible.size && !document.hidden) raf = requestAnimationFrame(loop);
+    };
 
     const onMove = (event: MouseEvent) => {
       mouse.x = event.clientX;
       mouse.y = event.clientY;
+      requestLoop();
     };
 
-    const loop = (time: number) => {
-      if (time - lastScan > 2000) {
-        nodes = Array.from(
-          document.querySelectorAll<HTMLElement>('.mo-sala-copy h2 .mo-word'),
-        );
-        lastScan = time;
-      }
-
+    const loop = () => {
+      const nodes = Array.from(visible);
       // Fase de lectura: medir una sola vez antes de escribir estilos
       const rects = nodes.map((node) => node.getBoundingClientRect());
-
+      let unsettled = false;
       nodes.forEach((node, index) => {
         const rect = rects[index];
         if (rect.bottom < -80 || rect.top > window.innerHeight + 80) return;
@@ -2640,16 +2739,31 @@ export default function MuseoOrbital() {
         if (next < 501.5 && eased === 0) {
           if (node.style.fontWeight) node.style.fontWeight = '';
         } else {
-          node.style.fontWeight = String(Math.round(next));
+          const value = String(Math.round(next));
+          if (node.style.fontWeight !== value) node.style.fontWeight = value;
         }
+        if (Math.abs(500 + eased * 180 - next) >= 0.5) unsettled = true;
       });
-      raf = requestAnimationFrame(loop);
+      raf = unsettled ? requestAnimationFrame(loop) : 0;
     };
 
+    const mutationObserver = new MutationObserver(syncNodes);
+    mutationObserver.observe(root, { childList: true, subtree: true });
+    const refresh = () => { syncNodes(); requestLoop(); };
+    const onVisibility = () => document.hidden ? (cancelAnimationFrame(raf), raf = 0) : refresh();
+    syncNodes();
+
     window.addEventListener('mousemove', onMove, { passive: true });
-    raf = requestAnimationFrame(loop);
+    window.addEventListener('resize', refresh);
+    root.addEventListener('scroll', requestLoop, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('resize', refresh);
+      root.removeEventListener('scroll', requestLoop);
+      document.removeEventListener('visibilitychange', onVisibility);
+      mutationObserver.disconnect();
+      observer.disconnect();
       cancelAnimationFrame(raf);
     };
   }, [reduced]);

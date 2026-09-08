@@ -28,6 +28,10 @@ export const MuseumCursor = () => {
     let lastLabel = '';
     let raf = 0;
 
+    const requestLoop = () => {
+      if (!raf && !document.hidden) raf = requestAnimationFrame(loop);
+    };
+
     const move = (event: MouseEvent) => {
       const now = performance.now();
       const dt = Math.max(8, now - lastMoveT);
@@ -55,6 +59,7 @@ export const MuseumCursor = () => {
       }
       wasActive = isActive;
       lastLabel = label;
+      requestLoop();
     };
 
     const resetLabel = () => {
@@ -103,16 +108,37 @@ export const MuseumCursor = () => {
         cursorRef.current.style.setProperty('--tail-angle', `${tailAngle.toFixed(3)}rad`);
       }
 
-      raf = requestAnimationFrame(loop);
+      const settled = speed < 0.5 && tailLen < 0.05 && frameDist < 0.05;
+      if (settled) {
+        speed = 0;
+        tailLen = 0;
+        cursorRef.current?.style.setProperty('--tail-len', '0px');
+        raf = 0;
+      } else {
+        raf = requestAnimationFrame(loop);
+      }
+    };
+
+    const onVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      } else {
+        prev.x = pos.x;
+        prev.y = pos.y;
+        requestLoop();
+      }
     };
 
     window.addEventListener('mousemove', move, { passive: true });
     window.addEventListener('mo-cursor-reset', resetLabel);
-    raf = requestAnimationFrame(loop);
+    document.addEventListener('visibilitychange', onVisibility);
+    requestLoop();
 
     return () => {
       window.removeEventListener('mousemove', move);
       window.removeEventListener('mo-cursor-reset', resetLabel);
+      document.removeEventListener('visibilitychange', onVisibility);
       cancelAnimationFrame(raf);
     };
   }, [enabled]);

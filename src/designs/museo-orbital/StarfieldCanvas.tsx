@@ -978,6 +978,26 @@ export const StarfieldCanvas = ({
     let starDensity = QUALITY_STAGES[0].starDensity;
 
     let dpr = Math.min(window.devicePixelRatio || 1, dprCap);
+    const CONDUCTION_HALO_RADIUS = 12;
+    let conductionHaloSprite: HTMLCanvasElement | null = null;
+    const rebuildConductionHaloSprite = () => {
+      const sprite = document.createElement('canvas');
+      const radius = Math.ceil(CONDUCTION_HALO_RADIUS * dpr);
+      sprite.width = radius * 2;
+      sprite.height = radius * 2;
+      const spriteCtx = sprite.getContext('2d');
+      if (!spriteCtx) {
+        conductionHaloSprite = null;
+        return;
+      }
+      const gradient = spriteCtx.createRadialGradient(radius, radius, 0, radius, radius, radius);
+      gradient.addColorStop(0, 'rgba(255,246,224,0.85)');
+      gradient.addColorStop(0.4, 'rgba(228,199,127,0.5)');
+      gradient.addColorStop(1, 'rgba(228,199,127,0)');
+      spriteCtx.fillStyle = gradient;
+      spriteCtx.fillRect(0, 0, sprite.width, sprite.height);
+      conductionHaloSprite = sprite;
+    };
     const makeStar = (): Star => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -1127,6 +1147,7 @@ export const StarfieldCanvas = ({
       // Releer el dpr: cambia con el zoom de página y al mover la ventana
       // entre monitores con distinto DPI.
       dpr = Math.min(window.devicePixelRatio || 1, dprCap);
+      rebuildConductionHaloSprite();
       vscale = Math.min(width, height) / 900;
       // Altura del hero: define la banda del cielo sin constelaciones
       const heroEl = document.querySelector('.mo-hero');
@@ -4851,14 +4872,12 @@ export const StarfieldCanvas = ({
           if (!target) continue;
           const level = effectOpacity(dot.layer);
           const glowR = 7 + 5 * (1 - lifeFrac);
-          const grad = target.createRadialGradient(dot.x, dot.y, 0, dot.x, dot.y, glowR);
-          grad.addColorStop(0, `rgba(255,246,224,${(0.85 * lifeFrac * level).toFixed(3)})`);
-          grad.addColorStop(0.4, `rgba(228,199,127,${(0.5 * lifeFrac * level).toFixed(3)})`);
-          grad.addColorStop(1, 'rgba(228,199,127,0)');
-          target.fillStyle = grad;
-          target.beginPath();
-          target.arc(dot.x, dot.y, glowR, 0, Math.PI * 2);
-          target.fill();
+          if (conductionHaloSprite) {
+            target.save();
+            target.globalAlpha = lifeFrac * level;
+            target.drawImage(conductionHaloSprite, dot.x - glowR, dot.y - glowR, glowR * 2, glowR * 2);
+            target.restore();
+          }
         }
 
         // Burbujas de choque: disco semitransparente que nace de un color
@@ -5511,6 +5530,11 @@ export const StarfieldCanvas = ({
       textObserver.disconnect();
       visibleTextTargets.clear();
       observedTextTargets.clear();
+      if (conductionHaloSprite) {
+        conductionHaloSprite.width = 0;
+        conductionHaloSprite.height = 0;
+        conductionHaloSprite = null;
+      }
       document.removeEventListener('visibilitychange', onVisibility);
       document.removeEventListener('selectstart', onSelectStart);
     };
