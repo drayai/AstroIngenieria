@@ -61,6 +61,34 @@ try {
     await expect(reader.locator('.ar-note')).toHaveAttribute('open', '');
   }
   console.log('Tanda 3: las tres lecturas, sus apartados y notas cargan correctamente en escritorio.');
+  const editorialBatchFour = {
+    'great-filter': 5,
+    'zoo-hypothesis': 3,
+    'dark-forest': 3,
+    'civilizaciones-silenciosas': 3,
+    berserker: 3,
+  };
+  for (const [id, headings] of Object.entries(editorialBatchFour)) {
+    await page.evaluate(value => { globalThis.location.hash = `obra-${value}`; }, id);
+    await expect(page.locator(`#article-${id}-title`)).toBeVisible();
+    const reader = page.locator('.ar-reader');
+    assert(await reader.evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Desktop editorial overflow: ${id}`);
+    await expect(reader.locator(':scope > h4')).toHaveCount(headings);
+    await reader.locator('.ar-note summary').click();
+    await expect(reader.locator('.ar-note')).toHaveAttribute('open', '');
+  }
+  console.log('Tanda 4: las cinco lecturas, sus apartados y notas cargan correctamente en escritorio.');
+  const editorialBatchFive = { seti: 5, technosignatures: 3, 'radio-seti': 3, 'optical-seti': 3, 'civilizaciones-y-luz': 4 };
+  for (const [id, headings] of Object.entries(editorialBatchFive)) {
+    await page.evaluate(value => { globalThis.location.hash = `obra-${value}`; }, id);
+    await expect(page.locator(`#article-${id}-title`)).toBeVisible();
+    const reader = page.locator('.ar-reader');
+    assert(await reader.evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Desktop editorial overflow: ${id}`);
+    await expect(reader.locator(':scope > h4')).toHaveCount(headings);
+    await reader.locator('.ar-note summary').click();
+    await expect(reader.locator('.ar-note')).toHaveAttribute('open', '');
+  }
+  console.log('Tanda 5: las cinco lecturas, sus apartados y notas cargan correctamente en escritorio.');
   await page.evaluate(() => { globalThis.location.hash = 'obra-mars-terraforming'; });
   await expect(page.locator('#article-mars-terraforming-title')).toBeVisible();
   await page.locator('.ar-note summary').first().click();
@@ -129,6 +157,18 @@ try {
     assert(await page.locator('.ar-reader').evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Mobile editorial overflow: ${id}`);
   }
   console.log('Tanda 3: las tres lecturas no desbordan horizontalmente en móvil.');
+  for (const id of Object.keys(editorialBatchFour)) {
+    await page.evaluate(value => { globalThis.location.hash = `obra-${value}`; }, id);
+    await expect(page.locator(`#article-${id}-title`)).toBeVisible();
+    assert(await page.locator('.ar-reader').evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Mobile editorial overflow: ${id}`);
+  }
+  console.log('Tanda 4: las cinco lecturas no desbordan horizontalmente en móvil.');
+  for (const id of Object.keys(editorialBatchFive)) {
+    await page.evaluate(value => { globalThis.location.hash = `obra-${value}`; }, id);
+    await expect(page.locator(`#article-${id}-title`)).toBeVisible();
+    assert(await page.locator('.ar-reader').evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Mobile editorial overflow: ${id}`);
+  }
+  console.log('Tanda 5: las cinco lecturas no desbordan horizontalmente en móvil.');
   await page.evaluate(() => { globalThis.location.hash = 'obra-black-hole-engineering'; });
   await expect(page.locator('#article-black-hole-engineering-title')).toBeVisible();
   await page.locator('.ar-note summary').first().click();

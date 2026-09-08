@@ -10,10 +10,12 @@ La guía operativa está en [editorial-guide.md](./editorial-guide.md). La matri
 | 1 | Civilizaciones I, II y III | Revisado y validado |
 | 2 | Otras formas de existir | Revisado y validado |
 | 3 | Expansión autónoma | Revisado y validado |
-| 4–24 | Reescrituras planificadas | Pendiente |
+| 4 | Interpretar el silencio | Revisado y validado |
+| 5 | Buscar otras tecnologías | Revisado y validado |
+| 6–24 | Reescrituras planificadas | Pendiente |
 | 25 | Auditoría de ocho referencias posteriores | Pendiente |
 
-Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 4.
+Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 6.
 
 ## Tanda 1 — Civilizaciones de escala planetaria, estelar y galáctica
 
@@ -150,3 +152,71 @@ Se conservaron y comprobaron las referencias existentes:
 - ESLint y build de producción: correctos.
 - Escritorio y móvil: las tres lecturas cargan, muestran sus apartados y nota, y no generan desbordamiento horizontal.
 - Fallo ajeno a la tanda: la prueba global continúa deteniéndose en el `canvas` de la maqueta 3D de O’Neill, después de aprobar las comprobaciones específicas de las tandas 1, 2 y 3. La aserción se conserva.
+
+## Tanda 4 — Interpretar el silencio
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Gran filtro | A | 908 | Recorre filtros tempranos y tardíos y muestra cómo distintos hallazgos cambiarían partes concretas de la inferencia | Revisado y validado |
+| Hipótesis del zoológico | B | 659 | Desarrolla vigilancia, latencia, coordinación, excepciones y condiciones de contrastación | Revisado y validado |
+| Bosque oscuro | B | 661 | Reconstruye los supuestos estratégicos y compara silencio, cooperación y ataque bajo costes físicos | Revisado y validado |
+| Civilizaciones silenciosas | B | 659 | Relaciona detectabilidad con dirección, tiempo, instrumento y calor sin atribuir secreto | Revisado y validado |
+| Berserkers | B | 655 | Separa autonomía, replicación y hostilidad, y sigue cómo envejecen objetivos y errores | Revisado y validado |
+
+### Decisiones narrativas
+
+- **Gran filtro:** recorrer una secuencia de puertas y terminar en un laboratorio donde cada hallazgo solo modifica una parte de la tabla.
+- **Zoológico:** trasladar la propuesta a la sala remota que debe vigilar, coordinar reglas y decidir con información antigua.
+- **Bosque oscuro:** desmontar la metáfora en una cadena de incentivos y devolverle la memoria física de señales que ya partieron.
+- **Silenciosas:** seguir huellas de distinta duración y banda para convertir el silencio en una relación entre fuente e instrumento.
+- **Berserkers:** situar la decisión central ante una señal ambigua; el peligro procede del objetivo que impide detenerse y revisar.
+
+### Auditoría editorial
+
+| Criterio | Gran filtro | Zoológico | Bosque oscuro | Silenciosas | Berserkers |
+|---|---|---|---|---|---|
+| Representación mental | Puertas desde química hasta visibilidad | Observatorio remoto con reglas heredadas | Señales antiguas cruzando un bosque con memoria | Haces breves y radiadores persistentes | Nave que clasifica una señal ambigua |
+| Mecanismo | Probabilidades acumuladas y selección del observador | Vigilancia, latencia y coordinación | Objetivos, incertidumbre, crecimiento y ataque | Cobertura, dirección, banda, tiempo y calor | Autonomía, industria replicante y clasificación |
+| Posibilidad | Hallazgos distintos localizan etapas distintas | Una cuarentena limitada y potencialmente observable | Cooperación gradual frente a silencio o ataque | Actividad intensa con poca fuga detectable | Sistemas longevos con revisión y suspensión |
+| Detalle emocional | Una muestra cambia una sola columna | Una Tierra antigua llega a la sala de vigilancia | Una emisión pasada ya no puede recuperarse | La observación pierde una conversación estrecha | La máquina debe decidir si espera siglos |
+| Distinción | Rareza no equivale a catástrofe futura | Coherencia no equivale a evidencia | Miedo narrativo no equivale a estrategia universal | Poco visible no equivale a oculto | Replicar no equivale a ser hostil |
+| Incertidumbre | Un solo caso y etapas dependientes | Intenciones y acuerdo no observados | Jugadores y costes desconocidos | Cobertura incompleta y alternativas naturales | No hay evidencia astronómica de estas máquinas |
+| Aporte vecino | Ordena dónde puede surgir la rareza | Examina no interferencia deliberada | Examina ocultación por incentivos | Examina silencio sin intención | Examina una amenaza autónoma de origen literario |
+
+### Fuentes y validación
+
+Se conservaron y comprobaron Hanson sobre el gran filtro; Ball sobre la hipótesis del zoológico; la novela de Liu como origen literario del bosque oscuro; Wright, Kanodia y Lubar sobre cobertura SETI; Sandberg y colaboradores junto con su crítica termodinámica sobre estivación; Wright sobre calor residual; Saberhagen como origen ficcional; y NASA sobre autorreplicación.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 26 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cinco lecturas cargan con apartados y nota sin desbordamiento horizontal.
+- Fallo ajeno a la tanda: la prueba global conserva el fallo posterior del `canvas` 3D de O’Neill, después de aprobar las comprobaciones específicas de las tandas 1–4.
+
+## Tanda 5 — Buscar otras tecnologías
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| SETI | A | 918 | Recorre selección, calibración, adquisición, filtros, descarte, seguimiento y publicación | Revisado y validado |
+| Tecnofirmas | B | 652 | Distingue comunicaciones, atmósferas, infraestructuras y artefactos por sus alternativas | Revisado y validado |
+| Radio SETI | B | 660 | Explica canalización, deriva, interferencia, repetición, polarización y dispersión | Revisado y validado |
+| SETI óptico | B | 676 | Explica pulsos, coincidencia, contraste, ventanas espectrales y seguimiento | Revisado y validado |
+| Civilizaciones y luz | B | 679 | Desarrolla épocas observadas, apuntado, traducción, ancho de banda y autonomía | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **SETI:** una noche completa en la sala de control convierte la gran pregunta en decisiones reproducibles; el descarte de un satélite sostiene la emoción científica.
+- **Tecnofirmas:** cuatro familias de huellas obligan a construir explicaciones alternativas distintas; varias predicciones independientes pueden reforzarse.
+- **Radio:** el lector sigue una línea inclinada en un espectrograma y puede explicar cómo frecuencia, tiempo y movimiento producen su forma.
+- **Óptico:** dos detectores deben coincidir antes de que un destello se considere celeste; una marca mínima conserva toda la incertidumbre del emisor.
+- **Luz:** un mensaje une generaciones y épocas diferentes; latencia, ancho de banda e interpretación quedan separados.
+
+Las cinco lecturas distinguen candidato, tecnología confirmada e intención interpretada. Desarrollan una posibilidad específica, un detalle humano o instrumental, incertidumbres observacionales y un aporte diferente frente a los temas vecinos.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron Wright sobre estrategias SETI; Wright, Kanodia y Lubar sobre el espacio de búsqueda; los modelos Dyson para balance térmico; y la descripción instrumental de Harvard Optical SETI.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 31 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cinco lecturas cargan con apartados y nota sin desbordamiento horizontal.
+- Fallo ajeno a la tanda: la prueba global conserva el fallo posterior del `canvas` 3D de O’Neill, después de aprobar las comprobaciones específicas de las tandas 1–5.
