@@ -1,0 +1,30 @@
+.ar-reader { width: min(100%, 72ch); margin: 0 auto; color: inherit; font-family: var(--mo-sans, sans-serif); }
+.ar-header { margin-bottom: 2.75rem; }
+.ar-time { font-family: var(--mo-mono, monospace); font-size: 10px; letter-spacing: .12em; color: var(--accent, #b6a577); }
+.ar-header h3 { font-family: var(--mo-serif, Georgia, serif); font-weight: 500; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.14; margin: 1rem 0 1.5rem; text-wrap: balance; }
+.ar-reader .ar-lead { font-family: var(--mo-serif, Georgia, serif); font-size: clamp(18px, 2vw, 22px); line-height: 1.6; opacity: .82; }
+.ar-reader > p, .ar-note p { font-size: 16px; line-height: 1.85; margin: 0 0 1.4rem; overflow-wrap: anywhere; }
+.ar-reader > h4 { font-family: var(--mo-serif, Georgia, serif); font-weight: 500; font-size: clamp(23px, 2.4vw, 29px); line-height: 1.25; margin: 3.4rem 0 1.25rem; text-wrap: balance; }
+.ar-opening::first-letter { float: left; font-family: var(--mo-serif, Georgia, serif); font-size: 3.5em; line-height: .9; padding: .08em .12em 0 0; color: var(--accent, #b6a577); }
+.ar-reader a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.ar-reader sup { font-size: 10px; margin-left: 3px; }
+.ar-reader .ar-citation { color: var(--accent, #b6a577); text-decoration: none; }
+.ar-reader :is(a, summary, button):focus-visible { outline: 2px solid var(--accent, #b6a577); outline-offset: 5px; }
+.ar-note { margin: 2rem 0; border: 1px solid color-mix(in srgb, currentColor 20%, transparent); border-left: 2px solid var(--accent, #b6a577); }
+.ar-note summary { padding: 1rem 1.3rem; cursor: pointer; line-height: 1.5; font-size: 14px; }
+.ar-note[open] summary { border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent); }
+.ar-note > div { padding: 1.3rem; }
+.ar-note p { font-size: 14px; }
+.ar-note p:last-child { margin-bottom: 0; }
+.ar-reader figure { max-width: 100%; margin: 2.8rem 0; }
+.ar-reader figure img { display: block; box-sizing: border-box; width: 100%; max-width: 100%; height: auto; border: 1px solid color-mix(in srgb, currentColor 15%, transparent); }
+.ar-reader figcaption { margin-top: .8rem; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; opacity: .7; }
+.ar-sources { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent); }
+.ar-sources h4 { font-family: var(--mo-serif, Georgia, serif); font-size: 21px; font-weight: 500; }
+.ar-sources ol { padding-left: 1.5rem; }
+.ar-sources li { padding-left: .4rem; margin-bottom: 1rem; font-size: 13px; line-height: 1.6; scroll-margin-block: 110px; overflow-wrap: anywhere; }
+.ar-sources li:focus { outline: 1px solid var(--accent, #b6a577); outline-offset: 5px; }
+.ar-sources span { display: block; font-size: 11px; opacity: .6; }
+.ar-status { min-height: 160px; display: grid; align-content: center; justify-items: center; gap: 1rem; font-size: 14px; }
+.ar-status button { padding: .7rem 1.1rem; background: transparent; color: inherit; border: 1px solid currentColor; cursor: pointer; }
+@media (max-width: 600px) { .ar-reader > p { font-size: 15.5px; line-height: 1.8; } .ar-reader > h4 { margin-top: 2.5rem; } .ar-time { font-size: 9px; letter-spacing: .04em; } }

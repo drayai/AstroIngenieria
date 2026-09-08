@@ -4,6 +4,7 @@ import { chapters, conceptById, plausibilityLabels, scaleLabels } from '../../da
 import type { AstroChapter, AstroConcept } from '../../types';
 import { getConceptImageVariants } from '../shared/conceptImages';
 import { Grain } from '../shared/Grain';
+import { ArticleReader } from '../shared/ArticleReader';
 import { useScrollLock } from '../shared/useScrollLock';
 import './observatorioEditorial.css';
 
@@ -344,7 +345,7 @@ const ArticleOverlay = ({
             Ficha — Sala {chapter.number}, {concept.category}
           </p>
           <h2>{concept.title}</h2>
-          <p className="oe-article-standfirst">{concept.narrative.lead}</p>
+          <p className="oe-article-standfirst">{concept.summary}</p>
           <div className="oe-dateline">
             <span>{concept.category}</span>
             <span>{scaleLabels[concept.scale]}</span>
@@ -363,19 +364,7 @@ const ArticleOverlay = ({
           ))}
         </div>
 
-        <div className="oe-article-columns">
-          {concept.narrative.paragraphs.map((paragraph, paragraphIndex) => (
-            <p key={paragraphIndex} className={paragraphIndex === 0 ? 'oe-dropcap' : undefined}>
-              {paragraph}
-            </p>
-          ))}
-          {concept.longRead.takeaways[0] && (
-            <aside className="oe-takeaway">
-              <b>Idea para llevar</b>
-              {concept.longRead.takeaways[0]}
-            </aside>
-          )}
-        </div>
+        <ArticleReader key={concept.id} concept={concept} />
 
         <dl className="oe-specs">
           <SpecRow label="Energía" value={concept.metrics.energia} />
@@ -384,42 +373,7 @@ const ArticleOverlay = ({
           <SpecRow label="Maravilla" value={concept.metrics.maravilla} />
         </dl>
 
-        <div className="oe-procon">
-          <div>
-            <h4>A favor</h4>
-            <ul>
-              {concept.advantages.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4>En contra</h4>
-            <ul>
-              {concept.difficulties.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
         <footer className="oe-article-foot">
-          {concept.sources && concept.sources.length > 0 && (
-            <div className="oe-notes">
-              <h4>Notas y fuentes</h4>
-              <ol>
-                {concept.sources.map((source, sourceIndex) => (
-                  <li key={source.url}>
-                    <sup>[{sourceIndex + 1}]</sup>{' '}
-                    <a href={source.url} target="_blank" rel="noreferrer">
-                      {source.publisher}: {source.title} ↗
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
-
           <nav className="oe-article-nav">
             <button
               type="button"
@@ -464,7 +418,9 @@ const ArticleOverlay = ({
 
 export default function ObservatorioEditorial() {
   const [featureId, setFeatureId] = useState(DEFAULT_FEATURE);
-  const [activeConcept, setActiveConcept] = useState<AstroConcept | null>(null);
+  const [activeConcept, setActiveConcept] = useState<AstroConcept | null>(() =>
+    conceptById.get(window.location.hash.replace(/^#obra-/, '')) ?? null,
+  );
   useScrollLock(Boolean(activeConcept));
   const feature = chapters.find((chapter) => chapter.id === featureId) ?? chapters[1];
 

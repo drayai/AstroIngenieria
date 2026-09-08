@@ -12,6 +12,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { plausibilityLabels, scaleLabels } from '../../data/astroData';
 import type { AstroChapter, AstroConcept } from '../../types';
 import { getConceptImageVariants } from '../shared/conceptImages';
+import { ArticleReader } from '../shared/ArticleReader';
 import './museoOrbital.css';
 
 const ONeillCylinderModel = lazy(() =>
@@ -20,22 +21,12 @@ const ONeillCylinderModel = lazy(() =>
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
-type StudioTab = 'narrativa' | 'lectura' | 'dossier' | 'maqueta';
+type StudioTab = 'articulo' | 'maqueta';
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const roman = (index: number) => ROMAN[index] ?? String(index + 1);
 
-const EVIDENCE_META = {
-  fuente: { label: 'Fuente', color: '#a8e08f' },
-  estimacion: { label: 'Estimación', color: '#ffd27a' },
-  conceptual: { label: 'Conceptual', color: '#b9a7e8' },
-} as const;
-
-const tabs: { id: StudioTab; label: string }[] = [
-  { id: 'narrativa', label: 'Narrativa' },
-  { id: 'lectura', label: 'Lectura larga' },
-  { id: 'dossier', label: 'Dossier técnico' },
-];
+const tabs: { id: StudioTab; label: string }[] = [{ id: 'articulo', label: 'Lectura' }];
 
 const ZOOM_LEVELS = [1, 1.5, 2];
 
@@ -65,12 +56,11 @@ export const StudioRoom = ({
   const scrollRef = useRef<HTMLDivElement>(null);
   const zoomerRef = useRef<HTMLDivElement>(null);
   const figureRef = useRef<HTMLDivElement>(null);
-  const [tab, setTab] = useState<StudioTab>('narrativa');
+  const [tab, setTab] = useState<StudioTab>('articulo');
   const [zoom, setZoom] = useState(1);
 
   const variants = useMemo(() => getConceptImageVariants(concept), [concept]);
   const [variantIndex, setVariantIndex] = useState(0);
-  const inlineVariants = useMemo(() => variants.slice(1), [variants]);
 
   const index = siblings.findIndex((item) => item.id === concept.id);
   const previous = index > 0 ? siblings[index - 1] : null;
@@ -90,14 +80,28 @@ export const StudioRoom = ({
     };
     onScroll();
     el.addEventListener('scroll', onScroll, { passive: true });
-    return () => el.removeEventListener('scroll', onScroll);
+    const resizeObserver = new ResizeObserver(onScroll);
+    const observeContent = () => {
+      resizeObserver.disconnect();
+      resizeObserver.observe(el);
+      el.querySelectorAll('.ar-reader, .mo-studio-hero, .mo-tab-pane').forEach(child => resizeObserver.observe(child));
+      onScroll();
+    };
+    const mutationObserver = new MutationObserver(observeContent);
+    mutationObserver.observe(el, { childList: true, subtree: true });
+    observeContent();
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+    };
   }, [concept]);
 
   useEffect(() => {
     setVariantIndex(0);
     setZoom(1);
     setOrigin(50, 50);
-    setTab('narrativa');
+    setTab('articulo');
     scrollRef.current?.scrollTo({ top: 0 });
   }, [concept]);
 
@@ -113,9 +117,9 @@ export const StudioRoom = ({
         return;
       }
       if (event.key === 'Tab' && panelRef.current) {
-        const focusable = panelRef.current.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), a[href], input, [tabindex]:not([tabindex="-1"])',
-        );
+        const focusable = Array.from(panelRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href], input, summary, [tabindex]:not([tabindex="-1"])',
+        )).filter(element => element.getClientRects().length > 0);
         if (focusable.length === 0) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
@@ -367,7 +371,7 @@ export const StudioRoom = ({
             </div>
           </section>
 
-          <nav className="mo-studio-tabs" aria-label="Secciones de la sala de estudio">
+          {visibleTabs.length > 1 && <nav className="mo-studio-tabs" aria-label="Secciones de la sala de estudio">
             {visibleTabs.map((item) => (
               <button
                 key={item.id}
@@ -378,166 +382,17 @@ export const StudioRoom = ({
                 <b>{roman(visibleTabs.indexOf(item))}</b> {item.label}
               </button>
             ))}
-          </nav>
+          </nav>}
 
-          {tab === 'narrativa' && (
-            <section className="mo-tab-pane mo-reader" aria-label="Narrativa">
-              <p className="mo-reader-kicker">{concept.narrative.title}</p>
-              <p className="mo-reader-standfirst">{concept.narrative.lead}</p>
-              {concept.narrative.paragraphs.map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex} className={paragraphIndex === 0 ? 'mo-dropcap' : undefined}>
-                  {paragraph}
-                </p>
-              ))}
-              {concept.narrative.sections.map((section, sectionIndex) => (
-                <div key={section.id} className="mo-reader-section">
-                  <h3>
-                    <span>{roman(sectionIndex)}.</span> {section.title}
-                  </h3>
-                  {section.body.map((paragraph, paragraphIndex) => (
-                    <p key={paragraphIndex}>{paragraph}</p>
-                  ))}
-                  {inlineVariants[sectionIndex] && (
-                    <figure className="mo-reader-figure">
-                      <div className="mo-reader-figure-frame">
-                        <img
-                          src={inlineVariants[sectionIndex].src}
-                          alt={inlineVariants[sectionIndex].caption ?? concept.title}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                      <figcaption>
-                        <b>Lámina {roman(sectionIndex + 1)}</b>
-                        {inlineVariants[sectionIndex].label}
-                        {inlineVariants[sectionIndex].caption
-                          ? ` — ${inlineVariants[sectionIndex].caption}`
-                          : ''}
-                      </figcaption>
-                    </figure>
-                  )}
-                </div>
-              ))}
-              {concept.narrative.closing && (
-                <p className="mo-reader-closing">{concept.narrative.closing}</p>
-              )}
-            </section>
-          )}
-
-          {tab === 'lectura' && (
-            <section className="mo-tab-pane mo-reader" aria-label="Lectura larga">
-              <p className="mo-reader-kicker">{concept.longRead.title}</p>
-              <p className="mo-reader-standfirst">{concept.longRead.subtitle}</p>
-              {concept.longRead.sections.map((section, sectionIndex) => (
-                <div key={section.id} className="mo-reader-section">
-                  <h3>
-                    <span>{roman(sectionIndex)}.</span> {section.title}
-                  </h3>
-                  {section.body.map((paragraph, paragraphIndex) => (
-                    <p key={paragraphIndex}>{paragraph}</p>
-                  ))}
-                  {section.callout && (
-                    <aside className="mo-callout">
-                      <b>{section.callout.label}</b>
-                      {section.callout.body}
-                    </aside>
-                  )}
-                </div>
-              ))}
-
-              {concept.longRead.takeaways.length > 0 && (
-                <div className="mo-takeaways">
-                  <h4>Para llevarse del museo</h4>
-                  <div className="mo-takeaway-grid">
-                    {concept.longRead.takeaways.map((takeaway, takeawayIndex) => (
-                      <article key={takeaway}>
-                        <b>{roman(takeawayIndex)}</b>
-                        {takeaway}
-                      </article>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {concept.longRead.closing && (
-                <blockquote className="mo-final-quote">{concept.longRead.closing}</blockquote>
-              )}
-            </section>
-          )}
-
-          {tab === 'dossier' && (
-            <section className="mo-tab-pane mo-dossier" aria-label="Dossier técnico">
-              {concept.dossier.map((section, sectionIndex) => (
-                <div key={section.id} className="mo-dossier-section">
-                  <h3>
-                    <span>{roman(sectionIndex)}</span> {section.title}
-                  </h3>
-                  <dl>
-                    {section.items.map((item) => {
-                      const evidence = EVIDENCE_META[item.evidence];
-                      return (
-                        <div key={`${section.id}-${item.label}`}>
-                          <dt>
-                            {item.label}
-                            <i
-                              className="mo-stamp"
-                              style={{ '--stamp': evidence.color } as CSSProperties}
-                            >
-                              {evidence.label}
-                            </i>
-                          </dt>
-                          <dd>{item.body}</dd>
-                        </div>
-                      );
-                    })}
-                  </dl>
-                </div>
-              ))}
-
-              <div className="mo-dossier-foot">
-                <div>
-                  <h4>A favor</h4>
-                  <ul>
-                    {concept.advantages.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4>Limitaciones</h4>
-                  <ul>
-                    {concept.difficulties.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
+          {tab === 'articulo' && (
+            <section className="mo-tab-pane" aria-label="Lectura del tema">
+              <ArticleReader key={concept.id} concept={concept} />
               {related.length > 0 && (
                 <div className="mo-related-v2">
-                  <h4>Obras relacionadas en esta sala</h4>
+                  <h4>Continúa explorando</h4>
                   <div className="mo-variant-row">
-                    {related.slice(0, 6).map((item) => (
-                      <button key={item.id} type="button" onClick={() => onSelect(item)}>
-                        {item.title}
-                      </button>
-                    ))}
+                    {related.slice(0, 6).map(item => <button key={item.id} type="button" onClick={() => onSelect(item)}>{item.title}</button>)}
                   </div>
-                </div>
-              )}
-
-              {concept.sources && concept.sources.length > 0 && (
-                <div className="mo-footnotes">
-                  <h4>Referencias</h4>
-                  <ol>
-                    {concept.sources.map((source, sourceIndex) => (
-                      <li key={source.url}>
-                        <sup>[{sourceIndex + 1}]</sup>{' '}
-                        <a href={source.url} target="_blank" rel="noreferrer">
-                          {source.publisher}: {source.title} ↗
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
                 </div>
               )}
             </section>

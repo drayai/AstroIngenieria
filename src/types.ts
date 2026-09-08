@@ -91,54 +91,6 @@ export interface ConceptVisualNarrative {
   immersive: ConceptVisualNarrativeLayer;
 }
 
-export type DossierEvidence = 'fuente' | 'estimacion' | 'conceptual';
-
-export interface ConceptReadingSection {
-  id: string;
-  title: string;
-  body: string[];
-}
-
-export interface ConceptNarrative {
-  title: string;
-  lead: string;
-  paragraphs: string[];
-  sections: ConceptReadingSection[];
-  closing: string;
-}
-
-export interface ConceptLongReadCallout {
-  label: string;
-  body: string;
-}
-
-export interface ConceptLongReadSection {
-  id: string;
-  title: string;
-  body: string[];
-  callout?: ConceptLongReadCallout;
-}
-
-export interface ConceptLongRead {
-  title: string;
-  subtitle: string;
-  sections: ConceptLongReadSection[];
-  closing: string;
-  takeaways: string[];
-}
-
-export interface ConceptDossierItem {
-  label: string;
-  body: string;
-  evidence: DossierEvidence;
-}
-
-export interface ConceptDossierSection {
-  id: string;
-  title: string;
-  items: ConceptDossierItem[];
-}
-
 export interface VisualHotspot {
   id: string;
   x: number;
@@ -181,9 +133,6 @@ export interface AstroConcept {
     madurez: number;
     maravilla: number;
   };
-  narrative: ConceptNarrative;
-  longRead: ConceptLongRead;
-  dossier: ConceptDossierSection[];
   sources?: SourceRef[];
 }
 

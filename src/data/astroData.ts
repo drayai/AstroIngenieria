@@ -10,7 +10,6 @@ import type {
   VisualLayer,
   VisualLayerId,
 } from '../types';
-import { createConceptEditorial } from './conceptEditorial';
 
 const sources = {
   nasaSettlements: {
@@ -207,7 +206,6 @@ const concept = (
 
   return {
     ...baseConcept,
-    ...createConceptEditorial(baseConcept),
   };
 };
 

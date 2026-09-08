@@ -25,6 +25,7 @@ import {
 } from 'framer-motion';
 import { Volume2, VolumeX } from 'lucide-react';
 import { chapters, conceptById, plausibilityLabels, scaleLabels } from '../../data/astroData';
+import { refs } from '../../data/articles/sources';
 import type { AstroChapter, AstroConcept, SourceRef } from '../../types';
 import { Grain } from '../shared/Grain';
 import { useScrollLock } from '../shared/useScrollLock';
@@ -1700,22 +1701,18 @@ const Vitrina = memo(({
 
 /* ---------------- Sala archivo ---------------- */
 
-interface ArchiveSource extends SourceRef {
-  count: number;
-}
-
-const buildArchive = (): ArchiveSource[] => {
-  const map = new Map<string, ArchiveSource>();
+const buildArchive = (): SourceRef[] => {
+  const map = new Map<string, SourceRef>();
   const push = (source: SourceRef) => {
-    const current = map.get(source.url);
-    map.set(source.url, { ...source, count: (current?.count ?? 0) + 1 });
+    map.set(source.url, source);
   };
   chapters.forEach((chapter) => chapter.sources.forEach(push));
   chapters.forEach((chapter) => chapter.concepts.forEach((concept) => concept.sources?.forEach(push)));
+  Object.values(refs).forEach(push);
   return [...map.values()];
 };
 
-const Archivo = memo(({ sources }: { sources: ArchiveSource[] }) => (
+const Archivo = memo(({ sources }: { sources: SourceRef[] }) => (
   <section id="archivo" className="mo-archivo mo-layer">
     <header className="mo-section-head">
       <p className="mo-kicker">Sala archivo</p>
@@ -1723,8 +1720,8 @@ const Archivo = memo(({ sources }: { sources: ArchiveSource[] }) => (
         <RevealWords text="Fuentes de la colección" />
       </h2>
       <p className="mo-section-sub">
-        Toda la documentación técnica citada en el museo: NASA, SETI y otros materiales de
-        referencia.
+        Estudios, documentación y obras que acompañan las lecturas. Cada artículo señala
+        sus referencias y distingue investigación, propuestas y ficción.
       </p>
     </header>
     <ol className="mo-archivo-list">
@@ -1743,9 +1740,6 @@ const Archivo = memo(({ sources }: { sources: ArchiveSource[] }) => (
               {source.title} ↗
             </a>
           </div>
-          <i>
-            citada en {source.count} {source.count === 1 ? 'ficha' : 'fichas'}
-          </i>
         </motion.li>
       ))}
     </ol>
