@@ -31,6 +31,18 @@ export function ArticleReader({ concept }: { concept: AstroConcept }) {
   }}>Recargar lectura</button></div>;
   if (!content || content.id !== concept.id) return <div className="ar-status" role="status" aria-live="polite">Preparando la lectura…</div>;
   const variants = getConceptImageVariants(concept);
+  const changeLightboxImage = (direction: -1 | 1) => {
+    if (!lightboxImage || variants.length < 2) return;
+    const currentIndex = variants.findIndex(item => item.src === lightboxImage.src);
+    const nextIndex = (currentIndex + direction + variants.length) % variants.length;
+    const nextVariant = variants[nextIndex];
+    if (!nextVariant) return;
+    setLightboxImage({
+      src: nextVariant.src,
+      alt: concept.illustration.alt,
+      caption: nextVariant.caption,
+    });
+  };
   const prefix = `article-${concept.id}`;
   const renderText = (text: string): ReactNode => text.split(/(\[\d+\])/g).map((part, index) => {
     const match = part.match(/^\[(\d+)\]$/);
@@ -74,7 +86,12 @@ export function ArticleReader({ concept }: { concept: AstroConcept }) {
     </article>
     <AnimatePresence>
       {lightboxImage && (
-        <ImageLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
+        <ImageLightbox
+          image={lightboxImage}
+          onClose={() => setLightboxImage(null)}
+          onPrevious={variants.length > 1 ? () => changeLightboxImage(-1) : undefined}
+          onNext={variants.length > 1 ? () => changeLightboxImage(1) : undefined}
+        />
       )}
     </AnimatePresence>
   </>;
