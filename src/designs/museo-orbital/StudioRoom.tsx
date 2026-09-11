@@ -6,13 +6,13 @@ import {
   useRef,
   useState,
   type CSSProperties,
-  type MouseEvent as ReactMouseEvent,
 } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { plausibilityLabels, scaleLabels } from '../../data/astroData';
 import type { AstroChapter, AstroConcept } from '../../types';
 import { getConceptImageVariants } from '../shared/conceptImages';
 import { ArticleReader } from '../shared/ArticleReader';
+import { ImageLightbox, type ImageLightboxImage } from '../shared/ImageLightbox';
 import './museoOrbital.css';
 
 const ONeillCylinderModel = lazy(() =>
@@ -27,8 +27,6 @@ const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const roman = (index: number) => ROMAN[index] ?? String(index + 1);
 
 const tabs: { id: StudioTab; label: string }[] = [{ id: 'articulo', label: 'Lectura' }];
-
-const ZOOM_LEVELS = [1, 1.5, 2];
 
 interface StudioProps {
   concept: AstroConcept;
@@ -54,10 +52,9 @@ export const StudioRoom = ({
   const panelRef = useRef<HTMLDivElement>(null);
   const backdropPressRef = useRef<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const zoomerRef = useRef<HTMLDivElement>(null);
   const figureRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState<StudioTab>('articulo');
-  const [zoom, setZoom] = useState(1);
+  const [lightboxImage, setLightboxImage] = useState<ImageLightboxImage | null>(null);
 
   const variants = useMemo(() => getConceptImageVariants(concept), [concept]);
   const [variantIndex, setVariantIndex] = useState(0);
@@ -99,8 +96,7 @@ export const StudioRoom = ({
 
   useEffect(() => {
     setVariantIndex(0);
-    setZoom(1);
-    setOrigin(50, 50);
+    setLightboxImage(null);
     setTab('articulo');
     scrollRef.current?.scrollTo({ top: 0 });
   }, [concept]);
@@ -112,6 +108,7 @@ export const StudioRoom = ({
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
+      if (lightboxImage && ['Escape', 'ArrowLeft', 'ArrowRight'].includes(event.key)) return;
       if (event.key === 'Escape') {
         onClose();
         return;
@@ -142,30 +139,7 @@ export const StudioRoom = ({
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [next, previous, onClose, onSelect]);
-
-  const setOrigin = (x: number, y: number) => {
-    if (zoomerRef.current) {
-      zoomerRef.current.style.transformOrigin = `${x}% ${y}%`;
-    }
-  };
-
-  const trackOrigin = (event: ReactMouseEvent<HTMLDivElement>) => {
-    if (zoom <= 1 || !figureRef.current) return;
-    const rect = figureRef.current.getBoundingClientRect();
-    const x = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
-    const y = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
-    setOrigin(x, y);
-  };
-
-  const applyZoom = (level: number) => {
-    setZoom(level);
-    if (level === 1) setOrigin(50, 50);
-  };
-
-  const toggleZoomDblClick = () => {
-    applyZoom(zoom === 1 ? 2 : 1);
-  };
+  }, [lightboxImage, next, previous, onClose, onSelect]);
 
   const goTab = (nextTab: StudioTab) => {
     setTab(nextTab);
@@ -180,6 +154,21 @@ export const StudioRoom = ({
   ];
 
   const variant = variants[Math.min(variantIndex, variants.length - 1)];
+
+  const selectVariant = (nextIndex: number) => {
+    const nextVariant = variants[nextIndex];
+    if (!nextVariant) return;
+    setVariantIndex(nextIndex);
+    setLightboxImage((current) => current ? {
+      src: nextVariant.src,
+      alt: concept.illustration.alt,
+      caption: nextVariant.caption,
+    } : current);
+  };
+
+  const changeVariant = (direction: -1 | 1) => {
+    selectVariant((variantIndex + direction + variants.length) % variants.length);
+  };
 
   const visibleTabs = [
     ...tabs,
@@ -259,7 +248,6 @@ export const StudioRoom = ({
                 className="mo-studio-figure"
                 ref={figureRef}
                 onMouseMove={(event) => {
-                  trackOrigin(event);
                   const rect = event.currentTarget.getBoundingClientRect();
                   const px = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
                   const py = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -270,48 +258,63 @@ export const StudioRoom = ({
                   event.currentTarget.style.setProperty('--frx', '0deg');
                   event.currentTarget.style.setProperty('--fry', '0deg');
                 }}
-                onDoubleClick={toggleZoomDblClick}
-                data-cursor-label={zoom > 1 ? 'Mueve el ratón para explorar' : 'Doble clic para acercar'}
               >
-                <motion.div
-                  className="mo-studio-imgframe"
-                  layoutId={enableFlight ? `obra-${concept.id}` : undefined}
+                <button
+                  type="button"
+                  className="mo-studio-image-open"
+                  onClick={() => setLightboxImage({
+                    src: variant.src,
+                    alt: concept.illustration.alt,
+                    caption: variant.caption,
+                  })}
+                  aria-label={`Ampliar imagen de ${concept.title}`}
+                  data-cursor-label="Ampliar imagen"
                 >
-                <div
-                  className="mo-studio-zoomer"
-                  ref={zoomerRef}
-                  style={{ transform: `scale(${zoom})` }}
-                >
-                  <div className="mo-kb">
-                    <AnimatePresence mode="wait">
-                      <motion.img
-                        key={variant.src}
-                        src={variant.src}
-                        alt={concept.illustration.alt}
-                        decoding="async"
-                        initial={{ opacity: 0, scale: 1.03 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, ease: EASE_OUT }}
-                      />
-                    </AnimatePresence>
-                  </div>
-                </div>
-                </motion.div>
+                  <motion.div
+                    className="mo-studio-imgframe"
+                    layoutId={enableFlight ? `obra-${concept.id}` : undefined}
+                  >
+                    <div className="mo-studio-zoomer">
+                      <div className="mo-kb">
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={variant.src}
+                            src={variant.src}
+                            alt={concept.illustration.alt}
+                            decoding="async"
+                            initial={{ opacity: 0, scale: 1.03 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5, ease: EASE_OUT }}
+                          />
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                  </motion.div>
+                </button>
 
-                <div className="mo-zoom-hud" role="group" aria-label="Acercamiento">
-                  {ZOOM_LEVELS.map((level) => (
+                {variants.length > 1 && (
+                  <>
                     <button
-                      key={level}
                       type="button"
-                      className={zoom === level ? 'is-active' : ''}
-                      onClick={() => applyZoom(level)}
-                      data-cursor-label={`Zoom ×${String(level).replace('.', ',')}`}
+                      className="mo-studio-image-nav is-prev"
+                      onClick={() => changeVariant(-1)}
+                      aria-label="Ver imagen anterior"
+                      data-cursor-label="Anterior"
                     >
-                      ×{String(level).replace('.', ',')}
+                      <span aria-hidden="true">‹</span>
                     </button>
-                  ))}
-                </div>
+                    <button
+                      type="button"
+                      className="mo-studio-image-nav is-next"
+                      onClick={() => changeVariant(1)}
+                      aria-label="Ver imagen siguiente"
+                      data-cursor-label="Siguiente"
+                    >
+                      <span aria-hidden="true">›</span>
+                    </button>
+                  </>
+                )}
 
                 <figcaption>{variant.caption}</figcaption>
               </div>
@@ -323,7 +326,7 @@ export const StudioRoom = ({
                       key={item.id}
                       type="button"
                       className={itemIndex === variantIndex ? 'is-active' : ''}
-                      onClick={() => setVariantIndex(itemIndex)}
+                      onClick={() => selectVariant(itemIndex)}
                       data-cursor-label={item.label}
                       aria-pressed={itemIndex === variantIndex}
                     >
@@ -410,6 +413,16 @@ export const StudioRoom = ({
           )}
         </div>
       </div>
+      <AnimatePresence>
+        {lightboxImage && (
+          <ImageLightbox
+            image={lightboxImage}
+            onClose={() => setLightboxImage(null)}
+            onPrevious={variants.length > 1 ? () => changeVariant(-1) : undefined}
+            onNext={variants.length > 1 ? () => changeVariant(1) : undefined}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
