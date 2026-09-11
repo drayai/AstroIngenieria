@@ -1416,11 +1416,21 @@ const HallIndex = memo(({ activeId }: { activeId: string | null }) => (
         {chapter.title}
       </button>
     ))}
-    <button type="button" className="mo-hall-chip is-extra" onClick={() => scrollToId('vitrina')}>
+    <button
+      type="button"
+      className={`mo-hall-chip is-extra${activeId === 'vitrina' ? ' is-active' : ''}`}
+      aria-current={activeId === 'vitrina' ? 'step' : undefined}
+      onClick={() => scrollToId('vitrina')}
+    >
       <b>✦</b>
       Vitrina
     </button>
-    <button type="button" className="mo-hall-chip is-extra" onClick={() => scrollToId('archivo')}>
+    <button
+      type="button"
+      className={`mo-hall-chip is-extra${activeId === 'archivo' ? ' is-active' : ''}`}
+      aria-current={activeId === 'archivo' ? 'step' : undefined}
+      onClick={() => scrollToId('archivo')}
+    >
       <b>§</b>
       Archivo
     </button>
@@ -2873,16 +2883,17 @@ export default function MuseoOrbital() {
   }, [reduced]);
 
   useEffect(() => {
+    const root = rootRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveHallId(entry.target.id.replace('sala-', ''));
+          if (entry.isIntersecting) setActiveHallId(entry.target.id.replace(/^sala-/, ''));
         });
       },
-      { rootMargin: '-42% 0px -42% 0px' },
+      { root, rootMargin: '-42% 0px -42% 0px' },
     );
-    chapters.forEach((chapter) => {
-      const element = document.getElementById(`sala-${chapter.id}`);
+    [...chapters.map((chapter) => `sala-${chapter.id}`), 'vitrina', 'archivo'].forEach((id) => {
+      const element = document.getElementById(id);
       if (element) observer.observe(element);
     });
     return () => observer.disconnect();
