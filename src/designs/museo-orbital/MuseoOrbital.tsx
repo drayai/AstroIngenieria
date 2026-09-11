@@ -23,7 +23,7 @@ import {
   useTransform,
   type MotionValue,
 } from 'framer-motion';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Aperture, Volume2, VolumeX } from 'lucide-react';
 import { chapters, conceptById, plausibilityLabels, scaleLabels } from '../../data/astroData';
 import { refs } from '../../data/articles/sources';
 import type { AstroChapter, AstroConcept, SourceRef } from '../../types';
@@ -358,6 +358,7 @@ const Hero = memo(({
   playgroundEntryState,
 }: HeroProps) => {
   const reduced = useReducedMotion();
+  const [imageFocus, setImageFocus] = useState(false);
   const letters = useMemo(() => 'ASTROINGENIERÍA'.split(''), []);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const boxRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -370,6 +371,32 @@ const Hero = memo(({
   const kickerRef = useRef<HTMLParagraphElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const hintRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!imageFocus) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setImageFocus(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [imageFocus]);
+
+  useEffect(() => {
+    if (!imageFocus) return;
+    const hero = heroRef.current;
+    if (!hero) return;
+    const root = hero.closest<HTMLElement>('.mo-root');
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting || entry.intersectionRatio < 0.08) {
+          setImageFocus(false);
+        }
+      },
+      { root, threshold: [0, 0.08] },
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [heroRef, imageFocus]);
 
   useEffect(() => {
     if (reduced || !window.matchMedia('(pointer: fine)').matches) return;
@@ -1165,7 +1192,11 @@ const Hero = memo(({
   };
 
   return (
-    <section ref={heroRef} className="mo-hero mo-layer" onMouseMove={trackSpotlight}>
+    <section
+      ref={heroRef}
+      className={`mo-hero mo-layer${imageFocus ? ' is-image-focus' : ''}`}
+      onMouseMove={trackSpotlight}
+    >
       <button
         type="button"
         className="mo-index-button mo-hero-index"
@@ -1173,6 +1204,17 @@ const Hero = memo(({
         data-cursor-label="Índice"
       >
         Índice
+      </button>
+      <button
+        type="button"
+        className={`mo-index-button mo-hero-view${imageFocus ? ' is-active' : ''}`}
+        onClick={() => setImageFocus((current) => !current)}
+        aria-pressed={imageFocus}
+        aria-label={imageFocus ? 'Mostrar textos del hero' : 'Ver imagen del hero'}
+        data-cursor-label={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
+        title={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
+      >
+        <Aperture size={15} strokeWidth={1.2} aria-hidden="true" />
       </button>
       <motion.div
         className="mo-hero-bg"
@@ -1184,19 +1226,28 @@ const Hero = memo(({
       <div className="mo-hero-scrim" />
       <div className="mo-hero-spot" aria-hidden="true" />
 
-      <motion.button
-        type="button"
-        ref={pgButtonRef}
-        className={`mo-hero-playground is-${playgroundEntryState}`}
-        onClick={onOpenPlayground}
-        onPointerEnter={onPlaygroundArm}
-        data-cursor-label="Entrar"
-        aria-label="Entrar al Playground"
-        disabled={playgroundEntryState === 'entering' || playgroundEntryState === 'leaving'}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: reduced ? 0 : 1.05, duration: reduced ? 0 : 0.9, ease: EASE_OUT }}
+      <motion.div
+        className="mo-hero-playground-veil"
+        animate={{ opacity: imageFocus ? 0 : 1 }}
+        transition={{
+          duration: reduced ? 0 : 0.65,
+          ease: EASE_OUT,
+        }}
       >
+        <motion.button
+          type="button"
+          ref={pgButtonRef}
+          className={`mo-hero-playground is-${playgroundEntryState}`}
+          onClick={onOpenPlayground}
+          onPointerEnter={onPlaygroundArm}
+          data-cursor-label="Entrar"
+          aria-label="Entrar al Playground"
+          tabIndex={imageFocus ? -1 : 0}
+          disabled={playgroundEntryState === 'entering' || playgroundEntryState === 'leaving'}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: reduced ? 0 : 1.05, duration: reduced ? 0 : 0.9, ease: EASE_OUT }}
+        >
           <span className="mo-hero-playground-word" aria-hidden="true">
             {'PLAYGROUND'.split('').map((letter, index) => (
               <span
@@ -1231,7 +1282,8 @@ const Hero = memo(({
           ))}
           <i ref={pgFlashRef} className="mo-pg-comet-flash" />
         </span>
-      </motion.button>
+        </motion.button>
+      </motion.div>
 
       <div className="mo-hero-copy">
         <motion.p
