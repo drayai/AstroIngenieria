@@ -23,7 +23,7 @@ const batches = [
   [12, 'B', REVIEWED, ['paraterraforming', 'worldhouse', 'domed-cities']],
   [13, 'A', REVIEWED, ['habitability', 'ecopoiesis']],
   [13, 'B', REVIEWED, ['habitable-zone', 'planetary-protection']],
-  [14, 'B', PENDING, ['orbital-mirrors', 'sunshades', 'volatile-import', 'magnetosphere']],
+  [14, 'B', REVIEWED, ['orbital-mirrors', 'sunshades', 'volatile-import', 'magnetosphere']],
   [15, 'A', PENDING, ['stellar-engines', 'caplan']],
   [15, 'B', PENDING, ['shkadov']],
   [16, 'A', PENDING, ['star-lifting']],

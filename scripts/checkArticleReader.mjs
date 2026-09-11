@@ -193,6 +193,19 @@ try {
     }
   }
   console.log('Tanda 13: las cuatro lecturas, sus apartados y notas cargan correctamente en escritorio.');
+  const editorialBatchFourteen = { 'orbital-mirrors': 4, sunshades: 3, 'volatile-import': 5, magnetosphere: 5 };
+  for (const [id, headings] of Object.entries(editorialBatchFourteen)) {
+    await page.evaluate(value => { globalThis.location.hash = `obra-${value}`; }, id);
+    await expect(page.locator(`#article-${id}-title`)).toBeVisible();
+    const reader = page.locator('.ar-reader');
+    assert(await reader.evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Desktop editorial overflow: ${id}`);
+    await expect(reader.locator(':scope > h4')).toHaveCount(headings);
+    if (await reader.locator('.ar-note summary').count()) {
+      await reader.locator('.ar-note summary').click();
+      await expect(reader.locator('.ar-note')).toHaveAttribute('open', '');
+    }
+  }
+  console.log('Tanda 14: las cuatro lecturas, sus apartados y notas cargan correctamente en escritorio.');
   await page.evaluate(() => { globalThis.location.hash = 'obra-mars-terraforming'; });
   await expect(page.locator('#article-mars-terraforming-title')).toBeVisible();
   await page.locator('.ar-note summary').first().click();
@@ -321,6 +334,12 @@ try {
     assert(await page.locator('.ar-reader').evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Mobile editorial overflow: ${id}`);
   }
   console.log('Tanda 13: las cuatro lecturas no desbordan horizontalmente en móvil.');
+  for (const id of Object.keys(editorialBatchFourteen)) {
+    await page.evaluate(value => { globalThis.location.hash = `obra-${value}`; }, id);
+    await expect(page.locator(`#article-${id}-title`)).toBeVisible();
+    assert(await page.locator('.ar-reader').evaluate(element => element.scrollWidth <= element.clientWidth + 1), `Mobile editorial overflow: ${id}`);
+  }
+  console.log('Tanda 14: las cuatro lecturas no desbordan horizontalmente en móvil.');
   await page.evaluate(() => { globalThis.location.hash = 'obra-black-hole-engineering'; });
   await expect(page.locator('#article-black-hole-engineering-title')).toBeVisible();
   await page.locator('.ar-note summary').first().click();

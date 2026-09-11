@@ -472,15 +472,39 @@ La luz no llega desde un punto matemático. Un espejo plano produce una distribu
 
 También recibe presión de radiación. El mismo intercambio de movimiento que permite navegar a una vela solar afecta a una superficie reflectante grande y ligera. La órbita y el control de actitud deben tenerlo en cuenta. [1]
 
+## La mancha luminosa recorre el suelo
+
+Un espejo en órbita no permanece sobre la misma región salvo arquitecturas y maniobras específicas. Mientras avanza, cambian los ángulos entre Sol, espejo y objetivo. La superficie debe girar continuamente para que el reflejo llegue al lugar previsto, y la ventana termina cuando la geometría deja de permitirlo o el planeta bloquea la luz.
+
+La irradiancia recibida depende del área efectiva que el espejo presenta al Sol, de su reflectividad y del tamaño de la mancha. Si la misma potencia se reparte sobre una región mayor, la iluminación por metro cuadrado disminuye. Arrugas, segmentos mal alineados y dispersión ensanchan bordes; una ciudad no recibe un círculo perfecto dibujado en un mapa.
+
+Una constelación puede relevarse para prolongar el efecto. Eso exige evitar que varios reflejos se sumen accidentalmente, coordinar órbitas y reservar rutas seguras. Cada elemento necesita conocer su actitud y responder a fallos. La iluminación se vuelve un servicio programado por una flota, no una propiedad pasiva del cielo.
+
+Desde el suelo, las sombras tendrían una dirección y dureza distintas de las producidas por el Sol. Plantas y animales responderían al horario total, no al origen tecnológico de la luz. Antes de ampliar el servicio habría que observar sueño, fotosíntesis y temperatura durante ciclos completos. Una noche acortada puede beneficiar un cultivo y perjudicar a otra comunidad cercana.
+
 ::: Más luz no equivale al mismo clima
 
 Importan el área, la duración, el espectro y el momento de la iluminación. Modificar la energía recibida puede afectar temperaturas y ciclos biológicos de formas distintas. Un balance energético global no sustituye un modelo local del terreno y la atmósfera.
 
 :::
 
+## Iluminar una operación concreta
+
 Las propuestas de modificar irradiación desde el espacio, incluidos parasoles, ilustran la escala de control y despliegue que requiere intervenir sobre un planeta. Un espejo que ilumina una instalación concreta y una red que transforma un clima son proyectos diferentes. [2]
 
+En una base polar, un espejo podría extender durante minutos u horas la luz sobre paneles, cultivos o una zona de trabajo. El beneficio se compara con baterías, cables o iluminación local. Si la energía gastada en mantener la constelación supera lo entregado donde importa, el amanecer añadido sería visualmente hermoso y operacionalmente pobre.
+
+Para calentar terreno, interesa cuánto absorbe la superficie y cómo conduce o pierde calor después. Nieve clara, roca oscura y una cubierta agrícola responden distinto al mismo flujo. Una intervención útil especifica potencia, área y duración, luego mide temperatura; no supone que “más luz” produzca automáticamente el ambiente deseado.
+
+## Cuando el espejo apunta mal
+
+Un fallo de actitud puede retirar la iluminación, desplazarla o concentrar varios elementos sobre otra región. Los diseños limitarían brillo máximo por unidad, incluirían apagado mediante orientación segura y mantendrían zonas que nunca deben iluminarse. Observatorios, ecosistemas y tráfico espacial también forman parte del mapa de restricciones.
+
+La presión de radiación modifica lentamente la órbita de una membrana ligera. Propulsores, velas de control o cambios de orientación deben compensarla, consumiendo capacidad a lo largo de la vida útil. Cuando un elemento ya no pueda controlarse, necesita una trayectoria de retirada que no deje una gran lámina cruzando rutas orbitales.
+
 Una aplicación hipotética podría llevar luz a una zona de trabajo o prolongar iluminación en un recinto. El diseño tendría que contemplar fallos de apuntado y consecuencias para observación astronómica, ritmos ecológicos y otras actividades.
+
+La escala define la afirmación. Iluminar hectáreas durante una pasada es una operación local; modificar el balance energético medio de un planeta exige cobertura, continuidad y control climáticos mucho mayores. La misma óptica participa en ambas ideas, pero una demostración de iluminación no certifica una herramienta de terraformación.
 
 El efecto visible sería sencillo: otra dirección de luz, sombras cambiantes, una tarde que dura más. Detrás de esa experiencia habría una coreografía orbital. El amanecer añadido se convertiría en algo que alguien programa, mantiene y debe acordar con quienes viven bajo él.
 `),
@@ -493,7 +517,27 @@ Roger Angel estudió una nube de pequeños vehículos cerca de la región de L1 
 
 La geometría debe mantener la reducción de luz sobre el objetivo. La presión de radiación actúa sobre elementos muy ligeros, y la posición útil depende de esa fuerza además de la gravedad. Hacen falta control y reposición durante la vida de la instalación.
 
+L1 se describe a menudo como un punto, pero los vehículos operan en familias de trayectorias alrededor de esa región. Un elemento con gran área y poca masa siente una presión luminosa importante; su equilibrio no coincide exactamente con el de una partícula ideal. Forma, orientación y maniobras determinan si la sombra continúa interceptando el planeta.
+
+Una nube distribuye riesgo y fabricación. Cada unidad desvía o bloquea una fracción minúscula, y el conjunto produce la reducción buscada. Perder algunas cambia poco; perder coordinación en muchas altera cobertura. Una pantalla única simplifica óptica, pero concentra cargas, despliegue y fallo en una estructura gigantesca.
+
+Fabricar millones de elementos convierte tolerancias pequeñas en estadísticas. Algunas unidades fallarán abiertas, otras bloquearán más de lo previsto y otras abandonarán su trayectoria. El sistema necesita medir el efecto colectivo y retirar objetos incontrolables. La modularidad evita un único colapso, pero crea una tarea permanente de reposición y gestión orbital.
+
+## Una sombra se mide en vatios
+
+El objetivo puede expresarse como fracción de irradiación que deja de alcanzar el planeta. Multiplicarla por el área interceptora ofrece una escala de potencia; todavía falta calcular albedo, distribución entre día y noche y respuesta del clima. La cantidad relevante no es cuán oscura parece la pantalla desde el suelo, sino cuánta energía evita y durante cuánto tiempo.
+
+Cambiar una fracción pequeña de una fuente estelar enorme puede representar una potencia planetaria. Fabricación y control deben sostener esa fracción de forma uniforme o deliberadamente variable. Sensores en el espacio y en la atmósfera compararían irradiación real con el programa antes de ajustar orientación o densidad de la nube.
+
 El cambio energético inicial es solo el comienzo del problema climático. Atmósfera, océanos y superficie responden de formas distintas y en tiempos distintos. En la Tierra, reducir irradiación tampoco elimina el CO₂ acumulado ni todos sus efectos químicos. En Venus, otra atmósfera y otra reserva térmica exigirían un análisis propio. [2]
+
+La superficie puede enfriarse a un ritmo y los océanos a otro. Precipitaciones y circulación no responden igual en todas las regiones. Un promedio global compatible con el objetivo puede ocultar sequía o exceso de lluvia local. El control necesita límites regionales además de una temperatura media.
+
+## Encender despacio y poder detenerse
+
+Una instalación modular podría desplegarse por etapas. Cada incremento se mantiene mientras se observa la respuesta; si aparecen efectos indeseados, elementos cambian orientación o se retiran. La reversibilidad física del sombreado no implica que el clima regrese de inmediato: hielo, océanos y ecosistemas conservan memoria.
+
+Un apagado repentino restaura irradiación antes de que las sociedades y ambientes dependientes se adapten. Reservas energéticas, planes de transición y capacidad para mantener control durante crisis pertenecen al diseño. Cuando el clima depende de la sombra, financiación y gobernanza se convierten en variables ambientales.
 
 ::: Una fracción pequeña de una potencia enorme
 
@@ -502,6 +546,10 @@ Un planeta intercepta luz sobre un área aproximada πR². Reducir la irradiaci�
 :::
 
 Si el clima depende de una instalación activa, importa cómo se retira o se recupera tras un fallo. Su mantenimiento no puede tratarse como un detalle posterior. Y decidir la cantidad de sombra afecta a habitantes con necesidades diferentes.
+
+La pantalla modifica entrada de energía; no retira gases de efecto invernadero, no corrige acidificación ni crea agua. En Venus podría ser una primera etapa de enfriamiento, pero aún quedarían presión, carbono y química superficial. En la Tierra podría compensar parte del calentamiento radiativo mientras persisten otras consecuencias del CO₂.
+
+El parasol resulta así una palanca potente y estrecha. Su valor solo puede juzgarse dentro de un proyecto que nombre la variable controlada, mida respuestas y explique quién conserva la posibilidad de cambiarla.
 
 La imagen final es extraña: un planeta puede verse casi igual desde una ventana mientras una infraestructura lejana modifica su entrada de energía. La escala del efecto no se mide por lo espectacular que resulte la sombra, sino por todo lo que el mundo hace con la luz que deja de recibir.
 `),
@@ -514,15 +562,39 @@ Los volátiles son sustancias que pasan con relativa facilidad a fase gaseosa ba
 
 Hay que extraer material, prepararlo y cambiar su trayectoria. Después debe capturarse o procesarse en destino. Transportar unidades pequeñas y controlables puede ofrecer ventajas operativas frente a mover un cuerpo completo, aunque requiera más viajes e infraestructura.
 
+## La carga empieza como una geología
+
+Detectar hielo por espectro o radar indica una posibilidad, no su forma industrial. Puede estar mezclado con roca, atrapado en poros o cubierto por material seco. Prospección mide concentración y continuidad; después excavación, calentamiento o trituración separan el volátil. Cada paso consume energía y produce residuos que deben manejarse en baja gravedad. [1]
+
+El producto puede viajar como hielo protegido, líquido presurizado o gas unido en otra molécula. Esa elección cambia depósito, temperatura y pérdidas. Un bloque sin contención se sublima bajo el Sol y puede producir chorros que alteran su giro; un tanque añade masa, pero permite saber cuánto llegará y conectarlo a una instalación.
+
+Antes de partir, el cargamento recibe un cambio de velocidad. Motores propios, remolcadores o impulsores de masa entregan reacción a otra parte del sistema. Desviar un asteroide completo evita separar material al origen, pero multiplica la masa cuya trayectoria debe controlarse y las consecuencias de un error.
+
 La energía de llegada aumenta con el cuadrado de la velocidad en el régimen no relativista. Una tonelada a diez kilómetros por segundo lleva unos cincuenta mil millones de julios de energía cinética. Es un cálculo de escala, no un procedimiento de entrega: muestra por qué frenar y disipar energía son partes esenciales del suministro.
 
 El propelente necesario para maniobrar depende de la trayectoria y del sistema de propulsión. La ecuación del cohete relaciona cambios de velocidad con masa y velocidad de escape, de modo que un depósito cercano en kilómetros puede ser caro de alcanzar dinámicamente. [2]
+
+## Frenar convierte la ruta en suministro
+
+Una trayectoria que cruza el destino no entrega una reserva. El cargamento debe igualar suficiente velocidad para quedar capturado o encontrar un receptor capaz de absorberla. Propulsión, asistencia gravitatoria, aerofrenado o captura mediante infraestructura ofrecen balances distintos de tiempo, precisión y calor.
+
+Usar una atmósfera para frenar puede ahorrar propelente, pero transforma energía cinética en calor y somete la carga a fuerzas. Un contenedor de hielo puede fragmentarse o vaporizarse; esa liberación solo es útil si ocurre en el lugar y ritmo previstos. Para abastecer una base, la llegada controlada a un depósito suele ser más valiosa que añadir vapor disperso al planeta.
+
+La navegación necesita margen para abortar. Una unidad que pierde control no debería continuar hacia una ciudad o planeta. Cargas pequeñas permiten desviar, aislar o aceptar la pérdida de una sin comprometer el programa; a cambio, exigen muchas operaciones repetidas y una red de seguimiento.
 
 ## Una base y una atmósfera tienen apetitos distintos
 
 Un cargamento útil para un asentamiento puede ser insignificante a escala planetaria. Las restricciones de inventario en la terraformación marciana ayudan a ver la diferencia: hablar de importar gases necesita especificar cuánta masa se pretende añadir y para qué objetivo. [3]
 
 También hay que evitar pérdidas durante el viaje. La iluminación, los cambios térmicos y la sublimación condicionan contenedores y tratamiento. El material puede llegar en una forma distinta de la que conviene utilizar.
+
+## Del depósito al vaso o al cielo
+
+En destino, calentadores y separadores convierten el material en agua, oxígeno, hidrógeno u otros productos. Sensores detectan sales y contaminantes antes de introducirlos al soporte vital. Una fracción puede servir de propelente y ayudar a recibir el siguiente cargamento, creando una cadena que crece por etapas.
+
+Para una base, miles de toneladas pueden cambiar autonomía. Para elevar apreciablemente una atmósfera planetaria hacen falta masas incomparablemente mayores. Cada kilogramo debe llegar y permanecer en el inventario adecuado. Decir “importar cometas” oculta extracción, desviación, captura y química, además de la diferencia entre abastecer personas y cambiar presión global. [3]
+
+La entrega también altera el cuerpo de origen. Extraer hielo puede borrar un registro científico o agotar un recurso compartido. La logística empieza antes del lanzamiento y termina después del consumo, con conocimiento de reservas, residuos y rutas seguras.
 
 En un futuro con rutas de recursos, la escena decisiva quizá no sería un cometa cruzando el cielo. Sería un depósito que recibe otra carga, reduce su velocidad y la incorpora cuidadosamente a un inventario. Convertir abundancia cósmica en agua del grifo requiere esa cadena de operaciones poco vistosas.
 `),
@@ -535,7 +607,23 @@ Un estudio de Green y colaboradores exploró colocar un dipolo magnético artifi
 
 Una partícula cargada que se mueve en un campo magnético experimenta una fuerza que cambia su trayectoria. La respuesta depende de su carga, velocidad y del campo. No todos los componentes de la radiación se desvían de igual manera, y la radiación electromagnética no queda detenida simplemente por dibujar líneas magnéticas.
 
+El campo no necesita tocar físicamente cada partícula con una pared. Se extiende por una región donde el viento solar ya contiene campos y corrientes. Al encontrarse, el plasma se reorganiza, puede formar una frontera y rodear parte del obstáculo. Tamaño y forma emergen de la presión del viento y de la intensidad del dipolo, no solo del diámetro de la bobina.
+
+## La instalación se coloca antes del planeta
+
+La propuesta marciana sitúa una fuente cerca de la región L1, del lado del Sol. Desde allí intentaría modificar el flujo antes de que alcance Marte. Posición y orientación deben conservarse pese a gravedad, presión del plasma y variaciones solares. La protección depende de que una instalación localizada permanezca alineada con un objetivo planetario. [1]
+
+Bobinas superconductoras u otras fuentes hipotéticas requieren energía, control térmico y estructura. Un superconductor reduce pérdidas resistivas bajo condiciones adecuadas, pero el campo almacena energía y ejerce fuerzas sobre el propio sistema. Arranque, descarga segura y reparación forman parte de una máquina que no puede asumirse como un imán permanente sin mantenimiento.
+
+Sensores aguas arriba miden densidad y velocidad del viento; orbitadores observan la frontera resultante y la atmósfera. Una tormenta solar comprime la región y puede superar el régimen previsto. El control debe decidir si aumenta campo, entra en modo seguro o acepta menor protección temporal.
+
 La fuente del campo tendría que sostener corrientes o procesos equivalentes y sobrevivir al entorno. La estructura magnética resultante depende también del plasma que la comprime y de sus variaciones. Una simulación de una configuración favorable debe ir acompañada por un sistema capaz de mantenerla.
+
+## Proteger partículas no bloquea toda radiación
+
+Las partículas cargadas responden según energía y dirección; algunas atraviesan o siguen líneas hacia otras regiones. Neutrones, fotones energéticos y partículas neutras no quedan desviados por el mismo mecanismo. La superficie y los hábitats pueden seguir necesitando atmósfera o blindaje material.
+
+La interacción puede crear cinturones y canalizar partículas. Una protección eficaz en promedio podría concentrar flujo en regiones concretas. Mapear esos efectos es esencial para satélites, comunicaciones y posibles habitantes; dibujar una burbuja simétrica oculta una física dinámica y desigual.
 
 ::: Proteger no es producir
 
@@ -543,7 +631,19 @@ Reducir ciertos mecanismos de pérdida atmosférica no crea el gas que falta. Un
 
 :::
 
+## La atmósfera responde durante mucho tiempo
+
 Tampoco debe interpretarse la magnetosfera como una condición binaria que decide por sí sola si un planeta conserva atmósfera. Gravedad, composición, radiación estelar y procesos de escape intervienen en la evolución. Cada mundo exige una explicación propia.
+
+Si el campo reduce ciertos procesos de pérdida, el cambio acumulado se mide durante años o más. No aparece una atmósfera nueva al encender la bobina. Volcanismo, impactos, química superficial e importación o producción industrial determinan qué gases entran; temperatura y gravedad influyen en cuáles permanecen. [2]
+
+Una misión podría comparar escape antes y después del despliegue mediante mediciones orbitales. Ese resultado permitiría evaluar el mecanismo sin prometer terraformación. Solo después se podría modelar si la diferencia es significativa frente a otros flujos y durante cuánto tiempo tendría que operar la instalación.
+
+## Un fallo mueve una frontera invisible
+
+Si la corriente disminuye, la frontera se contrae y el entorno de plasma cambia. Satélites y operaciones deberían recibir aviso, igual que ante clima espacial. Redundancia, módulos reemplazables y una órbita de servicio permitirían reparar sin apagar toda la protección.
+
+El sistema resulta atractivo porque una pieza relativamente compacta podría influir sobre una región enorme. Esa amplificación también crea dependencia: una sociedad que diseñe atmósfera y órbitas alrededor del campo necesita sostenerlo o preparar una transición. La magnetosfera artificial modifica una interacción; no sustituye inventarios atmosféricos, clima, agua ni soporte vital.
 
 Una instalación así tendría efectos a distancias mucho mayores que sus piezas materiales. Es una de las ideas donde la astroingeniería se vuelve menos arquitectónica a simple vista: construir algo relativamente localizado para modificar una región enorme e invisible.
 

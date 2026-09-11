@@ -20,10 +20,11 @@ La guía operativa está en [editorial-guide.md](./editorial-guide.md). La matri
 | 11 | Habitar Venus | Revisado y validado |
 | 12 | Construir ambientes sobre un mundo | Revisado y validado |
 | 13 | Qué hace habitable un entorno | Revisado y validado |
-| 14–24 | Reescrituras planificadas | Pendiente |
+| 14 | Intervenir sobre luz, atmósfera y materiales | Revisado y validado |
+| 15–24 | Reescrituras planificadas | Pendiente |
 | 25 | Auditoría de ocho referencias posteriores | Pendiente |
 
-Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 14.
+Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 15.
 
 ## Tanda 1 — Civilizaciones de escala planetaria, estelar y galáctica
 
@@ -433,6 +434,33 @@ Las cuatro lecturas distinguen habitabilidad general, requisitos de un organismo
 Se conservaron y comprobaron NASA Science para la definición y límites de zona habitable; NASA ECLSS para cadenas de soporte vital; NASA NIAC para el concepto confinado de ecopoiesis marciana; y NASA Office of Safety and Mission Assurance para contaminación de ida y retorno. Las exigencias de misiones futuras se remiten expresamente a las normas vigentes aplicables.
 
 - `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 59 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
+
+## Tanda 14 — Intervenir sobre luz, atmósfera y materiales
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Espejos orbitales | B | 761 | Recorre geometría, mancha luminosa, constelación, objetivo local, control de fallos y retirada | Revisado y validado |
+| Parasoles espaciales | B | 761 | Explica ubicación, reducción de irradiación, respuesta climática, despliegue gradual y dependencia | Revisado y validado |
+| Importación de volátiles | B | 782 | Sigue el recurso desde prospección y extracción hasta frenado, captura, procesamiento y uso | Revisado y validado |
+| Magnetosfera artificial | B | 772 | Conecta dipolo, plasma, ubicación en L1, medición del escape y mantenimiento de la frontera | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Espejos orbitales:** un amanecer móvil obliga a seguir la coreografía entre Sol, membrana y suelo; sombras biológicas y retirada orbital muestran que iluminar es una operación local programada.
+- **Parasoles:** una sombra casi invisible se mide como potencia planetaria; despliegue y retirada por etapas revelan la memoria climática que queda después de cambiar la luz.
+- **Volátiles:** el hielo comienza mezclado con roca y solo se vuelve suministro después de extracción, trayectoria, frenado y análisis; el depósito receptor sustituye la imagen de un cometa impactando.
+- **Magnetosfera:** una instalación localizada sostiene una frontera de plasma enorme; el cambio se reconoce primero en instrumentos orbitales y no como una atmósfera creada de inmediato.
+
+Las lecturas permiten identificar ubicación, intercambio físico y variable modificada. Distinguen iluminación local de control climático; reducción de irradiación de eliminación de gases; reserva mineral de material industrial disponible; y reducción de ciertos procesos de escape de creación atmosférica. Las escalas cuantitativas de potencia, presión luminosa y energía de llegada se relacionan con operaciones, no se presentan como soluciones completas.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA Goddard sobre presión luminosa; Roger Angel sobre nubes de elementos cercanas a L1; ESA sobre recursos espaciales; NASA Glenn sobre cambios de velocidad; Jakosky y Edwards para inventarios atmosféricos marcianos; y Green y colaboradores para el dipolo magnético conceptual en Marte.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 63 artículos certificados.
 - `npm run lint` y `npm run build`: correctos.
 - Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
 - La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
