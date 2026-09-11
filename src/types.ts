@@ -143,6 +143,7 @@ export interface AstroSection {
 
 export interface ChapterVisual {
   heroImage: string;
+  sectionImage?: string;
   aiPrompt: string;
   missionLabel: string;
   cta: string;

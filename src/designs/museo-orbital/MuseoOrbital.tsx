@@ -1241,7 +1241,7 @@ const Hero = memo(({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: reduced ? 0 : 0.5, duration: 0.9, ease: EASE_OUT }}
         >
-          Exposición permanente — Atlas de astroingeniería
+          Atlas de astroingeniería
         </motion.p>
 
         <h1 className="mo-hero-title" aria-label="Astroingeniería">
@@ -1572,7 +1572,7 @@ const Sala = memo(({
         <figure className="mo-sala-figure">
           <div ref={figureRef} className="mo-sala-figure-inner">
             <motion.img
-              src={chapter.visual?.heroImage}
+              src={chapter.visual?.sectionImage ?? chapter.visual?.heroImage}
               alt={chapter.visual?.visualFocus ?? chapter.title}
               loading="lazy"
               decoding="async"
@@ -1712,46 +1712,98 @@ const buildArchive = (): SourceRef[] => {
   return [...map.values()];
 };
 
-const Archivo = memo(({ sources }: { sources: SourceRef[] }) => (
-  <section id="archivo" className="mo-archivo mo-layer">
-    <header className="mo-section-head">
-      <p className="mo-kicker">Sala archivo</p>
-      <h2>
-        <RevealWords text="Fuentes de la colección" />
-      </h2>
-      <p className="mo-section-sub">
-        Estudios, documentación y obras que acompañan las lecturas. Cada artículo señala
-        sus referencias y distingue investigación, propuestas y ficción.
-      </p>
-    </header>
-    <details className="mo-archivo-drawer">
-      <summary data-cursor-label="Abrir fuentes">
-        <span>Explorar el archivo completo</span>
-        <small>{sources.length} referencias</small>
-        <i aria-hidden="true">+</i>
-      </summary>
-      <ol className="mo-archivo-list">
-        {sources.map((source, index) => (
-          <motion.li
-            key={source.url}
-            initial={{ opacity: 0, x: -22 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-30px' }}
-            transition={{ delay: Math.min(index * 0.035, 0.5), duration: 0.6, ease: EASE_OUT }}
-          >
-            <b>{String(index + 1).padStart(2, '0')}</b>
-            <div>
-              <span>{source.publisher}</span>
-              <a href={source.url} target="_blank" rel="noreferrer" data-cursor-label="Leer">
-                {source.title} ↗
-              </a>
-            </div>
-          </motion.li>
-        ))}
-      </ol>
-    </details>
-  </section>
-));
+const Archivo = memo(({ sources }: { sources: SourceRef[] }) => {
+  const [open, setOpen] = useState(false);
+  const summaryRef = useRef<HTMLButtonElement>(null);
+
+  const closeArchive = () => {
+    const scrollContainer = summaryRef.current?.closest<HTMLElement>('.mo-root');
+    const startingScrollTop = scrollContainer?.scrollTop ?? 0;
+    const startedAt = performance.now();
+    setOpen(false);
+
+    if (!scrollContainer) return;
+
+    const preserveScrollPosition = () => {
+      const maxScrollTop = Math.max(0, scrollContainer.scrollHeight - scrollContainer.clientHeight);
+      scrollContainer.scrollTop = Math.min(startingScrollTop, maxScrollTop);
+      if (performance.now() - startedAt < 760) {
+        requestAnimationFrame(preserveScrollPosition);
+      }
+    };
+
+    requestAnimationFrame(preserveScrollPosition);
+  };
+
+  return (
+    <section id="archivo" className="mo-archivo mo-layer">
+      <header className="mo-section-head">
+        <p className="mo-kicker">Sala archivo</p>
+        <h2>
+          <RevealWords text="Fuentes de la colección" />
+        </h2>
+        <p className="mo-section-sub">
+          Estudios, documentación y obras que acompañan las lecturas. Cada artículo señala
+          sus referencias y distingue investigación, propuestas y ficción.
+        </p>
+      </header>
+
+      <div className={`mo-archivo-drawer${open ? ' is-open' : ''}`}>
+        <button
+          ref={summaryRef}
+          type="button"
+          className="mo-archivo-summary"
+          aria-expanded={open}
+          aria-controls="archivo-referencias"
+          onClick={() => setOpen((value) => !value)}
+          data-cursor-label={open ? 'Cerrar fuentes' : 'Abrir fuentes'}
+        >
+          <span className="mo-archivo-summary-label">Explorar el archivo completo</span>
+          <span className="mo-archivo-count">{sources.length} referencias</span>
+          <i aria-hidden="true">+</i>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              id="archivo-referencias"
+              key="archivo-referencias"
+              className="mo-archivo-content"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.7, ease: EASE_OUT }}
+            >
+              <ol className="mo-archivo-list">
+                {sources.map((source, index) => (
+                  <motion.li
+                    key={source.url}
+                    initial={{ opacity: 0, x: -22 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: Math.min(index * 0.035, 0.5), duration: 0.6, ease: EASE_OUT }}
+                  >
+                    <b>{String(index + 1).padStart(2, '0')}</b>
+                    <div>
+                      <span>{source.publisher}</span>
+                      <a href={source.url} target="_blank" rel="noreferrer" data-cursor-label="Leer">
+                        {source.title} ↗
+                      </a>
+                    </div>
+                  </motion.li>
+                ))}
+              </ol>
+              <div className="mo-archivo-close-row">
+                <button type="button" className="mo-archivo-close" onClick={closeArchive}>
+                  Cerrar referencias ↑
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+});
 
 /* ---------------- Menú persistente ---------------- */
 

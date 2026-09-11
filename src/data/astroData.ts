@@ -76,7 +76,8 @@ export const chapterVisuals = {
       'Realistic cinematic aerospace image of orbital construction yard and rotating habitat above Earth at sunrise, dark SpaceX-inspired unbranded style, no text, no logos.',
   },
   habitats: {
-    heroImage: `${assetBase}illustrations/ai/habitats.webp`,
+    heroImage: `${assetBase}illustrations/ai/habitats-hero.webp`,
+    sectionImage: `${assetBase}illustrations/ai/habitats.webp`,
     missionLabel: 'Mission 01 / Space Habitats',
     cta: 'Explorar hábitats',
     visualFocus: 'Hábitats rotatorios, ensamblaje orbital, ventanas, radiadores y escala humana frente a mundos artificiales.',
