@@ -12,10 +12,18 @@ La guía operativa está en [editorial-guide.md](./editorial-guide.md). La matri
 | 3 | Expansión autónoma | Revisado y validado |
 | 4 | Interpretar el silencio | Revisado y validado |
 | 5 | Buscar otras tecnologías | Revisado y validado |
-| 6–24 | Reescrituras planificadas | Pendiente |
+| 6 | Propulsión nuclear y fuentes extremas | Revisado y validado |
+| 7 | Geometrías y límites del viaje | Revisado y validado |
+| 8 | Empujar con electricidad | Revisado y validado |
+| 9 | Vehículos y fuentes de empuje | Revisado y validado |
+| 10 | Llegar a otra estrella y permanecer allí | Revisado y validado |
+| 11 | Habitar Venus | Revisado y validado |
+| 12 | Construir ambientes sobre un mundo | Revisado y validado |
+| 13 | Qué hace habitable un entorno | Revisado y validado |
+| 14–24 | Reescrituras planificadas | Pendiente |
 | 25 | Auditoría de ocho referencias posteriores | Pendiente |
 
-Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 6.
+Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 14.
 
 ## Tanda 1 — Civilizaciones de escala planetaria, estelar y galáctica
 
@@ -220,3 +228,211 @@ Se conservaron y comprobaron Wright sobre estrategias SETI; Wright, Kanodia y Lu
 - `npm run lint` y `npm run build`: correctos.
 - Escritorio y móvil: las cinco lecturas cargan con apartados y nota sin desbordamiento horizontal.
 - Fallo ajeno a la tanda: la prueba global conserva el fallo posterior del `canvas` 3D de O’Neill, después de aprobar las comprobaciones específicas de las tandas 1–5.
+
+## Tanda 6 — Propulsión nuclear y fuentes extremas
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Proyecto Orion | A | 962 | Sigue cada pulso desde el dispositivo hasta placa, amortiguadores, estructura y misión | Revisado y validado |
+| Propulsión por fusión | A | 906 | Conecta combustible, reacción, productos, tobera magnética, potencia y refrigeración | Revisado y validado |
+| Antimateria | A | 902 | Recorre producción, enfriamiento, confinamiento, aniquilación y conversión en escape | Revisado y validado |
+| Ramjet de Bussard | B | 767 | Explica captura, ionización, arrastre, fusión, expulsión y variantes del concepto | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Orion:** una detonación se transforma paso a paso en aceleración tolerable; la tripulación siente el resultado de dos etapas mecánicas y debe reservar pulsos para frenar.
+- **Fusión:** el combustible determina productos y arquitectura; el lector puede seguir la energía hasta partículas dirigidas y pérdidas neutrales.
+- **Antimateria:** el depósito imposible de tocar organiza el recorrido desde el acelerador hasta una tobera todavía hipotética.
+- **Bussard:** el material que parece suministro llega primero como resistencia; el balance entre arrastre y escape sostiene toda la lectura.
+
+Las cuatro lecturas explican la procedencia del empuje, desarrollan misiones completas, distinguen fuente energética y propelente, y localizan incertidumbres técnicas sin presentar propuestas conceptuales como vehículos operativos.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA NTRS sobre Orion; NASA NIAC sobre cohetes de fusión; CERN sobre producción y confinamiento de antimateria; NASA Glenn sobre la ecuación del cohete; y Semay y Silvestre-Brac sobre pérdidas y límites del ramjet.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 35 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con sus apartados y, cuando corresponde, su nota, sin desbordamiento horizontal.
+- Fallo ajeno a la tanda: la prueba global conserva el fallo posterior del `canvas` 3D de O’Neill, después de aprobar las comprobaciones específicas de las tandas 1–6.
+
+## Tanda 7 — Geometrías y límites del viaje
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Métrica de Alcubierre | A | 940 | Separa movimiento local y geometría global y desarrolla energía, horizontes, control y causalidad | Revisado y validado |
+| Agujeros de gusano | A | 943 | Explica garganta, atravesabilidad, estabilidad, bocas, desfase temporal y construcción | Revisado y validado |
+| Propulsión sin reacción | B | 949 | Reconstruye conservación del momento, frontera del sistema y controles contra falsos positivos | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Alcubierre:** la cabina quieta conduce hacia la pared donde reside el problema físico; arrancar, controlar y detener la geometría evita tratar una métrica como motor.
+- **Agujeros de gusano:** el lector atraviesa conceptualmente una boca y descubre que tamaño, mareas, estabilidad y colocación son logros separados.
+- **Sin reacción:** una aguja sobre una balanza obliga a ampliar sucesivamente la frontera del sistema hasta encontrar fotones, campos, cables, calor o un artefacto.
+
+Las lecturas distinguen solución matemática, observación y tecnología; explican una posibilidad interesante, identifican el detalle físico que la limita y presentan energía negativa, causalidad y mediciones discutidas con su incertidumbre real.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron el artículo original de Alcubierre y su revisión con Lobo; Morris, Thorne y Yurtsever sobre conexiones atravesables y causalidad; Tajmar, Neunzig y Weikert sobre falsos positivos del EMDrive; y NASA Goddard sobre el intercambio de momento de las velas.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 38 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las tres lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral del lector, incluida la maqueta 3D de O’Neill, queda registrada con su resultado real en la ejecución de esta tanda.
+
+## Tanda 8 — Empujar con electricidad
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Motores iónicos | B | 750 | Sigue ionización, rejillas, neutralización, erosión y una misión entre asteroides | Revisado y validado |
+| Propulsor Hall | B | 752 | Separa deriva electrónica, campo eléctrico, descarga anular, desgaste y aplicación orbital | Revisado y validado |
+| Solar eléctrica | B | 770 | Recorre la cadena desde fotones hasta escape y muestra cómo distancia y paneles cambian la misión | Revisado y validado |
+| Nuclear eléctrica | B | 761 | Recorre reactor, conversión, distribución, propulsor y radiadores lejos del Sol | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Iónico:** una partícula atraviesa cámara, rejillas y neutralizador; la paciencia de una misión entre asteroides explica el valor del empuje bajo.
+- **Hall:** el anillo se entiende siguiendo por separado electrones e iones; una plataforma orbital muestra el compromiso entre densidad de empuje y vida.
+- **Solar eléctrica:** cada vatio viaja desde la luz hasta el chorro; un remolcador revela cómo cambia la arquitectura con la distancia.
+- **Nuclear eléctrica:** una central completa acompaña al motor; el viaje a los gigantes helados justifica masa, conversión y calor.
+
+Las cuatro lecturas distinguen propulsor y fuente, explican la relación entre potencia, empuje y velocidad de escape, y ofrecen escenarios donde cada configuración resulta apropiada sin presentar una opción universal.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA/JPL sobre Dawn y propulsión iónica; NASA sobre propulsión eléctrica solar y tecnologías de propulsión espacial; y NASA junto con su documentación térmica para arquitecturas nucleares eléctricas.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 42 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
+
+## Tanda 9 — Vehículos y fuentes de empuje
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Cohetes químicos | B | 796 | Sigue reactivos, alimentación, inyección, cámara, tobera, etapas y maniobras de gran empuje | Revisado y validado |
+| Propulsión nuclear térmica | B | 790 | Separa reactor y propelente y recorre calentamiento, expansión, reinicios, almacenamiento y misión | Revisado y validado |
+| Vela solar | B | 770 | Explica transferencia de momento, orientación, despliegue y modificación paciente de una órbita | Revisado y validado |
+| Propulsión por energía transmitida | B | 763 | Recorre emisor, haz, seguimiento, receptor y reacción, y desarrolla la dependencia de la infraestructura | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Cohetes químicos:** el lanzamiento se reconstruye desde los depósitos hasta la tobera; la pérdida de masa y una maniobra breve explican por qué el empuje alto justifica esta arquitectura.
+- **Nuclear térmica:** una molécula de hidrógeno atraviesa un reactor sin confundirse con su combustible; dos encendidos durante un viaje a Marte vuelven concretos el almacenamiento y la fatiga térmica.
+- **Vela solar:** la membrana cambia una órbita inclinando la fuerza de la luz; arrugas, navegación y meses de correcciones muestran que prescindir de propelente no elimina la operación.
+- **Energía transmitida:** el sistema se divide entre una central distante y el vehículo; comparar una vela láser con una nave eléctrica receptora aclara dos formas distintas de convertir el haz en movimiento.
+
+Las cuatro lecturas permiten reconstruir dónde se produce la reacción física, qué masa o radiación intercambia momento y qué parte del sistema permanece a bordo. Cada una desarrolla una misión adecuada y explica por qué sus ventajas no sirven para todas las maniobras. Se distinguen combustible, propelente y fuente energética; empuje instantáneo y cambio acumulado; y autonomía del vehículo y dependencia de una red externa.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA Glenn sobre la ecuación ideal del cohete; NASA sobre tecnologías de propulsión espacial y propulsión nuclear; NASA Goddard sobre velas solares; y la documentación de Breakthrough Starshot para la arquitectura conceptual de energía dirigida. Las prestaciones futuras se presentan como objetivos o propuestas, no como vehículos operativos.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 46 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
+
+## Tanda 10 — Llegar a otra estrella y permanecer allí
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Vela láser | A | 1.092 | Recorre emisión, fase, seguimiento, estabilidad, aceleración, crucero, observación y posible captura | Revisado y validado |
+| Vela magnética | B | 779 | Explica cómo campo, circuito y plasma intercambian momento durante impulso y frenado | Revisado y validado |
+| Vela eléctrica | B | 790 | Sigue carga, desviación de protones, rotación, control de filamentos y una ruta heliocéntrica | Revisado y validado |
+| Frenado interestelar | B | 867 | Diseña la llegada desde la órbita final y compara propelente, luz, plasma e infraestructura remota | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Vela láser:** una matriz planetaria persigue una membrana mínima durante la aceleración; el silencio posterior obliga a desarrollar supervivencia, navegación, datos y llegada, además de velocidad de salida.
+- **Vela magnética:** la superficie visible se sustituye por un campo; seguir una partícula y después una bobina desplegable conecta la reacción física con una desaceleración que comienza años antes del destino.
+- **Vela eléctrica:** una rueda de filamentos conserva su forma al girar; carga y tensión se modulan frente a un viento variable para convertir control de actitud en trayectoria.
+- **Frenado interestelar:** la órbita científica se diseña hacia atrás; el instante en que la estrella deja de crecer tan deprisa vuelve perceptible la diferencia entre atravesar y permanecer.
+
+Las cuatro lecturas permiten imaginar sus componentes y reconstruir qué flujo aporta el momento. Distinguen presión luminosa, campo magnético y potencial electrostático; aceleración desde una infraestructura de origen y frenado con recursos disponibles en el destino; y sobrevuelo, captura estelar e inserción planetaria. Las prestaciones dependen de masa por área, apertura, plasma, velocidad relativa y trayectoria, por lo que se presentan como propuestas condicionadas y no como vehículos operativos.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron Breakthrough Initiatives para la arquitectura conceptual Starshot; Andrews y Zubrin para velas magnéticas; Janhunen y colaboradores para vela eléctrica solar; Heller y Hippke para frenado fotogravitacional; y NASA Glenn para el coste propulsivo de llevar el frenado a bordo.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 50 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
+
+## Tanda 11 — Habitar Venus
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Terraformación de Venus | A | 1.151 | Recorre balances de energía, enfriamiento, atmósfera, carbono, agua y una secuencia intergeneracional | Revisado y validado |
+| Ciudades flotantes | A | 1.166 | Recorre flotabilidad, altitud, química, recursos, vientos, transporte, reparación y rescate | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Terraformación de Venus:** la posible costa se aplaza hasta que el lector pueda seguir cada átomo y cada flujo de energía; una pantalla solar inicia una secuencia que debe explicar dónde terminan calor, carbono y productos químicos.
+- **Ciudades flotantes:** el lector camina sobre una cubierta sostenida por su propio aire y descubre debajo celdas, depósitos y talleres; mapas de viento y espacio de evacuación convierten el asentamiento en un archipiélago móvil.
+
+La primera lectura permite imaginar el planeta como un sistema térmico y material que cambia por etapas, y distingue enfriar, reducir presión, aportar agua y producir una atmósfera respirable. La segunda permite reconstruir cómo una plataforma conserva altura, procesa recursos y responde a una fuga, y distingue sustentación atmosférica de vuelo orbital. La posibilidad emocional se apoya en una generación que hereda el control de una pantalla y en una ciudad cuyo espacio vacío existe para recibir a los evacuados de otra.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA Science para condiciones físicas de Venus; el estudio de Roger Angel para principios y escala de pantallas solares, sin presentarlo como diseño venusiano; y NASA Langley HAVOC para la exploración aerostática de la franja atmosférica. Las ciudades y la transformación global se mantienen expresamente como extrapolaciones conceptuales.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 52 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las dos lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
+
+## Tanda 12 — Construir ambientes sobre un mundo
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Paraterraformación | B | 769 | Distingue ambientes térmicos, agrícolas y respirables y sigue terreno, módulos, fronteras y operación | Revisado y validado |
+| Worldhouse | B | 829 | Desarrolla continuidad estructural, clima interior, presión, compartimentación y mantenimiento generacional | Revisado y validado |
+| Ciudades con cúpulas | B | 883 | Recorre plaza, capas de cubierta, redes urbanas, esclusas, fugas, refugios y crecimiento por nodos | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Paraterraformación:** un camino cruza ambientes con variables distintas; terreno y cubierta forman juntos el recinto, y cada ampliación añade una frontera mecánica y biológica comprobable.
+- **Worldhouse:** mirar hacia un techo casi convertido en cielo conduce a las fuerzas que recorren kilómetros; meteorología y renovación de paneles muestran por qué una cubierta territorial nunca queda terminada.
+- **Ciudades con cúpulas:** una plaza abierta organiza distancias, esclusas y refugios; una grieta permite seguir detección, aislamiento, reparación y capacidad de recibir habitantes de otra cúpula.
+
+Las tres lecturas distinguen una estrategia general de modificación local, una envolvente territorial continua y un asentamiento urbano localizado. El lector puede explicar qué sostiene la presión, cómo se aíslan fallos y qué cambia al ampliar cada arquitectura. La emoción se apoya en operaciones concretas: técnicos que buscan una fuga subterránea, generaciones que reemplazan el cielo construido y una plaza que sigue abierta durante una reparación exterior.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA/JPL para modificaciones térmicas locales con aerogel; NASA ECLSS para los ciclos y equipos ambientales que continúan siendo necesarios; y estudios de asentamientos espaciales para separar envolvente, protección y soporte vital. Las extrapolaciones worldhouse se identifican como propuestas especulativas sin diseño canónico.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 55 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las tres lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
+
+## Tanda 13 — Qué hace habitable un entorno
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Habitabilidad | A | 1.021 | Relaciona ambiente, recursos, tasas y ciclos con organismos concretos y duración | Revisado y validado |
+| Zona habitable | B | 707 | Explica el modelo orbital, sus bordes, la historia estelar y las observaciones que todavía faltan | Revisado y validado |
+| Ecopoiesis | A | 980 | Recorre ensayo confinado, sucesión, suelo vivo, persistencia y decisión de liberar organismos | Revisado y validado |
+| Protección planetaria | B | 861 | Sigue contaminación, trazabilidad, contexto de muestras, retorno y exploración humana | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Habitabilidad:** un corte vertical del mismo mundo aloja una persona protegida, una base y un posible ecosistema subglacial; el lector aprende que cada respuesta necesita habitante, lugar y duración.
+- **Zona habitable:** el anillo verde se desmonta como resultado de un modelo y se convierte después en una lista concreta de observaciones astronómicas.
+- **Ecopoiesis:** una película microscópica dentro de una cámara inicia una sucesión; retirar ayudas y atravesar una noche muestra si existe un ciclo o solo supervivencia temporal.
+- **Protección planetaria:** una molécula detectada obliga a reconstruir su ruta desde la sala limpia; preservar muestra y contexto convierte la precaución en parte del descubrimiento.
+
+Las cuatro lecturas distinguen habitabilidad general, requisitos de un organismo y vida humana sin protección; franja orbital y clima real; supervivencia individual y ecosistema persistente; y norma de contaminación, interpretación científica y decisión ética. Cada incertidumbre queda ligada a una medición, un control o una etapa de misión.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA Science para la definición y límites de zona habitable; NASA ECLSS para cadenas de soporte vital; NASA NIAC para el concepto confinado de ecopoiesis marciana; y NASA Office of Safety and Mission Assurance para contaminación de ida y retorno. Las exigencias de misiones futuras se remiten expresamente a las normas vigentes aplicables.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 59 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
