@@ -266,13 +266,11 @@ const AURORA: RGB[] = [
 ];
 
 const PAGE_TEXT_TARGET_SELECTOR = [
-  '.mo-sala .mo-sala-no',
-  '.mo-sala-copy > .mo-kicker',
-  '.mo-sala-copy > h2',
-  '.mo-sala-copy > .mo-lede',
-  '.mo-sala-note > summary',
-  '.mo-sala-note > p',
-  '.mo-sala-figure > figcaption',
+  '.mo-chapter-content > .mo-chapter-kicker',
+  '.mo-chapter-heading > h2',
+  '.mo-chapter-content > .mo-chapter-summary',
+  '.mo-chapter-notes h3',
+  '.mo-chapter-notes p',
   '.mo-obra-meta > .mo-plate',
   '.mo-obra-meta > h3',
   '.mo-obra-meta > p',

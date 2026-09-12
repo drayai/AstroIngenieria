@@ -21,7 +21,6 @@ import {
   useScroll,
   useSpring,
   useTransform,
-  type MotionValue,
 } from 'framer-motion';
 import { Aperture, Volume2, VolumeX } from 'lucide-react';
 import { chapters, conceptById, plausibilityLabels, scaleLabels } from '../../data/astroData';
@@ -1437,36 +1436,6 @@ const HallIndex = memo(({ activeId }: { activeId: string | null }) => (
   </nav>
 ));
 
-/* ---------------- Número monumental que se rellena ---------------- */
-
-const SalaNo = ({
-  value,
-  progress,
-  reduced,
-}: {
-  value: string;
-  progress: MotionValue<number>;
-  reduced: boolean;
-}) => {
-  const clip = useTransform(
-    progress,
-    [0.02, 0.6],
-    ['inset(100% 0% 0% 0%)', 'inset(-15% -15% -15% -15%)'],
-  );
-  return (
-    <span className="mo-sala-no" aria-hidden="true">
-      <span className="mo-sala-no-outline">{value}</span>
-      {reduced ? (
-        <span className="mo-sala-no-fill">{value}</span>
-      ) : (
-        <motion.span className="mo-sala-no-fill" style={{ clipPath: clip }}>
-          {value}
-        </motion.span>
-      )}
-    </span>
-  );
-};
-
 /* ---------------- Reveals por palabras ---------------- */
 
 const RevealWords = ({ text }: { text: string }) => {
@@ -1583,6 +1552,90 @@ const Obra = memo(({
 
 /* ---------------- Sala ---------------- */
 
+const ChapterIntro = memo(({ chapter }: { chapter: AstroChapter }) => {
+  const introRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const [imageFocus, setImageFocus] = useState(false);
+  const { scrollYProgress } = useScroll({
+    target: imageRef,
+    offset: ['start end', 'end start'],
+  });
+  const reduced = useReducedMotion();
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-0.75%', '0.75%']);
+
+  useEffect(() => {
+    if (!imageFocus) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setImageFocus(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [imageFocus]);
+
+  useEffect(() => {
+    const intro = introRef.current;
+    if (!imageFocus || !intro) return;
+    const root = intro.closest<HTMLElement>('.mo-root');
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting || entry.intersectionRatio < 0.08) setImageFocus(false);
+      },
+      { root, threshold: [0, 0.08] },
+    );
+    observer.observe(intro);
+    return () => observer.disconnect();
+  }, [imageFocus]);
+
+  return (
+    <header
+      ref={introRef}
+      className={`mo-chapter-intro${imageFocus ? ' is-image-focus' : ''}`}
+    >
+      <div className="mo-chapter-image" ref={imageRef}>
+        <motion.img
+          src={chapter.visual?.sectionImage ?? chapter.visual?.heroImage}
+          alt={chapter.visual?.visualFocus ?? chapter.title}
+          loading={chapter.number === '0' ? 'eager' : 'lazy'}
+          decoding="async"
+          style={reduced ? undefined : { y: imageY }}
+        />
+        <span className="mo-chapter-image-shade" aria-hidden="true" />
+      </div>
+
+      <button
+        type="button"
+        className={`mo-index-button mo-hero-view mo-chapter-view${imageFocus ? ' is-active' : ''}`}
+        onClick={() => setImageFocus((current) => !current)}
+        aria-pressed={imageFocus}
+        aria-label={imageFocus ? `Mostrar textos de ${chapter.title}` : `Ver imagen de ${chapter.title}`}
+        data-cursor-label={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
+        title={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
+      >
+        <Aperture size={15} strokeWidth={1.2} aria-hidden="true" />
+      </button>
+
+      <div className="mo-chapter-content">
+        <p className="mo-chapter-kicker">
+          Sala {chapter.number.padStart(2, '0')} · {chapter.concepts.length} piezas
+        </p>
+        <div className="mo-chapter-heading">
+          <span aria-hidden="true">{chapter.number}</span>
+          <h2><RevealWords text={chapter.title} /></h2>
+        </div>
+        <p className="mo-chapter-summary">{chapter.summary}</p>
+        <div className="mo-chapter-notes">
+          {chapter.sections.map((section) => (
+            <div key={section.title}>
+              <h3>{section.title}</h3>
+              <p>{section.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </header>
+  );
+});
+
 const Sala = memo(({
   chapter,
   offset,
@@ -1595,17 +1648,6 @@ const Sala = memo(({
   onSelect: (concept: AstroConcept) => void;
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const figureRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: fillProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start 90%', 'start 32%'],
-  });
-  const { scrollYProgress: figureProgress } = useScroll({
-    target: figureRef,
-    offset: ['start end', 'end start'],
-  });
-  const imageY = useTransform(figureProgress, [0, 1], ['-9%', '9%']);
-  const reduced = useReducedMotion();
 
   return (
     <section
@@ -1614,36 +1656,7 @@ const Sala = memo(({
       ref={sectionRef}
       style={{ '--accent': chapter.color } as CSSProperties}
     >
-      <header className="mo-sala-head">
-        <SalaNo value={chapter.number} progress={fillProgress} reduced={Boolean(reduced)} />
-        <div className="mo-sala-copy">
-          <p className="mo-kicker">
-            Sala {chapter.number} — {chapter.concepts.length} piezas
-          </p>
-          <h2>
-            <RevealWords text={chapter.title} />
-          </h2>
-          <p className="mo-lede">{chapter.summary}</p>
-          {chapter.sections.map((section) => (
-            <details key={section.title} className="mo-sala-note">
-              <summary>{section.title}</summary>
-              <p>{section.body}</p>
-            </details>
-          ))}
-        </div>
-        <figure className="mo-sala-figure">
-          <div ref={figureRef} className="mo-sala-figure-inner">
-            <motion.img
-              src={chapter.visual?.sectionImage ?? chapter.visual?.heroImage}
-              alt={chapter.visual?.visualFocus ?? chapter.title}
-              loading="lazy"
-              decoding="async"
-              style={reduced ? undefined : { y: imageY }}
-            />
-          </div>
-          <figcaption>{chapter.visual?.visualFocus}</figcaption>
-        </figure>
-      </header>
+      <ChapterIntro chapter={chapter} />
 
       <div className="mo-wall">
         {chapter.concepts.map((concept, conceptIndex) => (
@@ -2805,7 +2818,7 @@ export default function MuseoOrbital() {
       requestLoop();
     }, { root, rootMargin: '200px 0px' });
     const syncNodes = () => {
-      const next = new Set(root.querySelectorAll<HTMLElement>('.mo-sala-copy h2 .mo-word'));
+      const next = new Set(root.querySelectorAll<HTMLElement>('.mo-chapter-heading h2 .mo-word'));
       observed.forEach((node) => {
         if (!next.has(node)) {
           observer.unobserve(node);
