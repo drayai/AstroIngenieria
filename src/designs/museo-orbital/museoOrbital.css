@@ -2908,7 +2908,7 @@ body:has(.mo-root) {
 /* ---------- FOOTER ---------- */
 
 .mo-footer {
-  padding: 300px 24px;
+  padding: 335px 24px;
   text-align: center;
   border-top: 1px solid var(--mo-line);
 }
