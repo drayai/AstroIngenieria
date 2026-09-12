@@ -1202,25 +1202,29 @@ const Hero = memo(({
       className={`mo-hero mo-layer${imageFocus ? ' is-image-focus' : ''}`}
       onMouseMove={trackSpotlight}
     >
-      <button
-        type="button"
-        className="mo-index-button mo-hero-index"
-        onClick={onOpenIndex}
-        data-cursor-label="Índice"
-      >
-        Índice
-      </button>
-      <button
-        type="button"
-        className={`mo-index-button mo-hero-view${imageFocus ? ' is-active' : ''}`}
-        onClick={() => setImageFocus((current) => !current)}
-        aria-pressed={imageFocus}
-        aria-label={imageFocus ? 'Mostrar textos del hero' : 'Ver imagen del hero'}
-        data-cursor-label={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
-        title={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
-      >
-        <Aperture size={15} strokeWidth={1.2} aria-hidden="true" />
-      </button>
+      {playgroundEntryState !== 'entering' && playgroundEntryState !== 'leaving' && (
+        <button
+          type="button"
+          className="mo-index-button mo-hero-index"
+          onClick={onOpenIndex}
+          data-cursor-label="Índice"
+        >
+          Índice
+        </button>
+      )}
+      {playgroundEntryState !== 'entering' && playgroundEntryState !== 'leaving' && (
+        <button
+          type="button"
+          className={`mo-index-button mo-hero-view${imageFocus ? ' is-active' : ''}`}
+          onClick={() => setImageFocus((current) => !current)}
+          aria-pressed={imageFocus}
+          aria-label={imageFocus ? 'Mostrar textos del hero' : 'Ver imagen del hero'}
+          data-cursor-label={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
+          title={imageFocus ? 'Mostrar textos' : 'Ver imagen'}
+        >
+          <Aperture size={15} strokeWidth={1.2} aria-hidden="true" />
+        </button>
+      )}
       <motion.div
         className="mo-hero-bg"
         style={{ backgroundImage: `url(${chapters[1].visual?.heroImage})` }}

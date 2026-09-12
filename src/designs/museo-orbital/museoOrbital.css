@@ -28,17 +28,11 @@ body:has(.mo-root) {
   color: var(--mo-ink);
   font-family: var(--mo-sans);
   isolation: isolate;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(245, 241, 232, 0.25) transparent;
+  scrollbar-width: none;
 }
 
 .mo-root::-webkit-scrollbar {
-  width: 8px;
-}
-
-.mo-root::-webkit-scrollbar-thumb {
-  background: rgba(245, 241, 232, 0.18);
-  border-radius: 99px;
+  display: none;
 }
 
 .mo-root img {
@@ -2055,11 +2049,11 @@ body:has(.mo-root) {
 @keyframes mo-playground-status-arrival {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(-10px) scale(0.97);
+    transform: translateY(-10px) scale(0.97);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
