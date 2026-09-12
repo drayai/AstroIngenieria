@@ -463,7 +463,7 @@ body:has(.mo-root) {
 
 .mo-chapter-intro .mo-chapter-view {
   position: absolute;
-  top: clamp(28px, 5vh, 54px);
+  top: clamp(108px, 16vh, 196px);
   right: clamp(24px, 4vw, 64px);
   z-index: 4;
 }
