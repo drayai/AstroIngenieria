@@ -574,6 +574,37 @@ Se conservaron y comprobaron Birch para anillos orbitales; Lofstrom para launch 
 - Escritorio y móvil: las cinco lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
 - Los fallos de componentes ajenos a la tanda se registran separadamente sin alterar estas comprobaciones.
 
+## Tanda 21 — Captar energía y evacuar calor
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Solar espacial | B | 809 | Recorre captación, red interna, emisión, rectenna, conexión terrestre, mantenimiento y reposición | Revisado y validado |
+| Transmisión por microondas | B | 777 | Explica fase, difracción, propagación, rectificación, señal piloto, disponibilidad y respaldo | Revisado y validado |
+| Radiadores | B | 769 | Sigue calor, fluidos, circuitos, emisión, orientación, daños y relación entre temperatura y área | Revisado y validado |
+| Anillo Dyson | B | 792 | Distingue banda distribuida y aro continuo, y relaciona órbitas, consumidores, industria y retirada | Revisado y validado |
+| Burbuja Dyson | B | 780 | Sigue presión de radiación, relación área-masa, orientación, sombras, temperatura y control colectivo | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Solar espacial:** la lectura une un módulo iluminado con una red terrestre; cada conversión y operación explica qué queda de la energía antes de llegar al usuario.
+- **Microondas:** una apertura formada por muchas antenas construye un cable sin materia; coherencia, receptor y señal piloto muestran cómo se mantiene y se corta el enlace.
+- **Radiadores:** un julio residual sale de una máquina, atraviesa un circuito y abandona una superficie como infrarrojo; el tamaño exterior revela decisiones térmicas interiores.
+- **Anillo Dyson:** una banda de colectores conserva vacío, periodos orbitales y destinos distintos; crecer requiere ampliar minería, fabricación, navegación y evacuación de calor a la vez.
+- **Burbuja Dyson:** una lámina parece quieta solo porque negocia continuamente con los fotones; añadir carga, absorber energía o entrar en sombra cambia el equilibrio.
+
+Cada artículo aporta una cadena propia. Se distinguen captación de entrega, potencia de energía acumulada, superficie solar de radiador, distribución orbital de estructura continua y órbita libre de sustentación por luz. Las cifras y fórmulas explican relaciones físicas sin convertir propuestas estudiadas o extrapolaciones en instalaciones operativas.
+
+### Fuentes y validación
+
+Se conservaron y contrastaron la evaluación NASA OTPS de energía solar espacial; NASA Thermal Control para transporte y radiación de calor; Starshot como ejemplo investigado de energía transmitida hacia una vela; y la revisión de Jason Wright para familias Dyson, geometría, dinámica y posibles emisiones térmicas.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 89 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cinco lecturas cargan con apartados y notas sin desbordamiento horizontal.
+- Los cambios locales ajenos a la tanda permanecen separados.
+
+La próxima tanda es la 22: computación y estructuras de escala extrema. Permanece pendiente.
+
 ## Tanda 20 — Vivir y producir con recursos locales
 
 | Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
@@ -627,3 +658,119 @@ Se conservaron y comprobaron NASA ISAM para servicio, ensamblaje e interfaces or
 - `npm run lint` y `npm run build`: correctos.
 - Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
 - Los fallos de componentes ajenos a la tanda se registran separadamente sin alterar estas comprobaciones.
+
+## Tanda 22 — Computación y estructuras de escala extrema
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Cerebro Matrioshka | A | 1.008 | Sigue energía, temperaturas, datos, latencias, fallos y mantenimiento entre capas distribuidas | Revisado y validado |
+| Jupiter brain | B | 759 | Relaciona concentración, topología, latencia, refrigeración, redundancia y usos distintos | Revisado y validado |
+| Computronium | B | 783 | Explica estados físicos, especialización, ruido, movimiento de datos, entorno y fabricación | Revisado y validado |
+| Cáscara Dyson | B | 999 | Separa cobertura, continuidad mecánica, estabilidad, gravedad interior y superficie habitable | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Matrioshka:** el lector viaja desde un colector caliente hasta la última emisión fría; energía y resultados cruzan capas diferentes, mientras las demoras convierten la máquina en una geografía.
+- **Jupiter brain:** una red planetaria se observa desde fuera y después desde uno de sus módulos; las distancias entran en el algoritmo y los corredores térmicos entran en el computador.
+- **Computronium:** una señal atraviesa memoria, transformaciones, enlaces y superficies emisoras; la materia se vuelve útil por su organización y por la infraestructura que conserva sus estados.
+- **Cáscara Dyson:** la esfera limpia del dibujo se desmonta en cargas, juntas, correcciones, temperaturas y direcciones de gravedad; su área deja de confundirse con un mundo habitable.
+
+Las lecturas distinguen operaciones de conciencia, límite físico de prestación construible, materia activa de sistema completo y captación estelar de habitabilidad. Las posibilidades de cálculo se desarrollan mediante tareas, archivos, simulaciones y coordinación; ninguna escala o metáfora cerebral se presenta como evidencia de experiencia subjetiva.
+
+### Fuentes y validación
+
+Se conservaron y contrastaron Lloyd para límites físicos de computación; Wright para termodinámica radiativa y familias Dyson; NASA Thermal Control para transporte y emisión de calor; y NASA NTRS para la geometría de gravedad artificial usada al examinar superficies interiores.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 93 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con apartados y notas sin desbordamiento horizontal.
+- Los cambios locales ajenos a la tanda permanecen separados.
+
+La próxima tanda es la 23: mundos y futuros observables. Permanece pendiente.
+
+## Tanda 23 — Mundos y futuros observables
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Exoplanetas | A | 1.085 | Sigue fotones, curva de luz, estrella, órbita, masa, atmósfera y límites de la reconstrucción | Revisado y validado |
+| Futuro del universo | A | 1.075 | Recorre eras, remanentes, recursos, expansión, archivos y escenarios cosmológicos condicionales | Revisado y validado |
+| Mundo anillo | A | 1.026 | Explica orientación, rotación, tensión, atmósfera, sombras, clima, estabilidad y distancias internas | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Exoplanetas:** una disminución mínima de luz abre una cadena de inferencias; el mundo se construye por capas de certeza hasta mostrar claramente dónde comienzan costas y colores imaginados.
+- **Futuro del universo:** varios relojes —estrellas, remanentes, expansión y archivos— sustituyen una cuenta regresiva única; una jornada remota vuelve concretas potencia, mantenimiento y memoria.
+- **Mundo anillo:** el lector se coloca sobre la cara interior y ve el terreno subir al cielo; paredes, pantallas y viajes muestran cómo una ecuación extrema se convertiría en paisaje y vida cotidiana.
+
+Las tres lecturas apoyan escalas enormes en señales o experiencias reconstruibles. Distinguen densidad media de geología, era teórica de fecha observada, horizonte cosmológico de expansión local y área geométrica de superficie habitable. Las incertidumbres quedan ligadas a métodos, modelos y supuestos concretos.
+
+### Fuentes y validación
+
+Se conservaron y contrastaron NASA Science para detección, caracterización, zona habitable y falsos positivos; Adams y Laughlin para la organización teórica de eras futuras; NASA para estrellas y energía oscura; Lloyd para límites de computación; la obra de Niven como origen literario de Ringworld; y referencias físicas para gravedad artificial y balance térmico.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 96 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las tres lecturas cargan con apartados y notas sin desbordamiento horizontal.
+- Los cambios locales ajenos a la tanda permanecen separados.
+
+La próxima tanda es la 24: decidir qué hacer con esas capacidades. Permanece pendiente.
+
+## Tanda 24 — Decidir qué hacer con esas capacidades
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Derecho espacial | B | 999 | Aplica tratado, autorización, registro, responsabilidad, interferencia y protección a situaciones concretas | Revisado y validado |
+| Ética cósmica | B | 983 | Desarrolla conflictos entre ciencia, recursos, generaciones futuras, vida, distribución y conservación | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Derecho espacial:** dos equipos ante un recurso abren casos sucesivos —licencia, objeto registrado, colisión, polvo y asentamiento— que muestran qué dice el tratado y qué queda para jurisdicciones o acuerdos.
+- **Ética cósmica:** una excavadora frente a un cráter obliga a elegir secuencias; reversibilidad, evidencia de vida y participación transforman valores abstractos en decisiones de misión.
+
+La lectura jurídica distingue texto vigente, aplicación dependiente de jurisdicción y propuesta normativa. La ética distingue legalidad de justificación, microbios de seres con bienestar o autonomía, y reversibilidad física de reversibilidad social. Ninguna arquitectura impone un sistema político ni se presenta una preferencia moral como consenso universal.
+
+### Fuentes y validación
+
+Se verificó en esta tanda el texto del Tratado del Espacio Ultraterrestre y su aplicación explícita a no apropiación, autorización y supervisión, registro, responsabilidad e interferencia. NASA Planetary Protection respalda los objetivos de contaminación directa e inversa y confirma que categorías y requisitos dependen del destino y tipo de misión. El modelo de expansión permanece citado únicamente como descripción, no como obligación moral.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 98 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: ambas lecturas cargan con apartados y notas sin desbordamiento horizontal.
+- Los cambios locales ajenos a la tanda permanecen separados.
+
+La próxima tanda es la 25: auditoría de las lecturas que ya funcionan. Permanece pendiente.
+
+## Tanda 25 — Auditoría de las lecturas que ya funcionan
+
+| Tema | Categoría | Palabras principales | Diagnóstico | Estado |
+|---|---|---:|---|---|
+| Ascensor espacial | R | 817 | Conserva geometría geoestacionaria, transferencia de momento, sección del cable, fallos y experiencia de ascenso | Revisado y validado |
+| Enjambre Dyson | R | 845 | Conserva el recorrido de un colector, crecimiento industrial, fracción captada, calor y observación remota | Revisado y validado |
+| Propulsión relativista | R | 557 | Conserva calendarios, energía, masa, medio interestelar, percepción y necesidad de frenado | Revisado y validado |
+| Terraformación | R | 654 | Conserva balances planetarios, objetivos distintos, ciclos, mantenimiento, generaciones y protección científica | Revisado y validado |
+| Terraformación de Marte | R | 615 | Conserva inventario atmosférico, escala de MOXIE, ambientes locales, escudo conceptual y protección | Revisado y validado |
+| Ingeniería de agujeros negros | R | 535 | Conserva horizonte, acreción, rotación, Hawking, mareas, órbitas y evacuación térmica sin mezclarlos | Revisado y validado |
+| Paradoja de Fermi | R | 595 | Conserva incertidumbres multiplicativas, alcance de búsqueda, asentamiento irregular y límites psicológicos | Revisado y validado |
+| Astrobiología | R | 528 | Conserva habitabilidad, falsos positivos, evidencia convergente, contaminación y alcance instrumental | Revisado y validado |
+
+### Diagnóstico editorial
+
+- **Ascensor espacial:** se conserva porque el cable se entiende como sistema conectado y el pasajero permite visualizar una escala que el mecanismo ya justificó.
+- **Enjambre Dyson:** se conserva porque una unidad concreta conduce hacia potencia estelar, industria, tráfico y tecnofirmas sin convertirse en una cáscara rígida.
+- **Propulsión relativista:** se conserva porque diferencia velocidad de aceleración y completa la misión con impacto, calor y frenado.
+- **Terraformación:** se conserva porque organiza el tema como sistema planetario y separa microbios, cultivo protegido y respiración al aire libre.
+- **Marte:** se conserva porque el inventario de CO₂ limita una estrategia concreta sin convertir ese límite en una prohibición de toda habitación local.
+- **Agujeros negros:** se conserva porque distingue energía de acreción, rotación y radiación de Hawking, además de objetos estelares y diminutos hipotéticos.
+- **Fermi:** se conserva porque formula una tensión dependiente de supuestos y muestra exactamente qué restringe una búsqueda nula.
+- **Astrobiología:** se conserva porque la roca inicial sostiene una investigación sobre contexto, falsos positivos y líneas independientes de evidencia.
+
+No se reescribió ninguna lectura por uniformidad. La auditoría no encontró errores verificables ni lagunas concretas que exigieran cambios de contenido. Sus fuentes continúan respaldando los mecanismos y límites citados, y no aparecieron redundancias problemáticas con las tandas ampliadas.
+
+### Fuentes y validación
+
+Se revisó la correspondencia de las referencias existentes con dinámica orbital, estructuras Dyson, propulsión y termodinámica; inventarios atmosféricos y protección planetaria; física de agujeros negros; incertidumbre y cobertura SETI; y metodología de biosignaturas. Las fuentes de ficción permanecen identificadas como tales y las propuestas conceptuales no se presentan como capacidades operativas.
+
+- `npm run check:articles`: cobertura, citas, imágenes, notas, plan y párrafos únicos correctos; los 106 artículos quedan certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las ocho referencias cargan con apartados, notas y fuentes sin desbordamiento horizontal.
+- El programa editorial queda completo: tandas 1–24 ampliadas, tanda 25 auditada y capítulos 0–1 conservados como referencias.

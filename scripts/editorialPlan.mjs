@@ -1,5 +1,4 @@
 const REVIEWED = 'revisado-validado';
-const PENDING = 'pendiente';
 
 const batches = [
   [0, 'R', REVIEWED, ['astroingenieria', 'kardashev', 'artificial-gravity', 'bernal-sphere', 'stanford-torus', 'bishop-ring', 'mckendree-cylinder', 'asteroid-habitat', 'worldship', 'iss', 'oneill-cylinder', 'life-support']],
@@ -34,12 +33,12 @@ const batches = [
   [19, 'B', REVIEWED, ['shipyards', 'orbital-ports', 'fuel-depots', 'reusable-launch']],
   [20, 'A', REVIEWED, ['lunar-bases']],
   [20, 'B', REVIEWED, ['isru', 'asteroid-mining']],
-  [21, 'B', PENDING, ['space-based-solar', 'microwave-power', 'radiators', 'dyson-ring', 'dyson-bubble']],
-  [22, 'A', PENDING, ['matrioshka-brain']],
-  [22, 'B', PENDING, ['jupiter-brain', 'computronium', 'dyson-shell']],
-  [23, 'A', PENDING, ['exoplanets', 'future-universe', 'ringworld']],
-  [24, 'B', PENDING, ['space-law', 'cosmic-ethics']],
-  [25, 'R', PENDING, ['space-elevator', 'dyson-swarm', 'relativistic-propulsion', 'terraforming', 'mars-terraforming', 'black-hole-engineering', 'fermi', 'astrobiology']],
+  [21, 'B', REVIEWED, ['space-based-solar', 'microwave-power', 'radiators', 'dyson-ring', 'dyson-bubble']],
+  [22, 'A', REVIEWED, ['matrioshka-brain']],
+  [22, 'B', REVIEWED, ['jupiter-brain', 'computronium', 'dyson-shell']],
+  [23, 'A', REVIEWED, ['exoplanets', 'future-universe', 'ringworld']],
+  [24, 'B', REVIEWED, ['space-law', 'cosmic-ethics']],
+  [25, 'R', REVIEWED, ['space-elevator', 'dyson-swarm', 'relativistic-propulsion', 'terraforming', 'mars-terraforming', 'black-hole-engineering', 'fermi', 'astrobiology']],
 ];
 
 export const editorialMinimums = { A: 900, B: 650, R: 0 };
