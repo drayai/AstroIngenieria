@@ -21,10 +21,13 @@ La guía operativa está en [editorial-guide.md](./editorial-guide.md). La matri
 | 12 | Construir ambientes sobre un mundo | Revisado y validado |
 | 13 | Qué hace habitable un entorno | Revisado y validado |
 | 14 | Intervenir sobre luz, atmósfera y materiales | Revisado y validado |
-| 15–24 | Reescrituras planificadas | Pendiente |
+| 15 | Mover una estrella | Revisado y validado |
+| 16 | Trabajar con materia estelar | Revisado y validado |
+| 17 | Comprender y observar la ingeniería estelar | Revisado y validado |
+| 18–24 | Reescrituras planificadas | Pendiente |
 | 25 | Auditoría de ocho referencias posteriores | Pendiente |
 
-Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 15.
+Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 18.
 
 ## Tanda 1 — Civilizaciones de escala planetaria, estelar y galáctica
 
@@ -464,3 +467,78 @@ Se conservaron y comprobaron NASA Goddard sobre presión luminosa; Roger Angel s
 - `npm run lint` y `npm run build`: correctos.
 - Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
 - La prueba integral conserva navegación, observatorio, imágenes y maqueta 3D de O’Neill.
+
+## Tanda 15 — Mover una estrella
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Motores estelares | A | 1.010 | Explica reacción externa, aceleración acumulada, navegación galáctica, órbitas acompañantes y apagado | Revisado y validado |
+| Propulsor de Shkadov | B | 760 | Sigue el momento de la radiación, el equilibrio del reflector, el efecto sobre planetas y su reparación | Revisado y validado |
+| Motor de Caplan | A | 1.006 | Sigue materia estelar, captación, procesamiento, chorros, acoplamiento, calor e inventario de masa | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Motores estelares:** un amanecer que parece idéntico conduce a dos mapas separados por millones de años; la lectura muestra cómo una diferencia estadística de trayectoria se convierte en navegación heredada.
+- **Shkadov:** una caja imaginaria alrededor de estrella y reflector obliga a contar únicamente la luz que escapa; mantenimiento segmentado y clima planetario impiden tratarlo como un espejo suspendido sin consecuencias.
+- **Caplan:** cada kilogramo se sigue desde el plasma ligado a la estrella hasta los chorros que abandonan el sistema; dos flujos explican cómo el motor evita convertirse en una nave que simplemente se aleja.
+
+Las tres lecturas permiten reconstruir el intercambio que produce el movimiento. Distinguen fuerzas internas de momento que abandona el sistema, reflector pasivo de cadena industrial activa y aceleración instantánea de desviación acumulada. Las incertidumbres se sitúan en estabilidad, star lifting, procesamiento, control térmico y supervivencia durante eras, sin presentar los modelos como máquinas disponibles.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron Caplan para la comparación entre arquitecturas Shkadov y activa; NASA Science para propiedades y entorno del Sol; NASA Goddard para transferencia de momento luminosa; NASA NIAC para distinguir fusión energética de una máquina propulsiva completa; y NASA sobre control térmico espacial.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 66 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las tres lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La prueba integral aprobó navegación, notas, imágenes y las comprobaciones de las tandas 1–15 en escritorio y móvil; después se detuvo porque la maqueta de O’Neill no generó `.mo-model-pane canvas` bajo los cambios locales ajenos presentes en `MuseoOrbital.tsx` y `museoOrbital.css`.
+
+## Tanda 16 — Trabajar con materia estelar
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Star lifting | A | 1.030 | Recorre escape, captación, frenado, separación, producto, transporte y respuesta de la estrella | Revisado y validado |
+| Gestión estelar | B | 806 | Relaciona objetivo habitable, extracción de masa, modelos internos, observación y continuidad institucional | Revisado y validado |
+| Procesamiento de plasma | B | 871 | Explica medición, guiado, frenado, separación, recombinación, refrigeración y almacenamiento | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Star lifting:** una mina sin suelo sigue cada partícula desde un flujo natural o inducido hasta un tanque; comparar el producto con recursos fríos evita confundir abundancia estelar con disponibilidad industrial.
+- **Gestión estelar:** una comunidad define primero qué desea conservar y observa indirectamente la estructura de la estrella; un pequeño ajuste heredado durante eras sostiene la emoción y la incertidumbre.
+- **Procesamiento de plasma:** el contenedor frío funciona como prueba final; cada etapa anterior identifica dónde terminan carga, energía, impurezas y calor.
+
+Las tres lecturas distinguen extracción natural e inducida, material exterior y composición profunda, evolución modelada y máquina operativa, y guiado magnético y enfriamiento real. Los mecanismos nombran campos eléctricos, trayectorias carga/masa, colisiones, recombinación, circuitos y radiadores. Las consecuencias planetarias y los límites energéticos acompañan la posibilidad industrial.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA Science para estructura y entorno solar; Scoggins y Kipping para respuestas evolutivas bajo tasas prescritas de extracción; Caplan para la relación entre star lifting y motores activos; NASA/JPL para operaciones electromagnéticas con iones; y NASA para control térmico espacial.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 69 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las tres lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La comprobación global de la maqueta se registra separadamente porque el museo conserva cambios locales ajenos a esta tanda.
+
+## Tanda 17 — Comprender y observar la ingeniería estelar
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Física estelar | B | 831 | Relaciona gravedad, presión, transporte energético, composición, observación y respuesta a intervenciones | Revisado y validado |
+| Navegación estelar | B | 753 | Sigue coordenadas, incertidumbre, integración galáctica, encuentro, órbitas acompañantes y corrección | Revisado y validado |
+| Tecnofirmas estelares | B | 819 | Conecta arquitecturas concretas con espectro, calor, flujos, astrometría y alternativas naturales | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Física estelar:** la superficie turbulenta conduce hacia capas que soportan peso y transportan energía; observaciones indirectas permiten reconstruir un interior que ninguna instalación puede tocar directamente.
+- **Navegación estelar:** dos regiones de probabilidad buscan una cita futura; el recorrido muestra por qué distancia mínima, velocidad relativa y conservación de órbitas son decisiones separadas.
+- **Tecnofirmas:** un punto de luz se abre en varias curvas; cada motor o colector debe predecir una combinación de calor, materia y movimiento que sobreviva a comparaciones con polvo, compañeras y actividad natural.
+
+Las lecturas mantienen diferenciadas propiedades naturales e intervención hipotética. El lector puede explicar el equilibrio estelar, el cálculo iterativo de una trayectoria galáctica y el paso de anomalía a hipótesis contrastable. Ninguna rareza se presenta como tecnología confirmada y ninguna consecuencia observable se convierte automáticamente en intención o sociedad.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA Science para estructura, evolución y observación estelar; Caplan para aceleraciones y arquitecturas de motores; Wright para balance térmico de infraestructuras Dyson; Scoggins y Kipping para evolución bajo star lifting; y fuentes SETI para metodología de búsqueda y descarte.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 72 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las tres lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- La comprobación global de la maqueta se registra separadamente porque el museo conserva cambios locales ajenos a esta tanda.
