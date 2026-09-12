@@ -406,10 +406,9 @@ export default function EscalaLogaritmica() {
             <div className="om-dossier-metrics">
               {(
                 [
-                  ['ENERGÍA', focused.concept.metrics.energia],
-                  ['MATERIALES', focused.concept.metrics.materiales],
-                  ['MADUREZ', focused.concept.metrics.madurez],
-                  ['MARAVILLA', focused.concept.metrics.maravilla],
+                  ['DEMANDA ENERGÉTICA', focused.concept.metrics.energia],
+                  ['DEMANDA MATERIAL', focused.concept.metrics.materiales],
+                  ['MADUREZ TECNOLÓGICA', focused.concept.metrics.madurez],
                 ] as [string, number][]
               ).map(([label, value]) => (
                 <div key={label} className="om-metric">

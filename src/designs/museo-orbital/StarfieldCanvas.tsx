@@ -738,9 +738,10 @@ export const StarfieldCanvas = ({
     // Sala de estudio abierta bajo el puntero: allí la estela usa capa superior
     let overStudio = false;
     let heroH = 0;
-    // Rects (viewport) de las imágenes: sobre ellas solo se dejan ver las
-    // constelaciones dibujadas con Mayús+clic; el resto se oculta tras la foto.
+    // Rects (viewport) de las imágenes y tarjetas de vitrina: las
+    // constelaciones se ocultan dentro de estas zonas protegidas.
     let imgRects: ViewRect[] = [];
+    let vitrineCardRects: ViewRect[] = [];
     let letterRects: ViewRect[] = [];
     let pgLetterRects: ViewRect[] = [];
     let textRects: PageTextRect[] = [];
@@ -1101,6 +1102,10 @@ export const StarfieldCanvas = ({
         const r = img.getBoundingClientRect();
         return { x: r.left, y: r.top, w: r.width, h: r.height };
       }).filter((r) => r.w > 4 && r.h > 4);
+      vitrineCardRects = Array.from(document.querySelectorAll('.mo-vitrina-card'), (card) => {
+        const r = card.getBoundingClientRect();
+        return { x: r.left, y: r.top, w: r.width, h: r.height };
+      }).filter((r) => r.w > 4 && r.h > 4);
       letterRects = Array.from(document.querySelectorAll('.mo-hero-letterbox'), (el) => {
         const r = el.getBoundingClientRect();
         return { x: r.left, y: r.top, w: r.width, h: r.height };
@@ -1137,6 +1142,16 @@ export const StarfieldCanvas = ({
         if (x >= r.x - 2 && x <= r.x + r.w + 2 && y >= r.y - 2 && y <= r.y + r.h + 2) return true;
       }
       return false;
+    };
+
+    const pointInVitrineCard = (x: number, y: number) => {
+      if (playgroundSceneRef.current !== 'museum') return false;
+      return vitrineCardRects.some((rect) => pointInRect(x, y, rect));
+    };
+
+    const segmentInVitrineCard = (x0: number, y0: number, x1: number, y1: number) => {
+      if (playgroundSceneRef.current !== 'museum') return false;
+      return vitrineCardRects.some((rect) => segmentRectEntry(x0, y0, x1, y1, rect, 2) !== null);
     };
 
     const resize = (reseedAmbient = true) => {
@@ -1669,7 +1684,9 @@ export const StarfieldCanvas = ({
       }
       if (playgroundRef.current && playgroundPhase !== 'active') return;
       const target = event.target as HTMLElement | null;
-      const interactive = Boolean(target?.closest('button, a, input, textarea, select, [contenteditable="true"]'));
+      const interactive = Boolean(target?.closest(
+        'button, a, input, textarea, select, [contenteditable="true"], [role="button"], [data-cursor]',
+      ));
       if (sandboxActive) {
         // En el lab las armas funcionan: supernova y cometa con clic cargado.
         if (SANDBOX_CLASSIC_EXPERIMENTS) labScatterSwarm(event.clientX, event.clientY);
@@ -3420,7 +3437,10 @@ export const StarfieldCanvas = ({
               if (d < 126) {
                 const midX = (drawn[i].x + drawn[j].x) / 2;
                 const midY = (drawn[i].y + drawn[j].y) / 2;
-                if (pointInImage(midX, midY)) continue;
+                if (
+                  pointInImage(midX, midY) ||
+                  segmentInVitrineCard(drawn[i].x, drawn[i].y, drawn[j].x, drawn[j].y)
+                ) continue;
                 degree.set(i, (degree.get(i) ?? 0) + 1);
                 degree.set(j, (degree.get(j) ?? 0) + 1);
                 const near = 1 - Math.min(1, Math.hypot(midX - mouse.x, midY - mouse.y) / 230);
@@ -3449,7 +3469,7 @@ export const StarfieldCanvas = ({
         if (!cursorConstellationOff) {
           const glowTint = mixRGB(sampleStops(AURORA, (time * 0.08) % 1), [250, 244, 224], 0.3);
           for (const node of drawn) {
-            if (pointInImage(node.x, node.y)) continue;
+            if (pointInImage(node.x, node.y) || pointInVitrineCard(node.x, node.y)) continue;
             const pulse = 0.75 + 0.25 * Math.sin(time * 2.2 + node.x);
             fxCtx.fillStyle = `rgba(${glowTint[0]},${glowTint[1]},${glowTint[2]},${(
               0.42 *
@@ -3509,7 +3529,10 @@ export const StarfieldCanvas = ({
             const ay = anchorY + c.nodes[a].oy * sceneDepthScale;
             const bx = anchorX + c.nodes[b].ox * sceneDepthScale;
             const by = anchorY + c.nodes[b].oy * sceneDepthScale;
-            if (pointInImage((ax + bx) / 2, (ay + by) / 2)) continue;
+            if (
+              pointInImage((ax + bx) / 2, (ay + by) / 2) ||
+              segmentInVitrineCard(ax, ay, bx, by)
+            ) continue;
             fxCtx.strokeStyle = `rgba(${tint[0]},${tint[1]},${tint[2]},${(alpha * 0.45).toFixed(3)})`;
             fxCtx.lineWidth = 3;
             fxCtx.beginPath();
@@ -3526,7 +3549,7 @@ export const StarfieldCanvas = ({
           for (const node of c.nodes) {
             const nx = anchorX + node.ox * sceneDepthScale;
             const ny = anchorY + node.oy * sceneDepthScale;
-            if (pointInImage(nx, ny)) continue;
+            if (pointInImage(nx, ny) || pointInVitrineCard(nx, ny)) continue;
             const twinkle = 0.7 + 0.3 * Math.sin(time * 1.6 + node.phase);
             const halo = fxCtx.createRadialGradient(nx, ny, 0, nx, ny, 9);
             halo.addColorStop(0, `rgba(${tint[0]},${tint[1]},${tint[2]},${(alpha * twinkle * 0.55).toFixed(3)})`);

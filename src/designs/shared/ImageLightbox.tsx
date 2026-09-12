@@ -76,7 +76,13 @@ export function ImageLightbox({ image, onClose, onPrevious, onNext }: ImageLight
                   <span aria-hidden="true">‹</span>
                 </button>
               )}
-              <img src={image.src} alt={image.alt} draggable={false} />
+              <img
+                src={image.src}
+                alt={image.alt}
+                draggable={false}
+                onDoubleClick={onClose}
+                title="Doble clic para cerrar"
+              />
               {onNext && (
                 <button
                   type="button"

@@ -17,6 +17,14 @@ try {
     const { default: articles } = await server.ssrLoadModule(`/src/data/articles/chapters/${chapter.id}.ts`);
     assert.deepEqual(articles.map(item => item.id).sort(), chapter.concepts.map(item => item.id).sort(), `Coverage: ${chapter.id}`);
     for (const concept of chapter.concepts) {
+      assert.deepEqual(
+        Object.keys(concept.metrics).sort(),
+        ['energia', 'madurez', 'materiales'],
+        `Metric profile keys: ${concept.id}`,
+      );
+      Object.entries(concept.metrics).forEach(([key, value]) => {
+        assert(Number.isInteger(value) && value >= 1 && value <= 5, `Invalid metric ${key}: ${concept.id}/${value}`);
+      });
       const item = await loadArticle(chapter.id, concept.id);
       const variants = getConceptImageVariants(concept);
       assert(!seen.has(item.id), `Duplicate id: ${item.id}`);

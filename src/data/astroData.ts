@@ -192,15 +192,6 @@ const concept = (
     difficulties,
     related,
     ...visualProfile,
-    model3d:
-      id === 'oneill-cylinder'
-        ? {
-            kind: 'oneill-cylinder',
-            label: 'Modelo 3D',
-            caption:
-              'Corte interactivo del cilindro: casco exterior, espejos solares, radiadores y franjas habitables internas.',
-          } as const
-        : undefined,
     metrics,
     sources: conceptSources,
   };
@@ -795,7 +786,7 @@ const createVisualProfile = ({
     {
       id: `${id}-escala`,
       x: 31 + (hotspotSeed % 12),
-      y: 68 - (metrics.maravilla % 3) * 8,
+      y: 68 - (hotspotSeed % 3) * 8,
       title: 'Lectura de escala',
       description: summary,
       layer: 'escala' as VisualLayerId,
@@ -858,7 +849,7 @@ const introConcepts = [
     ['Ordena ideas enormes en escalas comprensibles', 'Conecta tecnología real con fronteras especulativas'],
     ['Muchas propuestas dependen de materiales y economías aún inexistentes', 'Es fácil mezclar plausibilidad con espectáculo'],
     ['kardashev', 'dyson-swarm', 'oneill-cylinder'],
-    { energia: 5, materiales: 5, madurez: 3, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 3 },
   ),
   concept(
     'intro',
@@ -874,7 +865,7 @@ const introConcepts = [
     ['Da una métrica sencilla para comparar ambiciones', 'Explica por qué la energía estelar cambia todo'],
     ['No describe política, biología ni calidad de vida', 'Puede simplificar demasiado civilizaciones complejas'],
     ['dyson-swarm', 'tipo-iii', 'technosignatures'],
-    { energia: 5, materiales: 3, madurez: 3, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 5 },
     [sources.nasaTechnosignatures],
   ),
   concept(
@@ -891,7 +882,7 @@ const introConcepts = [
     ['Reduce problemas de salud de microgravedad', 'Permite mundos interiores con arquitectura estable'],
     ['Requiere estructuras grandes y balanceadas', 'Los radios pequeños generan efectos sensoriales incómodos'],
     ['stanford-torus', 'oneill-cylinder', 'bernal-sphere'],
-    { energia: 2, materiales: 4, madurez: 3, maravilla: 4 },
+    { energia: 2, materiales: 4, madurez: 3 },
     [sources.nasaSettlements],
   ),
 ];
@@ -911,7 +902,7 @@ const habitatConcepts = [
     ['Tecnología probada', 'Aprendizaje continuo sobre vida fuera de la Tierra'],
     ['No tienen gravedad artificial', 'Dependen de reabastecimiento y mantenimiento intensivo'],
     ['artificial-gravity', 'orbital-ports', 'life-support'],
-    { energia: 2, materiales: 2, madurez: 5, maravilla: 3 },
+    { energia: 2, materiales: 2, madurez: 5 },
     [sources.nasaIss],
   ),
   concept(
@@ -928,7 +919,7 @@ const habitatConcepts = [
     ['Geometría compacta', 'Buena introducción a mundos artificiales'],
     ['Escala industrial grande', 'Distribución compleja de gravedad y luz'],
     ['stanford-torus', 'oneill-cylinder', 'life-support'],
-    { energia: 3, materiales: 4, madurez: 2, maravilla: 4 },
+    { energia: 3, materiales: 4, madurez: 2 },
     [sources.nasaSettlements],
   ),
   concept(
@@ -945,7 +936,7 @@ const habitatConcepts = [
     ['Forma intuitiva', 'Buen equilibrio entre escala, luz y estructura'],
     ['Necesita construcción espacial masiva', 'Debe gestionar radiación, impactos y mantenimiento'],
     ['bernal-sphere', 'oneill-cylinder', 'bishop-ring'],
-    { energia: 3, materiales: 4, madurez: 2, maravilla: 5 },
+    { energia: 3, materiales: 4, madurez: 2 },
     [sources.nasaSettlements],
   ),
   concept(
@@ -962,7 +953,7 @@ const habitatConcepts = [
     ['Enorme área habitable', 'Permite clima, agricultura y ciudades interiores'],
     ['Requiere materiales y ensamblaje orbital gigantescos', 'La ecología cerrada sería difícil de estabilizar'],
     ['stanford-torus', 'mckendree-cylinder', 'dyson-swarm'],
-    { energia: 4, materiales: 5, madurez: 2, maravilla: 5 },
+    { energia: 4, materiales: 5, madurez: 2 },
     [sources.nasaSettlements],
   ),
   concept(
@@ -979,7 +970,7 @@ const habitatConcepts = [
     ['Área colosal', 'Paisajes más cercanos a una geografía planetaria'],
     ['Materiales de resistencia extrema', 'Control atmosférico y estructural muy exigente'],
     ['mckendree-cylinder', 'oneill-cylinder', 'ringworld'],
-    { energia: 4, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 4, materiales: 5, madurez: 1 },
   ),
   concept(
     'habitats',
@@ -995,7 +986,7 @@ const habitatConcepts = [
     ['Superficie habitable enorme', 'Marco útil para pensar en límites de materiales'],
     ['Depende de nanotecnología o materiales no disponibles', 'Construcción y seguridad serían descomunales'],
     ['oneill-cylinder', 'bishop-ring', 'computronium'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'habitats',
@@ -1011,7 +1002,7 @@ const habitatConcepts = [
     ['Blindaje natural', 'Acceso local a materiales'],
     ['Geología irregular', 'Rotación, estabilidad y sellado difíciles'],
     ['asteroid-mining', 'isru', 'life-support'],
-    { energia: 3, materiales: 4, madurez: 2, maravilla: 4 },
+    { energia: 3, materiales: 4, madurez: 2 },
   ),
   concept(
     'habitats',
@@ -1027,7 +1018,7 @@ const habitatConcepts = [
     ['Permite viajes interestelares sin velocidades relativistas extremas', 'Integra colonización y preservación cultural'],
     ['Ecosistemas y sociedades cerradas por siglos', 'Propulsión, mantenimiento y legitimidad política complejas'],
     ['fusion-propulsion', 'seed-ships', 'civilizaciones-silenciosas'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'habitats',
@@ -1043,7 +1034,7 @@ const habitatConcepts = [
     ['Reduce dependencia logística', 'Hace posible permanencia real'],
     ['La estabilidad ecológica cerrada es frágil', 'Fallas pequeñas pueden escalar rápido'],
     ['iss', 'oneill-cylinder', 'terraforming'],
-    { energia: 3, materiales: 3, madurez: 3, maravilla: 3 },
+    { energia: 3, materiales: 3, madurez: 4 },
     [sources.nasaIss],
   ),
 ];
@@ -1063,7 +1054,7 @@ const infrastructureConcepts = [
     ['Baja costos', 'Aumenta cadencia y aprendizaje'],
     ['Sigue siendo energéticamente intenso', 'No elimina todos los límites de masa'],
     ['orbital-ports', 'fuel-depots', 'space-elevator'],
-    { energia: 3, materiales: 3, madurez: 5, maravilla: 3 },
+    { energia: 3, materiales: 3, madurez: 5 },
   ),
   concept(
     'infrastructure',
@@ -1079,7 +1070,7 @@ const infrastructureConcepts = [
     ['Reduce complejidad de misiones', 'Habilita economía cislunar'],
     ['Necesita tráfico suficiente para justificarse', 'Gestión de seguridad orbital compleja'],
     ['fuel-depots', 'shipyards', 'lunar-bases'],
-    { energia: 3, materiales: 3, madurez: 3, maravilla: 4 },
+    { energia: 3, materiales: 3, madurez: 3 },
   ),
   concept(
     'infrastructure',
@@ -1095,7 +1086,7 @@ const infrastructureConcepts = [
     ['Aumenta alcance de misiones', 'Apoya transporte reutilizable profundo'],
     ['Manejo criogénico difícil', 'Requiere cadena de suministro estable'],
     ['isru', 'lunar-bases', 'nuclear-thermal'],
-    { energia: 3, materiales: 3, madurez: 3, maravilla: 3 },
+    { energia: 3, materiales: 3, madurez: 3 },
   ),
   concept(
     'infrastructure',
@@ -1111,7 +1102,7 @@ const infrastructureConcepts = [
     ['Proximidad a la Tierra', 'Recursos y baja gravedad útiles'],
     ['Noche lunar larga', 'Polvo abrasivo, radiación y logística exigentes'],
     ['isru', 'mass-driver', 'orbital-ports'],
-    { energia: 3, materiales: 4, madurez: 3, maravilla: 4 },
+    { energia: 3, materiales: 4, madurez: 3 },
     [sources.nasaIsru],
   ),
   concept(
@@ -1128,7 +1119,7 @@ const infrastructureConcepts = [
     ['Reduce masa lanzada', 'Crea cadenas industriales fuera de la Tierra'],
     ['Recursos dispersos o inciertos', 'Maquinaria debe sobrevivir entornos hostiles'],
     ['lunar-bases', 'asteroid-mining', 'fuel-depots'],
-    { energia: 4, materiales: 4, madurez: 3, maravilla: 4 },
+    { energia: 4, materiales: 4, madurez: 3 },
     [sources.nasaIsru],
   ),
   concept(
@@ -1145,7 +1136,7 @@ const infrastructureConcepts = [
     ['Evita subir todos los materiales desde la Tierra', 'Conecta energía, hábitats y construcción'],
     ['Economía incierta', 'Anclaje, polvo y procesamiento en microgravedad son difíciles'],
     ['isru', 'asteroid-habitat', 'dyson-swarm'],
-    { energia: 4, materiales: 5, madurez: 2, maravilla: 4 },
+    { energia: 4, materiales: 5, madurez: 2 },
   ),
   concept(
     'infrastructure',
@@ -1161,7 +1152,7 @@ const infrastructureConcepts = [
     ['Podría reducir mucho costos de acceso', 'Permite flujo continuo de carga'],
     ['Materiales con resistencia específica extrema', 'Riesgos de impacto, clima, seguridad y rotura'],
     ['skyhook', 'orbital-ring', 'launch-loop'],
-    { energia: 3, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 3, materiales: 5, madurez: 1 },
   ),
   concept(
     'infrastructure',
@@ -1177,7 +1168,7 @@ const infrastructureConcepts = [
     ['Menos exigente que ascensor completo', 'Puede acelerar tráfico cislunar'],
     ['Sincronización delicada', 'Pérdida de momento requiere reboost constante'],
     ['tethers', 'orbital-ring', 'mass-driver'],
-    { energia: 3, materiales: 4, madurez: 2, maravilla: 4 },
+    { energia: 3, materiales: 4, madurez: 2 },
   ),
   concept(
     'infrastructure',
@@ -1193,7 +1184,7 @@ const infrastructureConcepts = [
     ['Concepto flexible', 'Algunas variantes ya han sido probadas experimentalmente'],
     ['Dinámica compleja', 'Vulnerables a impactos y vibraciones'],
     ['skyhook', 'orbital-ring', 'mass-driver'],
-    { energia: 2, materiales: 3, madurez: 3, maravilla: 3 },
+    { energia: 2, materiales: 3, madurez: 3 },
   ),
   concept(
     'infrastructure',
@@ -1209,7 +1200,7 @@ const infrastructureConcepts = [
     ['Capacidad masiva de acceso y transporte', 'Conecta superficie, órbita y economía planetaria'],
     ['Ingeniería, seguridad y política planetaria extremas', 'Fallo catastrófico de gran escala'],
     ['space-elevator', 'launch-loop', 'mass-driver'],
-    { energia: 4, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 4, materiales: 5, madurez: 1 },
   ),
   concept(
     'infrastructure',
@@ -1225,7 +1216,7 @@ const infrastructureConcepts = [
     ['Evita parte del problema de materiales del ascensor', 'Puede lanzar masa con alta cadencia'],
     ['Control dinámico extremo', 'Requiere energía, seguridad y ubicación enormes'],
     ['orbital-ring', 'mass-driver', 'reusable-launch'],
-    { energia: 4, materiales: 5, madurez: 1, maravilla: 4 },
+    { energia: 4, materiales: 5, madurez: 1 },
   ),
   concept(
     'infrastructure',
@@ -1241,7 +1232,7 @@ const infrastructureConcepts = [
     ['Útil para materiales no tripulados', 'Conecta minería con construcción orbital'],
     ['Aceleraciones altas', 'Precisión orbital y energía significativas'],
     ['lunar-bases', 'isru', 'asteroid-mining'],
-    { energia: 3, materiales: 3, madurez: 3, maravilla: 4 },
+    { energia: 3, materiales: 3, madurez: 3 },
   ),
   concept(
     'infrastructure',
@@ -1257,7 +1248,7 @@ const infrastructureConcepts = [
     ['Libera diseños de cofia y vibración de lanzamiento', 'Habilita reparación y crecimiento modular'],
     ['Requiere cadena industrial orbital', 'Calidad y seguridad difíciles en vacío y radiación'],
     ['orbital-ports', 'isru', 'oneill-cylinder'],
-    { energia: 4, materiales: 5, madurez: 2, maravilla: 4 },
+    { energia: 4, materiales: 5, madurez: 2 },
   ),
 ];
 
@@ -1276,7 +1267,7 @@ const energyConcepts = [
     ['Energía continua', 'Escala naturalmente hacia infraestructura orbital'],
     ['Transmisión, seguridad, costo y mantenimiento', 'Radiadores y gestión térmica limitan potencia útil'],
     ['microwave-power', 'dyson-swarm', 'radiators'],
-    { energia: 4, materiales: 4, madurez: 3, maravilla: 4 },
+    { energia: 4, materiales: 4, madurez: 3 },
     [sources.nasaSbsp],
   ),
   concept(
@@ -1293,7 +1284,7 @@ const energyConcepts = [
     ['Permite redes energéticas orbitales', 'Puede alimentar propulsión por haces'],
     ['Seguridad, dispersión, clima y precisión', 'Eficiencia total y regulación complejas'],
     ['space-based-solar', 'beamed-propulsion', 'laser-sail'],
-    { energia: 4, materiales: 3, madurez: 3, maravilla: 4 },
+    { energia: 4, materiales: 3, madurez: 3 },
     [sources.nasaSbsp],
   ),
   concept(
@@ -1310,7 +1301,7 @@ const energyConcepts = [
     ['Conecta ingeniería con detección astronómica', 'Aterriza límites físicos de megaestructuras'],
     ['Radiadores enormes pueden dominar el diseño', 'Ocultar calor residual es físicamente difícil'],
     ['technosignatures', 'dyson-swarm', 'matrioshka-brain'],
-    { energia: 4, materiales: 4, madurez: 5, maravilla: 4 },
+    { energia: 2, materiales: 2, madurez: 5 },
     [sources.nasaTechnosignatures],
   ),
   concept(
@@ -1327,7 +1318,7 @@ const energyConcepts = [
     ['Escalable por etapas', 'Conduce a civilización Tipo II'],
     ['Control orbital, colisiones, minería y mantenimiento extremos', 'Calor residual detectable'],
     ['dyson-shell', 'dyson-bubble', 'technosignatures'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
     [sources.nasaTechnosignatures, sources.setiTechnosignatures],
   ),
   concept(
@@ -1344,7 +1335,7 @@ const energyConcepts = [
     ['Imagen icónica', 'Sirve para discutir límites de materiales y estabilidad'],
     ['Inestable y materialmente extrema', 'Gestión térmica casi inimaginable'],
     ['dyson-swarm', 'dyson-bubble', 'matrioshka-brain'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'energy',
@@ -1360,7 +1351,7 @@ const energyConcepts = [
     ['No requiere órbitas rápidas tradicionales', 'Conecta energía con navegación solar'],
     ['Materiales ultraligeros', 'Control de orientación y degradación constante'],
     ['dyson-swarm', 'solar-sail', 'space-based-solar'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'energy',
@@ -1376,7 +1367,7 @@ const energyConcepts = [
     ['Etapas intermedias creíbles', 'Menor material inicial que un enjambre completo'],
     ['Aún requiere coordinación orbital enorme', 'Puede proyectar sombras y perturbaciones complejas'],
     ['dyson-swarm', 'space-based-solar', 'technosignatures'],
-    { energia: 5, materiales: 4, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 4, madurez: 1 },
   ),
   concept(
     'energy',
@@ -1392,7 +1383,7 @@ const energyConcepts = [
     ['Aprovechamiento energético extremo', 'Conecta IA, termodinámica y civilizaciones postbiológicas'],
     ['Enorme disipación térmica', 'Depende de computación, materiales y control orbital extremos'],
     ['jupiter-brain', 'computronium', 'civilizaciones-digitales'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'energy',
@@ -1408,7 +1399,7 @@ const energyConcepts = [
     ['Modelo poderoso de civilización digital', 'Permite explorar límites de cómputo físico'],
     ['No sabemos construir computronium', 'Latencia, calor y gobernanza de mentes digitales'],
     ['matrioshka-brain', 'computronium', 'postbiological'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'energy',
@@ -1424,7 +1415,7 @@ const energyConcepts = [
     ['Lenguaje común para civilizaciones digitales', 'Conecta recursos, energía y mente'],
     ['Concepto amplio y poco definido', 'Los límites físicos reales son duros'],
     ['jupiter-brain', 'matrioshka-brain', 'radiators'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 4 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
 ];
 
@@ -1443,7 +1434,7 @@ const propulsionConcepts = [
     ['Alto empuje', 'Tecnología madura'],
     ['Impulso específico limitado', 'Gran parte de la masa inicial es propelente'],
     ['reusable-launch', 'nuclear-thermal', 'ion-engines'],
-    { energia: 3, materiales: 2, madurez: 5, maravilla: 3 },
+    { energia: 3, materiales: 2, madurez: 5 },
   ),
   concept(
     'propulsion',
@@ -1459,7 +1450,7 @@ const propulsionConcepts = [
     ['Muy eficientes', 'Ideales para sondas y maniobras prolongadas'],
     ['Empuje bajo', 'Necesitan energía eléctrica constante'],
     ['hall-thruster', 'solar-electric', 'nuclear-electric'],
-    { energia: 2, materiales: 2, madurez: 5, maravilla: 3 },
+    { energia: 2, materiales: 2, madurez: 5 },
     [sources.nasaSep],
   ),
   concept(
@@ -1476,7 +1467,7 @@ const propulsionConcepts = [
     ['Maduros en satélites', 'Buen equilibrio entre eficiencia y empuje eléctrico'],
     ['Limitados por potencia disponible', 'Erosión y vida útil del motor'],
     ['ion-engines', 'solar-electric', 'nuclear-electric'],
-    { energia: 2, materiales: 2, madurez: 5, maravilla: 3 },
+    { energia: 2, materiales: 2, madurez: 5 },
     [sources.nasaSep],
   ),
   concept(
@@ -1493,7 +1484,7 @@ const propulsionConcepts = [
     ['No necesita reactor', 'Escalable para carga interplanetaria'],
     ['Potencia cae lejos del Sol', 'Grandes paneles y baja aceleración'],
     ['ion-engines', 'space-based-solar', 'beamed-propulsion'],
-    { energia: 3, materiales: 3, madurez: 4, maravilla: 3 },
+    { energia: 3, materiales: 3, madurez: 4 },
     [sources.nasaSep],
   ),
   concept(
@@ -1510,7 +1501,7 @@ const propulsionConcepts = [
     ['Mejor rendimiento que química', 'Empuje mayor que propulsión eléctrica'],
     ['Seguridad nuclear y materiales calientes', 'Desarrollo y regulación complejos'],
     ['nuclear-electric', 'mars-terraforming', 'fuel-depots'],
-    { energia: 4, materiales: 4, madurez: 3, maravilla: 4 },
+    { energia: 4, materiales: 4, madurez: 3 },
     [sources.nasaNuclear],
   ),
   concept(
@@ -1527,7 +1518,7 @@ const propulsionConcepts = [
     ['Funciona lejos del Sol', 'Alta eficiencia para carga y misiones profundas'],
     ['Radiadores grandes', 'Complejidad nuclear y conversión energética'],
     ['ion-engines', 'hall-thruster', 'nuclear-thermal'],
-    { energia: 4, materiales: 4, madurez: 3, maravilla: 4 },
+    { energia: 4, materiales: 4, madurez: 3 },
     [sources.nasaNuclear],
   ),
   concept(
@@ -1544,7 +1535,7 @@ const propulsionConcepts = [
     ['Sin combustible', 'Misiones largas y elegantes'],
     ['Empuje muy bajo', 'Requiere velas enormes y control preciso'],
     ['laser-sail', 'dyson-bubble', 'statites'],
-    { energia: 2, materiales: 3, madurez: 4, maravilla: 4 },
+    { energia: 2, materiales: 3, madurez: 4 },
   ),
   concept(
     'propulsion',
@@ -1560,7 +1551,7 @@ const propulsionConcepts = [
     ['No lleva propelente', 'Permite velocidades muy altas para sondas pequeñas'],
     ['Infraestructura láser enorme', 'Puntería, disipación y frenado interestelar'],
     ['beamed-propulsion', 'solar-sail', 'relativistic-propulsion'],
-    { energia: 5, materiales: 4, madurez: 2, maravilla: 5 },
+    { energia: 5, materiales: 4, madurez: 2 },
   ),
   concept(
     'propulsion',
@@ -1576,7 +1567,7 @@ const propulsionConcepts = [
     ['Reduce masa de la nave', 'Conecta transporte con redes energéticas'],
     ['Dependencia de infraestructura', 'Riesgos de alineación y seguridad'],
     ['laser-sail', 'microwave-power', 'space-based-solar'],
-    { energia: 5, materiales: 4, madurez: 2, maravilla: 4 },
+    { energia: 5, materiales: 4, madurez: 2 },
   ),
   concept(
     'propulsion',
@@ -1592,7 +1583,7 @@ const propulsionConcepts = [
     ['Podría ayudar a frenar naves interestelares', 'No requiere propelente tradicional'],
     ['Campos enormes', 'Medio interestelar tenue y variable'],
     ['electric-sail', 'interstellar-braking', 'fusion-propulsion'],
-    { energia: 4, materiales: 4, madurez: 2, maravilla: 4 },
+    { energia: 4, materiales: 4, madurez: 2 },
   ),
   concept(
     'propulsion',
@@ -1608,7 +1599,7 @@ const propulsionConcepts = [
     ['Sin propelente', 'Arquitectura liviana para el sistema solar'],
     ['Empuje dependiente del viento solar', 'Despliegue y control de cables largos'],
     ['magnetic-sail', 'solar-sail', 'tethers'],
-    { energia: 3, materiales: 4, madurez: 2, maravilla: 4 },
+    { energia: 3, materiales: 4, madurez: 2 },
   ),
   concept(
     'propulsion',
@@ -1624,7 +1615,7 @@ const propulsionConcepts = [
     ['Alto empuje y alta energía', 'Podría mover masas enormes'],
     ['Tratados, contaminación y riesgos extremos', 'Ingeniería de choques repetidos'],
     ['fusion-propulsion', 'antimatter', 'worldship'],
-    { energia: 5, materiales: 4, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 4, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1640,7 +1631,7 @@ const propulsionConcepts = [
     ['Alta energía específica', 'Compatible con misiones interestelares lentas o rápidas'],
     ['Fusión controlada compacta no resuelta', 'Materiales, radiación y combustible'],
     ['worldship', 'magnetic-sail', 'relativistic-propulsion'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1656,7 +1647,7 @@ const propulsionConcepts = [
     ['Densidad energética enorme', 'Útil para imaginar misiones relativistas'],
     ['Producción minúscula y carísima', 'Almacenamiento y seguridad extremos'],
     ['fusion-propulsion', 'relativistic-propulsion', 'photon-rocket'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1672,7 +1663,7 @@ const propulsionConcepts = [
     ['No cargar todo el combustible', 'Concepto clásico de viaje interestelar'],
     ['Densidad interestelar baja', 'Arrastre y recolección pueden superar beneficios'],
     ['fusion-propulsion', 'magnetic-sail', 'interstellar-braking'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1688,7 +1679,7 @@ const propulsionConcepts = [
     ['Reduce tiempos interestelares', 'Hace plausible exploración entre estrellas cercanas'],
     ['Energía, polvo, radiación y frenado', 'Errores minúsculos se vuelven catastróficos'],
     ['laser-sail', 'fusion-propulsion', 'interstellar-braking'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1704,7 +1695,7 @@ const propulsionConcepts = [
     ['Hace misiones interestelares útiles', 'Se integra con velas y campos magnéticos'],
     ['Requiere planificación desde el origen', 'Energía y masa de frenado penalizan el viaje'],
     ['magnetic-sail', 'relativistic-propulsion', 'worldship'],
-    { energia: 5, materiales: 4, madurez: 1, maravilla: 4 },
+    { energia: 5, materiales: 4, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1720,7 +1711,7 @@ const propulsionConcepts = [
     ['Objeto conceptual fascinante', 'Ayuda a distinguir física matemática de ingeniería'],
     ['No hay energía exótica utilizable', 'Problemas enormes de causalidad, estabilidad y creación de burbuja'],
     ['wormholes', 'reactionless', 'relativistic-propulsion'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1736,7 +1727,7 @@ const propulsionConcepts = [
     ['Marco visual potente', 'Permite discutir causalidad y geometría del espacio-tiempo'],
     ['Sin evidencia tecnológica', 'Energía exótica y paradojas'],
     ['alcubierre', 'reactionless', 'civilizaciones-galacticas'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'propulsion',
@@ -1752,7 +1743,7 @@ const propulsionConcepts = [
     ['Ayuda a separar ciencia dura de deseo tecnológico', 'Caso didáctico sobre evidencia experimental'],
     ['Viola principios básicos salvo nueva física confirmada', 'Historial de resultados no reproducidos'],
     ['alcubierre', 'wormholes', 'chemical-rockets'],
-    { energia: 1, materiales: 1, madurez: 1, maravilla: 2 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
 ];
 
@@ -1771,7 +1762,7 @@ const planetaryConcepts = [
     ['Base para comparar mundos', 'Conecta astrobiología y terraformación'],
     ['No hay una receta única', 'La vida puede ampliar o romper criterios simples'],
     ['habitable-zone', 'terraforming', 'exoplanets'],
-    { energia: 2, materiales: 2, madurez: 5, maravilla: 4 },
+    { energia: 1, materiales: 1, madurez: 5 },
     [sources.nasaExoplanets],
   ),
   concept(
@@ -1788,7 +1779,7 @@ const planetaryConcepts = [
     ['Herramienta clara para estudiar exoplanetas', 'Conecta estrellas y climas'],
     ['Simplifica atmósferas y geología', 'Mundos habitables pueden estar fuera de la zona clásica'],
     ['habitability', 'exoplanets', 'terraforming'],
-    { energia: 2, materiales: 1, madurez: 5, maravilla: 4 },
+    { energia: 2, materiales: 1, madurez: 5 },
     [sources.nasaExoplanets],
   ),
   concept(
@@ -1805,7 +1796,7 @@ const planetaryConcepts = [
     ['Transforma mundos enteros', 'Obliga a pensar en ecología de largo plazo'],
     ['Escalas temporales y energéticas enormes', 'Ética, protección planetaria y reversibilidad'],
     ['mars-terraforming', 'venus-terraforming', 'ecopoiesis'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'planetary',
@@ -1821,7 +1812,7 @@ const planetaryConcepts = [
     ['Mundo cercano y estudiado', 'Día, hielo y geología lo hacen atractivo'],
     ['Atmósfera delgada, radiación y pérdida atmosférica', 'CO2 disponible probablemente insuficiente para terraformación simple'],
     ['terraforming', 'magnetosphere', 'domed-cities'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
     [sources.nasaMarsAtmosphere],
   ),
   concept(
@@ -1838,7 +1829,7 @@ const planetaryConcepts = [
     ['Gravedad parecida a la Tierra', 'Atmósfera superior relativamente atractiva para flotación'],
     ['Temperatura, presión y falta de agua extremas', 'Escala energética abrumadora'],
     ['floating-venus', 'sunshades', 'terraforming'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'planetary',
@@ -1854,7 +1845,7 @@ const planetaryConcepts = [
     ['Evita la superficie hostil', 'Aprovecha atmósfera densa y luz solar'],
     ['Ácido sulfúrico, logística y aislamiento', 'Mantenimiento difícil en una atmósfera agresiva'],
     ['venus-terraforming', 'domed-cities', 'worldhouse'],
-    { energia: 4, materiales: 4, madurez: 2, maravilla: 5 },
+    { energia: 4, materiales: 4, madurez: 2 },
   ),
   concept(
     'planetary',
@@ -1870,7 +1861,7 @@ const planetaryConcepts = [
     ['Más incremental que terraformar todo', 'Compatible con ciencia y protección de regiones externas'],
     ['Estructuras enormes', 'Fallas de sellado o clima local pueden ser graves'],
     ['worldhouse', 'domed-cities', 'mars-terraforming'],
-    { energia: 4, materiales: 5, madurez: 2, maravilla: 4 },
+    { energia: 4, materiales: 5, madurez: 2 },
   ),
   concept(
     'planetary',
@@ -1886,7 +1877,7 @@ const planetaryConcepts = [
     ['Permite superficies amplias habitables', 'Reduce necesidad de cambiar todo el planeta'],
     ['Materiales y mantenimiento gigantescos', 'Impactos, polvo, tensión y política territorial'],
     ['paraterraforming', 'domed-cities', 'mars-terraforming'],
-    { energia: 4, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 4, materiales: 5, madurez: 1 },
   ),
   concept(
     'planetary',
@@ -1902,7 +1893,7 @@ const planetaryConcepts = [
     ['Incrementales y comprensibles', 'Más realistas que terraformación total'],
     ['Dependencia tecnológica continua', 'Espacio limitado y riesgo de falla ambiental'],
     ['lunar-bases', 'paraterraforming', 'life-support'],
-    { energia: 3, materiales: 4, madurez: 3, maravilla: 4 },
+    { energia: 3, materiales: 4, madurez: 3 },
   ),
   concept(
     'planetary',
@@ -1918,7 +1909,7 @@ const planetaryConcepts = [
     ['Control energético directo', 'Útiles para terraformación y bases polares'],
     ['Puntería, estabilidad y riesgos climáticos', 'Impactos políticos de modificar luz planetaria'],
     ['mars-terraforming', 'sunshades', 'space-based-solar'],
-    { energia: 4, materiales: 4, madurez: 2, maravilla: 4 },
+    { energia: 4, materiales: 4, madurez: 2 },
   ),
   concept(
     'planetary',
@@ -1934,7 +1925,7 @@ const planetaryConcepts = [
     ['Herramienta para Venus o geoingeniería extrema', 'Puede ser gradual y controlable'],
     ['Estructuras enormes', 'Riesgos climáticos, geopolíticos y de mantenimiento'],
     ['venus-terraforming', 'orbital-mirrors', 'dyson-bubble'],
-    { energia: 4, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 4, materiales: 5, madurez: 1 },
   ),
   concept(
     'planetary',
@@ -1950,7 +1941,7 @@ const planetaryConcepts = [
     ['Puede resolver déficits químicos', 'Conecta minería y terraformación'],
     ['Riesgo de impactos', 'Escalas de masa y navegación enormes'],
     ['asteroid-mining', 'mars-terraforming', 'comet-diversion'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'planetary',
@@ -1966,7 +1957,7 @@ const planetaryConcepts = [
     ['Protección atmosférica y superficial', 'Complementa terraformación de Marte'],
     ['Energía y escala de campo enormes', 'Interacción plasma-campo compleja'],
     ['mars-terraforming', 'star-wind', 'radiation'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'planetary',
@@ -1982,7 +1973,7 @@ const planetaryConcepts = [
     ['Hace visible la terraformación como proceso biológico', 'Puede ser gradual y medible'],
     ['Riesgos de contaminación irreversible', 'Ética si existe vida nativa'],
     ['planetary-protection', 'terraforming', 'habitability'],
-    { energia: 3, materiales: 3, madurez: 2, maravilla: 4 },
+    { energia: 3, materiales: 3, madurez: 2 },
   ),
   concept(
     'planetary',
@@ -1998,7 +1989,7 @@ const planetaryConcepts = [
     ['Protege ciencia y biosferas potenciales', 'Introduce responsabilidad antes de expansión'],
     ['Puede tensionar intereses de colonización', 'Dificulta misiones en zonas prometedoras'],
     ['ecopoiesis', 'terraforming', 'exoplanets'],
-    { energia: 1, materiales: 1, madurez: 5, maravilla: 3 },
+    { energia: 2, materiales: 2, madurez: 5 },
   ),
 ];
 
@@ -2017,7 +2008,7 @@ const stellarConcepts = [
     ['Base real para ingeniería estelar', 'Conecta clima planetario y energía estelar'],
     ['Escalas y energías fuera de toda industria actual', 'Modelos complejos e incertidumbre alta'],
     ['star-lifting', 'stellar-engines', 'stellar-husbandry'],
-    { energia: 5, materiales: 4, madurez: 5, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 5 },
   ),
   concept(
     'stellar',
@@ -2033,7 +2024,7 @@ const stellarConcepts = [
     ['Protección ante amenazas cósmicas', 'Expansión galáctica con planetas incluidos'],
     ['Tiempos enormes', 'Riesgos sobre planetas, órbitas y estabilidad estelar'],
     ['shkadov', 'caplan', 'stellar-navigation'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2049,7 +2040,7 @@ const stellarConcepts = [
     ['Conceptualmente simple', 'No necesita extraer masa estelar'],
     ['Empuje muy bajo', 'Construcción y estabilidad del espejo enormes'],
     ['caplan', 'stellar-engines', 'dyson-swarm'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2065,7 +2056,7 @@ const stellarConcepts = [
     ['Empuje mayor', 'Permite dirección y control más activo'],
     ['Star lifting, fusión y control de plasma extremos', 'Riesgo directo sobre la estrella y su sistema'],
     ['shkadov', 'star-lifting', 'stellar-navigation'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2081,7 +2072,7 @@ const stellarConcepts = [
     ['Material casi ilimitado', 'Podría alargar o modificar vida estelar'],
     ['Control de plasma extremo', 'Energía, radiación y seguridad monumentales'],
     ['caplan', 'stellar-husbandry', 'plasma-processing'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2097,7 +2088,7 @@ const stellarConcepts = [
     ['Extiende habitabilidad temporal', 'Conecta supervivencia con astronomía'],
     ['Escalas temporales inmensas', 'Intervenir mal puede ser irreversible'],
     ['star-lifting', 'red-dwarfs', 'stellar-ethics'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2113,7 +2104,7 @@ const stellarConcepts = [
     ['Permite migración sin abandonar mundos', 'Respuesta a supernovas, encuentros o futuro galáctico'],
     ['Control orbital de largo plazo', 'Coordinación social durante eras geológicas'],
     ['stellar-engines', 'shkadov', 'caplan'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2129,7 +2120,7 @@ const stellarConcepts = [
     ['Fuente inmensa de hidrógeno y helio', 'Alimenta motores y gestión estelar'],
     ['Temperaturas y radiación extremas', 'Separación isotópica a escala enorme'],
     ['star-lifting', 'caplan', 'stellar-husbandry'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 4 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2145,7 +2136,7 @@ const stellarConcepts = [
     ['Densidad energética y física extremas', 'Conecta cosmología, energía y computación'],
     ['Control casi inimaginable', 'Riesgos, escalas y creación artificial especulativas'],
     ['matrioshka-brain', 'stellar-engines', 'deep-time'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'stellar',
@@ -2161,7 +2152,7 @@ const stellarConcepts = [
     ['Conecta imaginación con observación real', 'Permite buscar sin saber cómo luce una civilización'],
     ['Falsos positivos naturales', 'Necesita datos, estadística y prudencia'],
     ['technosignatures', 'dyson-swarm', 'seti'],
-    { energia: 4, materiales: 3, madurez: 3, maravilla: 5 },
+    { energia: 3, materiales: 2, madurez: 4 },
     [sources.nasaTechnosignatures, sources.setiTechnosignatures],
   ),
 ];
@@ -2181,7 +2172,7 @@ const civilizationConcepts = [
     ['Escalón cercano', 'Integra clima, energía y espacio'],
     ['Riesgos políticos y ecológicos', 'No garantiza sabiduría ni estabilidad'],
     ['kardashev', 'tipo-ii', 'planetary-protection'],
-    { energia: 4, materiales: 3, madurez: 2, maravilla: 4 },
+    { energia: 4, materiales: 3, madurez: 2 },
   ),
   concept(
     'civilizations',
@@ -2197,7 +2188,7 @@ const civilizationConcepts = [
     ['Permite proyectos planetarios y estelares', 'Civilización mucho más resiliente'],
     ['Escala industrial enorme', 'Calor residual, gobernanza y riesgos de poder'],
     ['dyson-swarm', 'stellar-engines', 'technosignatures'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2213,7 +2204,7 @@ const civilizationConcepts = [
     ['Máxima escala del atlas', 'Une todos los bloques anteriores'],
     ['Comunicación lenta', 'Coherencia política casi imposible'],
     ['colonizacion-galactica', 'von-neumann', 'technosignatures'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2229,7 +2220,7 @@ const civilizationConcepts = [
     ['Convierte especulación en búsqueda empírica', 'Aprovecha astronomía moderna'],
     ['Espacio de búsqueda inmenso', 'No sabemos qué señales priorizar'],
     ['technosignatures', 'fermi', 'radio-seti'],
-    { energia: 2, materiales: 2, madurez: 5, maravilla: 5 },
+    { energia: 2, materiales: 2, madurez: 5 },
     [sources.nasaTechnosignatures, sources.setiTechnosignatures],
   ),
   concept(
@@ -2246,7 +2237,7 @@ const civilizationConcepts = [
     ['Amplía SETI más allá de radio', 'Conecta Dyson, atmósferas y datos reales'],
     ['Falsos positivos', 'Interpretación estadística delicada'],
     ['dyson-swarm', 'stellar-technosignatures', 'seti'],
-    { energia: 3, materiales: 2, madurez: 4, maravilla: 5 },
+    { energia: 2, materiales: 2, madurez: 4 },
     [sources.nasaTechnosignatures, sources.setiTechnosignatures],
   ),
   concept(
@@ -2263,7 +2254,7 @@ const civilizationConcepts = [
     ['Tecnología madura', 'Puede cubrir grandes volúmenes de cielo'],
     ['Señales pueden ser breves, débiles o no usarse', 'Interferencia terrestre'],
     ['seti', 'optical-seti', 'fermi'],
-    { energia: 2, materiales: 2, madurez: 5, maravilla: 4 },
+    { energia: 2, materiales: 2, madurez: 5 },
     [sources.setiTechnosignatures],
   ),
   concept(
@@ -2280,7 +2271,7 @@ const civilizationConcepts = [
     ['Compatible con infraestructura láser', 'Señales concentradas y distinguibles'],
     ['Requiere estar en el haz correcto', 'Eventos breves difíciles de capturar'],
     ['laser-sail', 'seti', 'technosignatures'],
-    { energia: 3, materiales: 2, madurez: 4, maravilla: 4 },
+    { energia: 3, materiales: 2, madurez: 4 },
   ),
   concept(
     'civilizations',
@@ -2296,7 +2287,7 @@ const civilizationConcepts = [
     ['Ordena hipótesis sobre el silencio cósmico', 'Conecta ciencia, riesgo y filosofía'],
     ['No tiene una única formulación', 'Depende de muchos parámetros desconocidos'],
     ['great-filter', 'zoo-hypothesis', 'dark-forest'],
-    { energia: 1, materiales: 1, madurez: 4, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 5 },
   ),
   concept(
     'civilizations',
@@ -2312,7 +2303,7 @@ const civilizationConcepts = [
     ['Conecta SETI con riesgos humanos', 'Da marco para pensar supervivencia'],
     ['Difícil de estimar', 'Puede volverse demasiado especulativo'],
     ['fermi', 'existential-risk', 'grabby-aliens'],
-    { energia: 2, materiales: 1, madurez: 3, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 3 },
   ),
   concept(
     'civilizations',
@@ -2328,7 +2319,7 @@ const civilizationConcepts = [
     ['Explica silencio sin negar civilizaciones', 'Plantea dilemas éticos interesantes'],
     ['Difícil de probar', 'Coordinación galáctica dudosa por velocidad de la luz'],
     ['fermi', 'dark-forest', 'cosmic-ethics'],
-    { energia: 2, materiales: 2, madurez: 1, maravilla: 4 },
+    { energia: 1, materiales: 1, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2344,7 +2335,7 @@ const civilizationConcepts = [
     ['Explora seguridad cósmica', 'Explica civilizaciones silenciosas'],
     ['Hipótesis pesimista y no comprobada', 'Puede sobreestimar hostilidad universal'],
     ['fermi', 'civilizaciones-silenciosas', 'cosmic-ethics'],
-    { energia: 3, materiales: 2, madurez: 1, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2360,7 +2351,7 @@ const civilizationConcepts = [
     ['Da estructura cuantitativa a Fermi', 'Conecta cosmología y expansión civilizatoria'],
     ['Depende de supuestos fuertes', 'No todos los modos de expansión serían visibles'],
     ['fermi', 'colonizacion-galactica', 'tipo-iii'],
-    { energia: 4, materiales: 4, madurez: 1, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 2 },
   ),
   concept(
     'civilizations',
@@ -2376,7 +2367,7 @@ const civilizationConcepts = [
     ['Explica baja detectabilidad', 'Amplía el rango de civilizaciones posibles'],
     ['Difícil de distinguir de ausencia', 'Algunas señales térmicas siguen siendo inevitables'],
     ['dark-forest', 'postbiological', 'technosignatures'],
-    { energia: 3, materiales: 3, madurez: 2, maravilla: 4 },
+    { energia: 1, materiales: 1, madurez: 2 },
   ),
   concept(
     'civilizations',
@@ -2392,7 +2383,7 @@ const civilizationConcepts = [
     ['Conecta IA, computronium y energía estelar', 'Podría explicar preferencias por entornos fríos'],
     ['Problemas filosóficos y técnicos enormes', 'Dependencia total de infraestructura computacional'],
     ['postbiological', 'jupiter-brain', 'matrioshka-brain'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2408,7 +2399,7 @@ const civilizationConcepts = [
     ['Puede sobrevivir mejor al espacio', 'Reduce dependencia de planetas habitables'],
     ['Valores y continuidad difíciles de imaginar', 'Riesgos de alineación y gobernanza'],
     ['civilizaciones-digitales', 'von-neumann', 'computronium'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2424,7 +2415,7 @@ const civilizationConcepts = [
     ['Aumenta resiliencia', 'Escala natural de una civilización duradera'],
     ['Comunicación lenta y fragmentación cultural', 'Ética de expansión y mundos con vida'],
     ['von-neumann', 'tipo-iii', 'civilizaciones-y-luz'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2440,7 +2431,7 @@ const civilizationConcepts = [
     ['Expansión exponencial', 'No requiere transportar poblaciones biológicas'],
     ['Control, errores evolutivos y ética', 'Riesgo de versiones destructivas'],
     ['berserker', 'colonizacion-galactica', 'postbiological'],
-    { energia: 4, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 4, materiales: 5, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2456,7 +2447,7 @@ const civilizationConcepts = [
     ['Caso útil para pensar seguridad de IA y replicación', 'Conecta Fermi con riesgo existencial'],
     ['Altamente especulativo', 'No toda autorreplicación implica hostilidad'],
     ['von-neumann', 'dark-forest', 'existential-risk'],
-    { energia: 4, materiales: 5, madurez: 1, maravilla: 4 },
+    { energia: 4, materiales: 5, madurez: 1 },
   ),
   concept(
     'civilizations',
@@ -2472,7 +2463,7 @@ const civilizationConcepts = [
     ['Aterriza la escala galáctica', 'Evita imaginar imperios imposiblemente coordinados'],
     ['Complica cualquier narrativa de unidad civilizatoria', 'Hace lenta la diplomacia y la respuesta a crisis'],
     ['tipo-iii', 'colonizacion-galactica', 'fermi'],
-    { energia: 1, materiales: 1, madurez: 5, maravilla: 4 },
+    { energia: 1, materiales: 1, madurez: 5 },
   ),
   concept(
     'civilizations',
@@ -2488,7 +2479,7 @@ const civilizationConcepts = [
     ['Da contexto a ingeniería estelar', 'Hace visibles horizontes de largo plazo'],
     ['Difícil de conectar con decisiones presentes', 'Incertidumbre aumenta con el tiempo'],
     ['stellar-husbandry', 'black-hole-engineering', 'future-universe'],
-    { energia: 4, materiales: 3, madurez: 4, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 5 },
   ),
 ];
 
@@ -2507,7 +2498,7 @@ const complementaryConcepts = [
     ['Da criterios para mundos habitables', 'Introduce dilemas éticos'],
     ['Evidencia aún limitada fuera de la Tierra', 'Contaminación puede destruir información'],
     ['habitability', 'planetary-protection', 'exoplanets'],
-    { energia: 1, materiales: 1, madurez: 5, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 5 },
     [sources.nasaExoplanets],
   ),
   concept(
@@ -2524,7 +2515,7 @@ const complementaryConcepts = [
     ['Base observacional enorme', 'Inspira ingeniería planetaria diversa'],
     ['Muchos datos son indirectos', 'Habitabilidad real requiere más que tamaño y órbita'],
     ['habitable-zone', 'technosignatures', 'astrobiology'],
-    { energia: 1, materiales: 1, madurez: 5, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 5 },
     [sources.nasaExoplanets],
   ),
   concept(
@@ -2541,7 +2532,7 @@ const complementaryConcepts = [
     ['Inspira visualizaciones potentes', 'Ayuda a sentir escalas difíciles'],
     ['Puede confundir plausibilidad', 'Algunas ideas requieren física o materiales extremos'],
     ['bishop-ring', 'orbital-ring', 'dyson-shell'],
-    { energia: 5, materiales: 5, madurez: 1, maravilla: 5 },
+    { energia: 5, materiales: 5, madurez: 1 },
   ),
   concept(
     'complements',
@@ -2557,7 +2548,7 @@ const complementaryConcepts = [
     ['Da horizonte máximo al atlas', 'Conecta energía, cómputo y supervivencia'],
     ['Incertidumbre cosmológica y tecnológica', 'Escalas temporales casi imposibles de imaginar'],
     ['deep-time', 'black-hole-engineering', 'stellar-husbandry'],
-    { energia: 5, materiales: 4, madurez: 3, maravilla: 5 },
+    { energia: 1, materiales: 1, madurez: 5 },
   ),
   concept(
     'complements',
@@ -2573,7 +2564,7 @@ const complementaryConcepts = [
     ['Aterriza la expansión en instituciones', 'Evita una visión puramente técnica'],
     ['Normas actuales no cubren todos los futuros', 'Conflictos de poder y recursos'],
     ['asteroid-mining', 'lunar-bases', 'cosmic-ethics'],
-    { energia: 2, materiales: 2, madurez: 4, maravilla: 3 },
+    { energia: 1, materiales: 1, madurez: 4 },
   ),
   concept(
     'complements',
@@ -2589,7 +2580,7 @@ const complementaryConcepts = [
     ['Da profundidad humana al atlas', 'Conecta tecnología con valores'],
     ['No hay consenso universal', 'Las decisiones afectan escalas temporales enormes'],
     ['planetary-protection', 'dark-forest', 'stellar-ethics'],
-    { energia: 1, materiales: 1, madurez: 3, maravilla: 4 },
+    { energia: 1, materiales: 1, madurez: 3 },
   ),
 ];
 

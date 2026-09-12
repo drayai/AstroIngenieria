@@ -463,13 +463,12 @@ const frameOps = (concept: AstroConcept, drawingNo: string, date: string): DrawO
 const dialsOps = (metrics: AstroConcept['metrics'], cx0: number, cy: number): DrawOp[] => {
   const ops: DrawOp[] = [];
   const entries: [string, number][] = [
-    ['ENERGÍA', metrics.energia],
-    ['MATERIALES', metrics.materiales],
-    ['MADUREZ', metrics.madurez],
-    ['MARAVILLA', metrics.maravilla],
+    ['DEMANDA ENERGÉTICA', metrics.energia],
+    ['DEMANDA MATERIAL', metrics.materiales],
+    ['MADUREZ TECNOLÓGICA', metrics.madurez],
   ];
   entries.forEach(([label, value], index) => {
-    const cx = cx0 + index * 97;
+    const cx = cx0 + index * 140;
     ops.push({ type: 'path', d: arcPath(cx, cy, 34, 180, 360), stroke: 'dim' });
     const phi = 180 + (value / 5) * 180;
     const [vx, vy] = fixed(polar(cx, cy, 34, phi));

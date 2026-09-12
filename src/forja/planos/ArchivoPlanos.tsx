@@ -317,10 +317,9 @@ export default function ArchivoPlanos() {
                 {concept.keyIdea}
               </p>
               <div className="pl-dossier-metrics">
-                <MetricBar label="ENERGÍA" value={concept.metrics.energia} />
-                <MetricBar label="MATERIALES" value={concept.metrics.materiales} />
-                <MetricBar label="MADUREZ" value={concept.metrics.madurez} />
-                <MetricBar label="MARAVILLA" value={concept.metrics.maravilla} />
+                <MetricBar label="DEMANDA ENERGÉTICA" value={concept.metrics.energia} />
+                <MetricBar label="DEMANDA MATERIAL" value={concept.metrics.materiales} />
+                <MetricBar label="MADUREZ TECNOLÓGICA" value={concept.metrics.madurez} />
               </div>
               {related.length > 0 && (
                 <div className="pl-dossier-related">

@@ -58,14 +58,6 @@ export interface ConceptIllustrationVariant {
   credit: string;
 }
 
-export type ConceptModel3dKind = 'oneill-cylinder';
-
-export interface ConceptModel3d {
-  kind: ConceptModel3dKind;
-  label: string;
-  caption: string;
-}
-
 export interface ConceptIllustration extends ConceptIllustrationVariant {
   interior?: ConceptIllustrationVariant;
 }
@@ -126,12 +118,10 @@ export interface AstroConcept {
   hotspots: VisualHotspot[];
   layers: VisualLayer[];
   visualNotes: string;
-  model3d?: ConceptModel3d;
   metrics: {
     energia: number;
     materiales: number;
     madurez: number;
-    maravilla: number;
   };
   sources?: SourceRef[];
 }

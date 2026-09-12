@@ -474,11 +474,43 @@ try {
   await expect(page.locator('#article-oneill-cylinder-title')).toBeVisible();
   await page.getByRole('button', { name: /Añadir a la vitrina de contrastes/ }).click();
   await expect(page.getByRole('button', { name: /En la vitrina de contrastes/ })).toBeVisible();
-  await page.getByRole('button', { name: /Maqueta 3D/ }).click();
-  await expect(page.locator('.mo-model-pane canvas')).toBeVisible({ timeout: 20000 });
-  await page.locator('.mo-studio-tabs').getByRole('button', { name: /Lectura/ }).click();
   await expect(page.locator('#article-oneill-cylinder-title')).toBeVisible();
-  console.log('Vitrina y maqueta 3D de O’Neill conservadas.');
+  await page.locator('.mo-back-to-top').click();
+  await expect.poll(() => page.locator('.mo-studio-scroll').evaluate(element => element.scrollTop)).toBeLessThan(2);
+
+  const vitrineSelection = ids.slice(0, 9);
+  await page.evaluate((value) => {
+    globalThis.history.replaceState(null, '', globalThis.location.pathname);
+    globalThis.localStorage.setItem('mo-vitrine', JSON.stringify(value));
+  }, vitrineSelection);
+  await page.reload();
+  await page.locator('#vitrina').scrollIntoViewIfNeeded();
+  await expect(page.locator('.mo-vitrina-card')).toHaveCount(9);
+  const firstVitrineCard = page.locator('.mo-vitrina-card').first();
+  await firstVitrineCard.locator('.mo-vitrina-mechanism').click();
+  await expect(page.locator('.mo-studio-plate')).toHaveText('Vitrina · 01 / 09');
+  const studioNav = page.locator('.mo-studio-nav button');
+  await expect(studioNav.first()).toBeDisabled();
+  await expect(studioNav.last()).toBeEnabled();
+  await studioNav.last().click();
+  await expect(page.locator('.mo-studio-plate')).toHaveText('Vitrina · 02 / 09');
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.locator('.mo-studio-plate')).toHaveText('Vitrina · 01 / 09');
+  for (let position = 2; position <= 9; position += 1) {
+    await studioNav.last().click();
+    await expect(page.locator('.mo-studio-plate')).toHaveText(`Vitrina · ${String(position).padStart(2, '0')} / 09`);
+  }
+  await expect(studioNav.last()).toBeDisabled();
+  await page.locator('.mo-studio-close').click();
+  await firstVitrineCard.locator('.mo-vitrina-remove').click();
+  await expect(page.locator('.mo-vitrina-card')).toHaveCount(8);
+  await expect(page.locator('.mo-studio')).toHaveCount(0);
+
+  const outsideVitrine = ids[10];
+  await page.evaluate((value) => { globalThis.location.hash = `obra-${value}`; }, outsideVitrine);
+  await expect(page.locator(`#article-${outsideVitrine}-title`)).toBeVisible();
+  await expect(page.locator('.mo-studio-plate')).toContainText('N.º');
+  console.log('Vitrina: nueve tarjetas, clic amplio, navegación contextual, teclado, límites y fallback de capítulo correctos.');
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${base}disenos`);

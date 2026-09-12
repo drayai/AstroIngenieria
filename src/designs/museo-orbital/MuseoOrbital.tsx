@@ -25,6 +25,7 @@ import {
 import { Aperture, Volume2, VolumeX } from 'lucide-react';
 import { chapters, conceptById, plausibilityLabels, scaleLabels } from '../../data/astroData';
 import { refs } from '../../data/articles/sources';
+import { metricRows, metricValueLabel } from '../../data/metricProfile';
 import type { AstroChapter, AstroConcept, SourceRef } from '../../types';
 import { Grain } from '../shared/Grain';
 import { useScrollLock } from '../shared/useScrollLock';
@@ -44,7 +45,7 @@ import './museoOrbital.css';
 
 const totalWorks = chapters.reduce((sum, chapter) => sum + chapter.concepts.length, 0);
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
-const VITRINE_CAP = 5;
+const VITRINE_CAP = 9;
 const VITRINE_KEY = 'mo-vitrine';
 const PLAYGROUND_WORD = 'ASTROINGENIERÍA';
 const PLAYGROUND_TIMES_KEY = 'mo-playground-best-times-v1';
@@ -102,6 +103,11 @@ const loadVitrine = (): string[] => {
     return [];
   }
 };
+
+const getVitrineConcepts = (ids: readonly string[]) =>
+  ids
+    .map((id) => conceptById.get(id))
+    .filter((item): item is AstroConcept => Boolean(item));
 
 const scrollToId = (id: string) => {
   window.dispatchEvent(new CustomEvent('mo-warp'));
@@ -1536,7 +1542,6 @@ const Obra = memo(({
         <div className="mo-obra-meta">
           <span className="mo-plate">
             N.º {String(plate).padStart(2, '0')}
-            {concept.model3d ? ' · maqueta' : ''}
           </span>
           <h3>{concept.title}</h3>
           <p>
@@ -1685,9 +1690,7 @@ const Vitrina = memo(({
   onRemove: (conceptId: string) => void;
   onOpen: (concept: AstroConcept) => void;
 }) => {
-  const obras = ids
-    .map((id) => conceptById.get(id))
-    .filter((item): item is AstroConcept => Boolean(item));
+  const obras = getVitrineConcepts(ids);
 
   return (
     <section id="vitrina" className="mo-vitrina mo-layer">
@@ -1714,26 +1717,37 @@ const Vitrina = memo(({
               <motion.article
                 key={concept.id}
                 className="mo-vitrina-card"
+                role="button"
+                tabIndex={0}
+                aria-label={`Abrir sala de estudio: ${concept.title}`}
+                data-cursor="true"
+                data-cursor-label="Abrir"
                 style={{ '--accent': chapter.color } as CSSProperties}
                 initial={{ opacity: 0, y: 34 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: Math.min(cardIndex * 0.06, 0.42), duration: 0.75, ease: EASE_OUT }}
+                onClick={() => onOpen(concept)}
+                onKeyDown={(event) => {
+                  if (event.target !== event.currentTarget) return;
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    onOpen(concept);
+                  }
+                }}
               >
                 <header>
-                  <button
-                    type="button"
-                    className="mo-vitrina-title"
-                    onClick={() => onOpen(concept)}
-                    data-cursor-label="Abrir"
-                  >
+                  <div className="mo-vitrina-title">
                     <span className="mo-plate">{chapter.number}·{concept.title}</span>
                     <h3>{concept.title}</h3>
-                  </button>
+                  </div>
                   <button
                     type="button"
                     className="mo-vitrina-remove"
-                    onClick={() => onRemove(concept.id)}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      onRemove(concept.id);
+                    }}
                     aria-label={`Quitar ${concept.title} de la vitrina`}
                     data-cursor-label="Quitar"
                   >
@@ -1745,20 +1759,16 @@ const Vitrina = memo(({
                   <span>{scaleLabels[concept.scale]}</span>
                   <span>{plausibilityLabels[concept.plausibility]}</span>
                 </div>
+                <div className="mo-metric-profile-heading">
+                  <span>Perfil comparativo</span>
+                </div>
                 <dl className="mo-metrics-v2">
-                  {(
-                    [
-                      ['Energía', concept.metrics.energia],
-                      ['Materiales', concept.metrics.materiales],
-                      ['Madurez', concept.metrics.madurez],
-                      ['Maravilla', concept.metrics.maravilla],
-                    ] as const
-                  ).map(([label, value]) => (
-                    <div key={label}>
-                      <dt>{label}</dt>
-                      <dd aria-label={`${value} de 5`}>
+                  {metricRows(concept.metrics).map((row) => (
+                    <div key={row.key} title={row.definition}>
+                      <dt>{row.label}<small>{row.descriptor}</small></dt>
+                      <dd aria-label={metricValueLabel(row)}>
                         {[1, 2, 3, 4, 5].map((cell) => (
-                          <i key={cell} className={cell <= value ? 'is-on' : ''} />
+                          <i key={cell} className={cell <= row.value ? 'is-on' : ''} />
                         ))}
                       </dd>
                     </div>
@@ -2944,6 +2954,13 @@ export default function MuseoOrbital() {
 
   let plateOffset = 0;
   const activeHall = chapters.find((chapter) => chapter.id === activeHallId);
+  const vitrineConcepts = getVitrineConcepts(vitrineIds);
+  const activeUsesVitrineNavigation = Boolean(active && vitrineIds.includes(active.id));
+  const activeSiblings = activeUsesVitrineNavigation
+    ? vitrineConcepts
+    : active
+      ? resolveChapter(active).concepts
+      : [];
   const playgroundArriving = playgroundEntryState === 'entering';
   const playgroundDeparting = playgroundEntryState === 'leaving';
   const playgroundTransitioning = playgroundArriving || playgroundDeparting;
@@ -3292,7 +3309,8 @@ export default function MuseoOrbital() {
             key="studio"
             concept={active}
             chapter={resolveChapter(active)}
-            siblings={resolveChapter(active).concepts}
+            siblings={activeSiblings}
+            navigationContext={activeUsesVitrineNavigation ? 'vitrine' : 'chapter'}
             enableFlight={!reduced}
             inVitrine={vitrineIds.includes(active.id)}
             onToggleVitrine={toggleVitrine}

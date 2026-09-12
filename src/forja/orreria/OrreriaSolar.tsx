@@ -957,10 +957,9 @@ export default function OrreriaSolar() {
           <div className="or-dossier-metrics">
             {(
               [
-                ['ENERGÍA', selected.metrics.energia],
-                ['MATERIALES', selected.metrics.materiales],
-                ['MADUREZ', selected.metrics.madurez],
-                ['MARAVILLA', selected.metrics.maravilla],
+                ['DEMANDA ENERGÉTICA', selected.metrics.energia],
+                ['DEMANDA MATERIAL', selected.metrics.materiales],
+                ['MADUREZ TECNOLÓGICA', selected.metrics.madurez],
               ] as [string, number][]
             ).map(([label, value]) => (
               <div key={label} className="or-metric">

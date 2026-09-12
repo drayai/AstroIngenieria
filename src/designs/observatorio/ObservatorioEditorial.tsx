@@ -367,10 +367,9 @@ const ArticleOverlay = ({
         <ArticleReader key={concept.id} concept={concept} />
 
         <dl className="oe-specs">
-          <SpecRow label="Energía" value={concept.metrics.energia} />
-          <SpecRow label="Materiales" value={concept.metrics.materiales} />
-          <SpecRow label="Madurez" value={concept.metrics.madurez} />
-          <SpecRow label="Maravilla" value={concept.metrics.maravilla} />
+          <SpecRow label="Demanda energética" value={concept.metrics.energia} />
+          <SpecRow label="Demanda material" value={concept.metrics.materiales} />
+          <SpecRow label="Madurez tecnológica" value={concept.metrics.madurez} />
         </dl>
 
         <footer className="oe-article-foot">

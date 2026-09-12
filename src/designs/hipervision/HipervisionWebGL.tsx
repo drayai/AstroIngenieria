@@ -308,10 +308,9 @@ const ConceptSheet = ({
         <div className="hv-meters">
           {(
             [
-              ['Energía', concept.metrics.energia],
-              ['Materiales', concept.metrics.materiales],
-              ['Madurez', concept.metrics.madurez],
-              ['Maravilla', concept.metrics.maravilla],
+              ['Demanda energética', concept.metrics.energia],
+              ['Demanda material', concept.metrics.materiales],
+              ['Madurez tecnológica', concept.metrics.madurez],
             ] as const
           ).map(([label, value]) => (
             <div key={label} className="hv-meter-row">

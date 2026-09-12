@@ -1,6 +1,4 @@
 import {
-  Suspense,
-  lazy,
   useEffect,
   useMemo,
   useRef,
@@ -10,28 +8,19 @@ import {
 import { AnimatePresence, motion } from 'framer-motion';
 import { plausibilityLabels, scaleLabels } from '../../data/astroData';
 import type { AstroChapter, AstroConcept } from '../../types';
+import { metricRows, metricValueLabel } from '../../data/metricProfile';
 import { getConceptImageVariants } from '../shared/conceptImages';
 import { ArticleReader } from '../shared/ArticleReader';
 import { ImageLightbox, type ImageLightboxImage } from '../shared/ImageLightbox';
 import './museoOrbital.css';
 
-const ONeillCylinderModel = lazy(() =>
-  import('./ONeillCylinderModel').then((module) => ({ default: module.ONeillCylinderModel })),
-);
-
 const EASE_OUT = [0.16, 1, 0.3, 1] as const;
-
-type StudioTab = 'articulo' | 'maqueta';
-
-const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
-const roman = (index: number) => ROMAN[index] ?? String(index + 1);
-
-const tabs: { id: StudioTab; label: string }[] = [{ id: 'articulo', label: 'Lectura' }];
 
 interface StudioProps {
   concept: AstroConcept;
   chapter: AstroChapter;
   siblings: AstroConcept[];
+  navigationContext: 'chapter' | 'vitrine';
   enableFlight?: boolean;
   inVitrine: boolean;
   onToggleVitrine: (conceptId: string) => void;
@@ -43,6 +32,7 @@ export const StudioRoom = ({
   concept,
   chapter,
   siblings,
+  navigationContext,
   enableFlight = true,
   inVitrine,
   onToggleVitrine,
@@ -53,7 +43,6 @@ export const StudioRoom = ({
   const backdropPressRef = useRef<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const figureRef = useRef<HTMLDivElement>(null);
-  const [tab, setTab] = useState<StudioTab>('articulo');
   const [lightboxImage, setLightboxImage] = useState<ImageLightboxImage | null>(null);
 
   const variants = useMemo(() => getConceptImageVariants(concept), [concept]);
@@ -62,10 +51,6 @@ export const StudioRoom = ({
   const index = siblings.findIndex((item) => item.id === concept.id);
   const previous = index > 0 ? siblings[index - 1] : null;
   const next = index < siblings.length - 1 ? siblings[index + 1] : null;
-  const related = concept.related
-    .map((id) => siblings.find((s) => s.id === id))
-    .filter((item): item is AstroConcept => Boolean(item));
-
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -97,7 +82,6 @@ export const StudioRoom = ({
   useEffect(() => {
     setVariantIndex(0);
     setLightboxImage(null);
-    setTab('articulo');
     scrollRef.current?.scrollTo({ top: 0 });
   }, [concept]);
 
@@ -141,17 +125,7 @@ export const StudioRoom = ({
     return () => window.removeEventListener('keydown', onKey);
   }, [lightboxImage, next, previous, onClose, onSelect]);
 
-  const goTab = (nextTab: StudioTab) => {
-    setTab(nextTab);
-    scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const metricRows: [string, number][] = [
-    ['Energía', concept.metrics.energia],
-    ['Materiales', concept.metrics.materiales],
-    ['Madurez', concept.metrics.madurez],
-    ['Maravilla', concept.metrics.maravilla],
-  ];
+  const profileRows = metricRows(concept.metrics);
 
   const variant = variants[Math.min(variantIndex, variants.length - 1)];
 
@@ -169,11 +143,6 @@ export const StudioRoom = ({
   const changeVariant = (direction: -1 | 1) => {
     selectVariant((variantIndex + direction + variants.length) % variants.length);
   };
-
-  const visibleTabs = [
-    ...tabs,
-    ...(concept.model3d ? [{ id: 'maqueta' as StudioTab, label: 'Maqueta 3D' }] : []),
-  ];
 
   return (
     <motion.div
@@ -219,9 +188,14 @@ export const StudioRoom = ({
             ✕ &nbsp;Volver al recorrido
           </button>
           <span className="mo-studio-plate">
-            N.º {String(index + 1).padStart(2, '0')} / {String(siblings.length).padStart(2, '0')}
+            {navigationContext === 'vitrine'
+              ? `Vitrina · ${String(index + 1).padStart(2, '0')} / ${String(siblings.length).padStart(2, '0')}`
+              : `N.º ${String(index + 1).padStart(2, '0')} / ${String(siblings.length).padStart(2, '0')}`}
           </span>
-          <nav className="mo-studio-nav" aria-label="Obras contiguas">
+          <nav
+            className="mo-studio-nav"
+            aria-label={navigationContext === 'vitrine' ? 'Obras de la vitrina' : 'Obras contiguas'}
+          >
             <button
               type="button"
               disabled={!previous}
@@ -359,13 +333,16 @@ export const StudioRoom = ({
                 {inVitrine ? '✓ En la vitrina de contrastes' : '+ Añadir a la vitrina de contrastes'}
               </button>
 
+              <div className="mo-metric-profile-heading">
+                <span>Perfil comparativo</span>
+              </div>
               <dl className="mo-metrics-v2">
-                {metricRows.map(([label, value]) => (
-                  <div key={label}>
-                    <dt>{label}</dt>
-                    <dd aria-label={`${value} de 5`}>
+                {profileRows.map((row) => (
+                  <div key={row.key} title={row.definition}>
+                    <dt>{row.label}<small>{row.descriptor}</small></dt>
+                    <dd aria-label={metricValueLabel(row)}>
                       {[1, 2, 3, 4, 5].map((cell) => (
-                        <i key={cell} className={cell <= value ? 'is-on' : ''} />
+                        <i key={cell} className={cell <= row.value ? 'is-on' : ''} />
                       ))}
                     </dd>
                   </div>
@@ -374,43 +351,22 @@ export const StudioRoom = ({
             </div>
           </section>
 
-          {visibleTabs.length > 1 && <nav className="mo-studio-tabs" aria-label="Secciones de la sala de estudio">
-            {visibleTabs.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                className={tab === item.id ? 'is-active' : ''}
-                onClick={() => goTab(item.id)}
-              >
-                <b>{roman(visibleTabs.indexOf(item))}</b> {item.label}
-              </button>
-            ))}
-          </nav>}
-
-          {tab === 'articulo' && (
-            <section className="mo-tab-pane" aria-label="Lectura del tema">
-              <ArticleReader key={concept.id} concept={concept} />
-              {related.length > 0 && (
-                <div className="mo-related-v2">
-                  <h4>Continúa explorando</h4>
-                  <div className="mo-variant-row">
-                    {related.slice(0, 6).map(item => <button key={item.id} type="button" onClick={() => onSelect(item)}>{item.title}</button>)}
-                  </div>
-                </div>
-              )}
-            </section>
-          )}
-          {tab === 'maqueta' && concept.model3d && (
-            <section className="mo-tab-pane mo-model-pane" aria-label="Maqueta 3D interactiva">
-              <p className="mo-reader-kicker">{concept.model3d.label}</p>
-              <div className="mo-model-stage">
-                <Suspense fallback={<div className="mo-model-loading">Forjando la maqueta…</div>}>
-                  <ONeillCylinderModel />
-                </Suspense>
-              </div>
-              <p className="mo-model-caption">{concept.model3d.caption}</p>
-            </section>
-          )}
+          <section className="mo-tab-pane" aria-label="Lectura del tema">
+            <ArticleReader key={concept.id} concept={concept} />
+            <button
+              type="button"
+              className="mo-back-to-top"
+              onClick={() => scrollRef.current?.scrollTo({
+                top: 0,
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+              })}
+              aria-label="Volver al inicio de la sala de estudio"
+              data-cursor-label="Volver arriba"
+              title="Volver arriba"
+            >
+              <span aria-hidden="true">↑</span>
+            </button>
+          </section>
         </div>
       </div>
       <AnimatePresence>
