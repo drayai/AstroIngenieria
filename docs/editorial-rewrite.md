@@ -24,10 +24,12 @@ La guía operativa está en [editorial-guide.md](./editorial-guide.md). La matri
 | 15 | Mover una estrella | Revisado y validado |
 | 16 | Trabajar con materia estelar | Revisado y validado |
 | 17 | Comprender y observar la ingeniería estelar | Revisado y validado |
-| 18–24 | Reescrituras planificadas | Pendiente |
+| 18 | Infraestructuras que intercambian movimiento | Revisado y validado |
+| 19 | Hacer del espacio una red de transporte | Revisado y validado |
+| 20–24 | Reescrituras planificadas | Pendiente |
 | 25 | Auditoría de ocho referencias posteriores | Pendiente |
 
-Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 18.
+Los capítulos 0 y 1 se conservan. La siguiente ejecución debe trabajar únicamente la tanda 20.
 
 ## Tanda 1 — Civilizaciones de escala planetaria, estelar y galáctica
 
@@ -542,3 +544,86 @@ Se conservaron y comprobaron NASA Science para estructura, evolución y observac
 - `npm run lint` y `npm run build`: correctos.
 - Escritorio y móvil: las tres lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
 - La comprobación global de la maqueta se registra separadamente porque el museo conserva cambios locales ajenos a esta tanda.
+
+## Tanda 18 — Infraestructuras que intercambian movimiento
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Anillo orbital | A | 1.000 | Sigue rotor, guía, plataformas, transferencia de cargas, puesta en marcha, fallos y retirada | Revisado y validado |
+| Launch loop | A | 1.031 | Recorre rotor terrestre, vía elevada, aceleración, liberación, control territorial y recuperación | Revisado y validado |
+| Skyhook | B | 829 | Desarrolla encuentro, captura, onda de tensión, liberación y restitución de órbita y giro | Revisado y validado |
+| Tethers | B | 767 | Distingue despliegue, intercambio rotatorio y operación electrodinámica con sus reacciones | Revisado y validado |
+| Mass driver | B | 756 | Sigue bobinas, cápsula, salida, navegación, recepción, frenado y retorno del contenedor | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Anillo orbital:** una plataforma quieta revela el rotor que corre bajo ella; construir y retirar el circuito muestra por qué el equilibrio dinámico debe existir en todos sus estados.
+- **Launch loop:** la carga recorre una maquinaria territorial desde la estación terrestre hasta una liberación aún no orbital; el intervalo entre salidas explica su carácter industrial.
+- **Skyhook:** la punta ofrece una ventana de segundos y después todo el cable responde; el largo periodo de recuperación da significado al movimiento prestado.
+- **Tethers:** dos masas se separan, intercambian órbita o cierran un circuito con el plasma; cada función conserva una identidad operacional distinta.
+- **Mass driver:** una cápsula pasa de cantera a guía y finalmente a receptor; frenar y reciclar el contenedor completa el servicio que el lanzamiento solo inicia.
+
+Las cinco lecturas identifican qué se mueve, qué recibe la reacción y cómo se recupera el sistema. Distinguen rotor y plataforma, altura y órbita, punta lenta y centro orbital, generación eléctrica y propulsión, y trayectoria balística y entrega. Captura, liberación, abortos y retirada se desarrollan como operaciones concretas.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron Birch para anillos orbitales; Lofstrom para launch loop; HASTOL y el manual NASA de tethers para captura y dinámica de cables; estudios de asentamientos para mass drivers; y NASA Glenn para balances de velocidad y energía.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 77 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cinco lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- Los fallos de componentes ajenos a la tanda se registran separadamente sin alterar estas comprobaciones.
+
+## Tanda 20 — Vivir y producir con recursos locales
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Bases lunares | A | 1.392 | Recorre espacios habitados, soporte vital, esclusas, rutas exteriores, energía, recursos y crecimiento modular | Revisado y validado |
+| ISRU | B | 944 | Sigue oxígeno desde prospección y excavación hasta separación, control de calidad, almacenamiento y uso | Revisado y validado |
+| Minería de asteroides | B | 969 | Conecta acceso orbital, prospección, sujeción, contención, procesamiento y entrega a un cliente | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Bases lunares:** una bota ante la esclusa abre un recorrido desde dormitorios y áreas comunes hasta plantas técnicas, caminos exteriores y zonas de extracción; cada dependencia vuelve tangible la frontera entre hábitat y paisaje.
+- **ISRU:** una pala de regolito se convierte gradualmente en oxígeno verificable dentro de un tanque; MOXIE permite distinguir una reacción demostrada de una fábrica sostenida y escalable.
+- **Minería de asteroides:** el empuje de una herramienta revela primero el problema de permanecer junto al cuerpo; agua y metal siguen cadenas diferentes hasta depósitos o fábricas que fijan su valor real.
+
+Las lecturas distinguen presencia, concentración, recuperación y disponibilidad industrial. El lector puede reconstruir qué mantiene habitable una base, por qué cada producto ISRU requiere su propia cadena y dónde recibe la reacción una herramienta en gravedad débil. Las posibilidades —permanencia, reservas locales y fabricación orbital— nacen de operaciones explicadas, mientras la escala y la continuidad industrial permanecen identificadas como desafíos aún no demostrados.
+
+### Fuentes y validación
+
+Se conservaron y contrastaron ESA Space Resources para cadenas de prospección, extracción y uso; NASA para el resultado operativo de MOXIE; NASA ECLSS para aire y agua en hábitats; y el estudio conceptual alojado en NASA NTRS para las propiedades y dificultades mecánicas de cuerpos de tipo agregado.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 84 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las tres lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- Los cambios locales ajenos a la tanda se conservan y sus posibles fallos se registran por separado.
+
+La próxima tanda es la 21: captación de energía y evacuación de calor. Permanece pendiente.
+
+## Tanda 19 — Hacer del espacio una red de transporte
+
+| Tema | Categoría | Palabras principales | Carencia resuelta | Estado |
+|---|---|---:|---|---|
+| Astilleros espaciales | B | 766 | Sigue llegada de módulos, sujeción, unión, conexiones, inspección, reparación y partida | Revisado y validado |
+| Puertos orbitales | B | 790 | Recorre corredores, captura, tráfico, transferencias, emergencias y devolución del muelle | Revisado y validado |
+| Depósitos de propelente | B | 763 | Explica gestión térmica, fases, conexión, transferencia, suministro y reserva operativa | Revisado y validado |
+| Lanzamiento reutilizable | B | 761 | Recorre retorno, entrada, aterrizaje, inspección, reacondicionamiento y nuevo vuelo | Revisado y validado |
+
+### Decisiones narrativas y auditoría
+
+- **Astilleros:** dos módulos solo se convierten en nave después de alinear, unir, conectar y probar; una reparación posterior devuelve información a la siguiente construcción.
+- **Puertos:** compartir órbita precede a compartir una puerta; rutas distintas para personas, carga y fluidos muestran el puerto como coordinación de movimientos y riesgos.
+- **Depósitos:** el tiempo entre proveedor y cliente organiza la lectura; conservar frío, encontrar líquido y cerrar la conexión explican por qué almacenar es una operación activa.
+- **Reutilización:** el aterrizaje queda en mitad del ciclo; datos, inspección y certificación conducen hasta el segundo despegue que completa la afirmación de reutilizar.
+
+Las cuatro lecturas muestran operaciones, interfaces y estados de fallo concretos. Distinguen montaje de fabricación, acoplamiento de transferencia, combustible de propelente y recuperación de reutilización. Cada cierre deja la infraestructura preparada para la siguiente operación, que es la medida práctica de una red de transporte.
+
+### Fuentes y validación
+
+Se conservaron y comprobaron NASA ISAM para servicio, ensamblaje e interfaces orbitales; estudios de asentamientos para construcción espacial; NASA RRM3 para almacenamiento y transferencia criogénica; SpaceX para la capacidad operativa de recuperación de Falcon 9; y NASA Glenn para balances de masa en cohetes.
+
+- `npm run check:articles`: cobertura, mínimos, citas, imágenes, notas y párrafos únicos correctos; 81 artículos certificados.
+- `npm run lint` y `npm run build`: correctos.
+- Escritorio y móvil: las cuatro lecturas cargan con sus apartados y notas sin desbordamiento horizontal.
+- Los fallos de componentes ajenos a la tanda se registran separadamente sin alterar estas comprobaciones.
