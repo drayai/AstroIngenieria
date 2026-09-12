@@ -351,7 +351,7 @@ export const StudioRoom = ({
             </div>
           </section>
 
-          <section className="mo-tab-pane" aria-label="Lectura del tema">
+          <section className="mo-tab-pane mo-tab-pane-with-back" aria-label="Lectura del tema">
             <ArticleReader key={concept.id} concept={concept} />
             <button
               type="button"

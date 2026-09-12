@@ -1812,7 +1812,7 @@ const Archivo = memo(({ sources }: { sources: SourceRef[] }) => {
     const preserveScrollPosition = () => {
       const maxScrollTop = Math.max(0, scrollContainer.scrollHeight - scrollContainer.clientHeight);
       scrollContainer.scrollTop = Math.min(startingScrollTop, maxScrollTop);
-      if (performance.now() - startedAt < 760) {
+      if (performance.now() - startedAt < 1_100) {
         requestAnimationFrame(preserveScrollPosition);
       }
     };
@@ -1856,7 +1856,14 @@ const Archivo = memo(({ sources }: { sources: SourceRef[] }) => {
               className="mo-archivo-content"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              exit={{
+                height: 0,
+                opacity: 0,
+                transition: {
+                  height: { duration: 1.1, ease: 'linear' },
+                  opacity: { duration: 0.5, ease: EASE_OUT },
+                },
+              }}
               transition={{ duration: 0.7, ease: EASE_OUT }}
             >
               <ol className="mo-archivo-list">
@@ -1878,7 +1885,11 @@ const Archivo = memo(({ sources }: { sources: SourceRef[] }) => {
                 ))}
               </ol>
               <div className="mo-archivo-close-row">
-                <button type="button" className="mo-archivo-close" onClick={closeArchive}>
+                <button
+                  type="button"
+                  className="mo-archivo-close"
+                  onClick={closeArchive}
+                >
                   Cerrar referencias ↑
                 </button>
               </div>

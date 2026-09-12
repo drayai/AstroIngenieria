@@ -420,6 +420,10 @@ body:has(.mo-root) {
   scroll-margin-top: 0;
 }
 
+.mo-sala#sala-complements {
+  padding-bottom: clamp(120px, 18vh, 220px);
+}
+
 .mo-chapter-intro {
   position: relative;
   width: calc(100% + 48px);
@@ -2692,13 +2696,6 @@ body:has(.mo-root) {
   line-height: 1.1;
 }
 
-.mo-vitrina-card:hover .mo-vitrina-title h3,
-.mo-vitrina-card:focus-visible .mo-vitrina-title h3 {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
-
 .mo-vitrina-remove {
   width: 32px;
   height: 32px;
@@ -2865,11 +2862,12 @@ body:has(.mo-root) {
 }
 
 .mo-back-to-top {
+  position: relative;
   display: grid;
   place-items: center;
   width: 48px;
   height: 48px;
-  margin: clamp(70px, 12vh, 130px) auto 24px;
+  margin: clamp(22px, 4vh, 42px) auto 0;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -2877,6 +2875,16 @@ body:has(.mo-root) {
   color: rgba(245, 241, 232, 0.56);
   cursor: pointer;
   transition: color 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mo-back-to-top::before {
+  content: '';
+  position: absolute;
+  inset: -24px;
+}
+
+.mo-tab-pane-with-back {
+  padding-bottom: 22px;
 }
 
 .mo-back-to-top span {
